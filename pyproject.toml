@@ -1,0 +1,28 @@
+[project]
+name = "masters-project"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.84.0",
+    "geopandas>=1.1.3",
+    "ipykernel>=7.2.0",
+    "jupyter>=1.1.1",
+    "lightgbm>=4.6.0",
+    "pandas>=3.0.1",
+    "polars>=1.39.0",
+    "pyarrow>=23.0.1",
+    "python-dotenv>=1.2.2",
+    "rasterio>=1.4.4",
+    "requests>=2.32.5",
+    "scikit-learn>=1.8.0",
+    "shap>=0.51.0",
+    "shapely>=2.1.2",
+    "xgboost>=3.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "pytest>=9.0.2",
+    "ruff>=0.15.6",
+]

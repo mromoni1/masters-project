@@ -1,0 +1,53 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ── uv / virtual environment ──
+.venv/
+uv.lock          # optional: commit this if you want reproducible installs
+                 # for collaborators; omit if solo research project
+
+# ── Environment variables ──
+.env
+.env.*
+!.env.example    # keep the example template committed
+
+# ── Jupyter ──
+.ipynb_checkpoints/
+*.ipynb          # optional: commit notebooks if you want version history
+                 # of your EDA; omit if you prefer clean diffs
+
+# ── Data ──
+data/raw/        # large source files — never commit raw data
+data/processed/  # generated files — reproducible from raw
+data/feedback.db # SQLite binary — track schema in git, not the file
+
+# ── PRISM rasters specifically ──
+*.bil
+*.hdr
+*.prj
+*.aux
+*.stx
+*.ovr
+
+# ── Model artifacts ──
+models/*.pkl
+models/*.pt
+models/*.joblib
+
+# ── OS / editor ──
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Claude Code local memory ──
+CLAUDE.local.md
