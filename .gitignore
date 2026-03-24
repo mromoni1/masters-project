@@ -15,7 +15,7 @@ uv.lock          # optional: commit this if you want reproducible installs
 
 # ── Environment variables ──
 .env
-.env.*
+# .env.* -- commented out for now because blocking the commit of .env.example; uncomment if you have multiple env files
 !.env.example    # keep the example template committed
 
 # ── Jupyter ──
