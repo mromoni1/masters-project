@@ -35,7 +35,7 @@ except ImportError:
 # North:  38.86
 
 VARIABLES = ["tmin", "tmax", "tmean", "ppt", "vpdmin", "vpdmax"]
-START_YEAR = 1981
+START_YEAR = 1991
 FTP_HOST = "prism.nacse.org"
 LOCAL_DIR = "data/raw/prism"
 NAPA_BBOX = (-122.67, 38.18, -122.10, 38.86)  # (west, south, east, north)
@@ -65,11 +65,11 @@ def list_bil_zips(ftp: ftplib.FTP, var: str, year: int) -> list[str]:
     except ftplib.error_perm:
         return []
 
-    bil_zips = [f for f in files if f.endswith("_bil.zip")]
+    zips = [f for f in files if f.endswith(".zip")]
 
     # Key by date string, overwrite provisional entry with stable if both exist
     by_date: dict[str, str] = {}
-    for filepath in bil_zips:
+    for filepath in zips:
         filename = Path(filepath).name
         date_match = re.search(r"(\d{8})", filename)
         if not date_match:
@@ -100,9 +100,9 @@ def derive_output_path(var: str, year: int, zip_filename: str) -> Path:
     Returns:
         Path where the clipped .bil should be saved locally.
     """
-    stem = Path(zip_filename).stem        # e.g. PRISM_tmax_stable_4kmD2_19810101_bil
-    bil_name = stem.replace("_bil", "") + ".bil"
-    return DATA_RAW_DIR / "prism" / var / str(year) / bil_name
+    stem = Path(zip_filename).stem        # e.g. prism_tmin_us_25m_19810919
+    tif_name = stem + ".tif"
+    return DATA_RAW_DIR / "prism" / var / str(year) / tif_name
 
 
 # ---------------------------------------------------------------------------
@@ -128,10 +128,10 @@ def download_and_clip(ftp: ftplib.FTP, remote_path: str, out_path: Path) -> None
         with zipfile.ZipFile(buf) as zf:
             zf.extractall(tmpdir)
 
-        bil_files = list(Path(tmpdir).glob("*.bil"))
-        if not bil_files:
-            raise FileNotFoundError(f"No .bil file found inside {remote_path}")
-        bil_file = bil_files[0]
+        tif_files = list(Path(tmpdir).glob("*.tif"))
+        if not tif_files:
+            raise FileNotFoundError(f"No .tif file found inside {remote_path}")
+        bil_file = tif_files[0]
 
         napa_geom = [mapping(box(*NAPA_BBOX))]
 
