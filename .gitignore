@@ -24,8 +24,6 @@ uv.lock          # optional: commit this if you want reproducible installs
                  # of your EDA; omit if you prefer clean diffs
 
 # ── Data ──
-data/raw/        # large source files — never commit raw data
-data/processed/  # generated files — reproducible from raw
 data/feedback.db # SQLite binary — track schema in git, not the file
 
 # ── PRISM rasters specifically ──
