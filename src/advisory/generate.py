@@ -1,20 +1,17 @@
 """LLM advisory layer — translates VintagePrediction into plain-language guidance.
 
-Takes a structured VintagePrediction object and calls the Anthropic API to
+Takes a structured VintagePrediction object and calls the Google Gemini API to
 produce a concise, plain-language advisory suitable for an independent Napa
 Valley vintner.
 
 Design decisions
 ----------------
-* Single-turn, non-streaming: the advisory is short (≤ 300 words) and the
+* Single-turn, non-streaming: the advisory is short (≤ 250 words) and the
   latency budget for this endpoint allows a synchronous call.
-* Prompt caching: the system prompt is large and stable; `cache_control` is
-  applied so repeated calls in the same session (or within the 5-minute TTL)
-  pay only for output tokens.
-* Uncertainty-first language: when confidence is "low", the advisory MUST
-  open with a clear caveat before presenting the estimate.
-* Model: claude-sonnet-4-6 — fast and cost-effective for a structured-to-
-  plain-text translation task that does not require deep reasoning.
+* Model: gemini-2.0-flash — fast, available on the Gemini free tier
+  (API key from Google AI Studio, no billing required).
+* Low-confidence predictions must open with a clear uncertainty caveat
+  before presenting the estimate.
 * No tool use, no agents: the LLM's only job is to render the structured
   data as grower-friendly prose.
 
@@ -33,7 +30,8 @@ from __future__ import annotations
 import os
 from typing import TYPE_CHECKING
 
-import anthropic
+from google import genai
+from google.genai import types
 
 if TYPE_CHECKING:
     from src.output.prediction import VintagePrediction
@@ -42,7 +40,7 @@ if TYPE_CHECKING:
 # Constants
 # ---------------------------------------------------------------------------
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "gemini-2.0-flash"
 
 _SYSTEM_PROMPT = """\
 You are an agricultural advisor writing plain-language vintage guidance for \
@@ -86,47 +84,41 @@ def generate_advisory(
 ) -> str:
     """Generate a plain-language vintage advisory from a structured prediction.
 
-    Calls the Anthropic API with the structured prediction serialised as a
-    user message. The system prompt is marked for prompt caching.
+    Calls the Google Gemini API (gemini-2.0-flash) with the structured
+    prediction as the user message and the advisory rules as the system prompt.
 
     Args:
         prediction: A fully populated VintagePrediction from src.output.prediction.
-        api_key: Anthropic API key. Defaults to ANTHROPIC_API_KEY env var.
+        api_key: Gemini API key. Defaults to GEMINI_API_KEY env var.
 
     Returns:
         Plain-text advisory string (≤ 250 words).
 
     Raises:
-        anthropic.APIError: If the API call fails.
-        ValueError: If ANTHROPIC_API_KEY is not set and api_key is not provided.
+        google.genai.errors.APIError: If the API call fails.
+        ValueError: If GEMINI_API_KEY is not set and api_key is not provided.
     """
-    resolved_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
+    resolved_key = api_key or os.environ.get("GEMINI_API_KEY")
     if not resolved_key:
         raise ValueError(
-            "Anthropic API key not found. Set ANTHROPIC_API_KEY in your environment "
-            "or pass api_key= to generate_advisory()."
+            "Gemini API key not found. Set GEMINI_API_KEY in your environment "
+            "or pass api_key= to generate_advisory(). "
+            "Get a free key at Google AI Studio."
         )
 
-    client = anthropic.Anthropic(api_key=resolved_key)
+    client = genai.Client(api_key=resolved_key)
 
-    user_message = _format_prediction_message(prediction)
-
-    response = client.messages.create(
+    response = client.models.generate_content(
         model=MODEL,
-        max_tokens=512,
-        system=[
-            {
-                "type": "text",
-                "text": _SYSTEM_PROMPT,
-                "cache_control": {"type": "ephemeral"},
-            }
-        ],
-        messages=[
-            {"role": "user", "content": user_message},
-        ],
+        contents=_format_prediction_message(prediction),
+        config=types.GenerateContentConfig(
+            system_instruction=_SYSTEM_PROMPT,
+            max_output_tokens=512,
+            temperature=0.3,
+        ),
     )
 
-    return response.content[0].text.strip()
+    return response.text.strip()
 
 
 # ---------------------------------------------------------------------------
@@ -153,18 +145,18 @@ def _format_prediction_message(prediction: "VintagePrediction") -> str:
     return f"""\
 Please write a vintage advisory using the following prediction data.
 
-VARIETY:            {prediction.variety}
-AVA DISTRICT:       {prediction.ava_district}
-HARVEST YEAR:       {prediction.season_year}
+VARIETY:             {prediction.variety}
+AVA DISTRICT:        {prediction.ava_district}
+HARVEST YEAR:        {prediction.season_year}
 
-BRIX ESTIMATE:      {prediction.brix_predicted:.1f} °Brix
-BRIX RANGE (90%):   {brix_lo:.1f} – {brix_hi:.1f} °Brix
+BRIX ESTIMATE:       {prediction.brix_predicted:.1f} °Brix
+BRIX RANGE (90%):    {brix_lo:.1f} – {brix_hi:.1f} °Brix
 
-TONNAGE ESTIMATE:   {prediction.tonnage_predicted:.2f} tons/acre
+TONNAGE ESTIMATE:    {prediction.tonnage_predicted:.2f} tons/acre
 TONNAGE RANGE (90%): {ton_lo:.2f} – {ton_hi:.2f} tons/acre
 
-HARVEST WINDOW:     {prediction.harvest_window}
+HARVEST WINDOW:      {prediction.harvest_window}
 
-CONFIDENCE LEVEL:   {prediction.confidence.upper()}
-CONFIDENCE NOTE:    {prediction.confidence_note}
+CONFIDENCE LEVEL:    {prediction.confidence.upper()}
+CONFIDENCE NOTE:     {prediction.confidence_note}
 """
