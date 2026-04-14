@@ -7,7 +7,7 @@ Downloads the following variables for each map unit component and horizon:
   - awc_r       : available water capacity (cm/cm)
   - drainagecl  : drainage class
   - claytotal_r : clay fraction (%)
-  - texcl       : texture class
+  - texturerv   : texture class (representative value)
 
 Data is fetched from the USDA Soil Data Access (SDA) REST API and written to
 data/raw/ssurgo/ssurgo_napa.csv. A metadata.txt file records the SSURGO
@@ -34,7 +34,7 @@ SSURGO_DIR = DATA_RAW_DIR / "ssurgo"
 NAPA_AREASYMBOL = "CA055"  # SSURGO survey area symbol for Napa County, CA
 SDA_URL = "https://sdmdataaccess.sc.egov.usda.gov/Tabular/SDMTabularService/post.rest"
 
-TARGET_VARS = ["awc_r", "drainagecl", "claytotal_r", "texcl"]
+TARGET_VARS = ["awc_r", "drainagecl", "claytotal_r", "texturerv"]
 
 
 # ---------------------------------------------------------------------------
@@ -79,7 +79,7 @@ def fetch_survey_version(areasymbol: str) -> tuple[str, str]:
         Both values are 'unknown' if the survey area is not found.
     """
     sql = f"""
-        SELECT sacatalog.tabularversion, sacatalog.saverest
+        SELECT sacatalog.saversion, sacatalog.saverest
         FROM sacatalog
         WHERE sacatalog.areasymbol = '{areasymbol}'
     """
@@ -87,7 +87,7 @@ def fetch_survey_version(areasymbol: str) -> tuple[str, str]:
     if df.empty:
         return "unknown", "unknown"
     row = df.iloc[0]
-    return str(row["tabularversion"]), str(row["saverest"])
+    return str(row["saversion"]), str(row["saverest"])
 
 
 # ---------------------------------------------------------------------------
@@ -98,14 +98,14 @@ def fetch_soil_data(areasymbol: str) -> pd.DataFrame:
     """Fetch horizon-level soil properties for all map unit components in the survey area.
 
     Joins legend → mapunit → component → chorizon to retrieve awc_r,
-    drainagecl, claytotal_r, and texcl for every map unit component horizon.
+    drainagecl, claytotal_r, and texturerv for every map unit component horizon.
 
     Args:
         areasymbol: SSURGO survey area symbol (e.g. 'CA055').
 
     Returns:
         DataFrame with columns: mukey, muname, cokey, compname, comppct_r,
-        drainagecl, hzname, hzdept_r, hzdepb_r, awc_r, claytotal_r, texcl.
+        drainagecl, hzname, hzdept_r, hzdepb_r, awc_r, claytotal_r, texturerv.
     """
     sql = f"""
         SELECT
@@ -120,7 +120,7 @@ def fetch_soil_data(areasymbol: str) -> pd.DataFrame:
             chorizon.hzdepb_r,
             chorizon.awc_r,
             chorizon.claytotal_r,
-            chorizon.texcl
+            chorizon.texturerv
         FROM legend
             INNER JOIN mapunit ON mapunit.lkey = legend.lkey
             INNER JOIN component ON component.mukey = mapunit.mukey
