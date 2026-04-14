@@ -9,7 +9,7 @@ Aggregation rules
 -----------------
 - awc_r, claytotal_r (continuous): area-weighted mean of depth-weighted and
   component-weighted values across map unit polygon fragments per AVA district.
-- drainagecl, texcl (categorical): area-weighted plurality — the category with
+- drainagecl, texturerv (categorical): area-weighted plurality — the category with
   the greatest total intersection area within each AVA district.
 
 Null imputation
@@ -19,7 +19,7 @@ are imputed with the county-wide spatial median. Spatial median is preferred
 over county mean because soil property distributions in Napa County are
 moderately right-skewed; the median is more robust to extreme values from
 fractional map units at survey edges and non-soil inclusions (urban, rock,
-water). Null categorical values (drainagecl, texcl) are imputed with the
+water). Null categorical values (drainagecl, texturerv) are imputed with the
 county-wide mode, which is more appropriate than median for nominal data.
 Imputation is applied before the spatial join to avoid blank AVA cells;
 the fraction of imputed map units is small (<5% of county area).
@@ -44,7 +44,7 @@ data/processed/ssurgo_clean.parquet
         awc_r        : float – area-weighted mean available water capacity (cm/cm)
         drainagecl   : str   – dominant (plurality) drainage class
         claytotal_r  : float – area-weighted mean clay fraction (%)
-        texcl        : str   – dominant (plurality) texture class
+        texturerv        : str   – dominant (plurality) texture class
 
 Usage
 -----
@@ -53,7 +53,6 @@ Usage
 """
 
 import argparse
-import io
 import sys
 from pathlib import Path
 from typing import Optional
@@ -74,14 +73,9 @@ except ImportError:
 
 SSURGO_DIR = DATA_RAW_DIR / "ssurgo"
 DATA_PROCESSED_DIR = DATA_RAW_DIR.parent / "processed"
+AVA_GEOJSON = DATA_RAW_DIR / "ava" / "napa_avas.geojson"
 
 NAPA_AREASYMBOL = "CA055"
-
-# USDA Soil Data Access WFS endpoint for map unit polygon geometries.
-# Uses a bounding-box filter (Napa County, WGS84) rather than CQL_FILTER
-# because BBOX is more broadly supported across WFS versions.
-_SDA_WFS_BASE = "https://sdmdataaccess.sc.egov.usda.gov/Spatial/SDM.wfs"
-_NAPA_BBOX_WGS84 = (-122.70, 38.10, -122.05, 38.90)  # west, south, east, north
 
 # UC Davis Library AVA Project — authoritative open GeoJSON of all US AVAs.
 # https://github.com/UCDavisLibrary/ava
@@ -175,14 +169,14 @@ def aggregate_tabular_to_mukey(csv_path: Path) -> pd.DataFrame:
       by comppct_r across components within each map unit.
     - drainagecl: value from the dominant (highest comppct_r) component
       with a non-null value (component-level attribute).
-    - texcl: value from the shallowest horizon of the dominant component
+    - texturerv: value from the shallowest horizon of the dominant component
       with a non-null value.
 
     Args:
         csv_path: Path to ssurgo_napa.csv.
 
     Returns:
-        DataFrame with columns: mukey, awc_r, drainagecl, claytotal_r, texcl.
+        DataFrame with columns: mukey, awc_r, drainagecl, claytotal_r, texturerv.
         One row per mukey.
     """
     df = pd.read_csv(csv_path, dtype={"mukey": str, "cokey": str})
@@ -226,14 +220,14 @@ def aggregate_tabular_to_mukey(csv_path: Path) -> pd.DataFrame:
             total = sum(p for p, _ in pairs)
             return float("nan") if total == 0 else sum(p * v for p, v in pairs) / total
 
-        # texcl: shallowest horizon of dominant component with a non-null value
-        texcl_mu: object = float("nan")
+        # texturerv: shallowest horizon of dominant component with a non-null value
+        texturerv_mu: object = float("nan")
         if dominant_cokey is not None:
             dom_hz = mu_group[mu_group["cokey"] == dominant_cokey].sort_values("hzdept_r")
             for _, hz_row in dom_hz.iterrows():
-                val = hz_row["texcl"]
+                val = hz_row["texturerv"]
                 if pd.notna(val) and str(val).strip():
-                    texcl_mu = val
+                    texturerv_mu = val
                     break
 
         records.append(
@@ -242,7 +236,7 @@ def aggregate_tabular_to_mukey(csv_path: Path) -> pd.DataFrame:
                 "awc_r": _weighted_avg(awc_pairs),
                 "claytotal_r": _weighted_avg(clay_pairs),
                 "drainagecl": _dominant_component_attr(comp_rows, "drainagecl"),
-                "texcl": texcl_mu,
+                "texturerv": texturerv_mu,
             }
         )
 
@@ -251,7 +245,7 @@ def aggregate_tabular_to_mukey(csv_path: Path) -> pd.DataFrame:
         f"[SSURGO] tabular aggregation: {len(result):,} map units "
         f"from {len(df):,} horizon rows"
     )
-    null_counts = result[["awc_r", "claytotal_r", "drainagecl", "texcl"]].isna().sum()
+    null_counts = result[["awc_r", "claytotal_r", "drainagecl", "texturerv"]].isna().sum()
     print(f"[SSURGO] null counts after aggregation: {null_counts.to_dict()}")
     return result
 
@@ -275,7 +269,7 @@ def impute_nulls(df: pd.DataFrame) -> pd.DataFrame:
     # awc_r); the median is more robust to extreme values from thin fractional
     # inclusions at survey boundaries.
     #
-    # Categorical variables (drainagecl, texcl): filled with the county-wide
+    # Categorical variables (drainagecl, texturerv): filled with the county-wide
     # mode (most common value). Mode is appropriate for nominal data where
     # arithmetic operations are undefined.
     #
@@ -285,7 +279,7 @@ def impute_nulls(df: pd.DataFrame) -> pd.DataFrame:
     # averages is negligible.
 
     Args:
-        df: DataFrame with mukey, awc_r, claytotal_r, drainagecl, texcl columns.
+        df: DataFrame with mukey, awc_r, claytotal_r, drainagecl, texturerv columns.
 
     Returns:
         DataFrame with nulls filled in-place copy.
@@ -302,7 +296,7 @@ def impute_nulls(df: pd.DataFrame) -> pd.DataFrame:
                 f"with county median {median_val:.4f}"
             )
 
-    for col in ("drainagecl", "texcl"):
+    for col in ("drainagecl", "texturerv"):
         n_null = int(df[col].isna().sum())
         if n_null > 0:
             mode_val = df[col].mode().iloc[0]
@@ -322,9 +316,9 @@ def impute_nulls(df: pd.DataFrame) -> pd.DataFrame:
 def fetch_ssurgo_polygons(areasymbol: str, cache_path: Path) -> gpd.GeoDataFrame:
     """Download SSURGO map unit polygon geometries for a survey area.
 
-    Uses the USDA Soil Data Access (SDA) WFS service with a bounding-box
-    filter for Napa County. Results are cached as a GeoPackage so subsequent
-    runs skip the network request.
+    Uses the USDA Soil Data Access (SDA) tabular REST API to fetch polygon
+    geometries as WKT for all map units in the survey area. Results are
+    cached as a GeoPackage so subsequent runs skip the network request.
 
     The returned GeoDataFrame has a 'mukey' column (string) and polygon
     geometries in WGS84 (EPSG:4326).
@@ -337,39 +331,50 @@ def fetch_ssurgo_polygons(areasymbol: str, cache_path: Path) -> gpd.GeoDataFrame
         GeoDataFrame with a 'mukey' column and polygon geometries.
 
     Raises:
-        requests.HTTPError: If the WFS request fails.
-        ValueError: If the 'mukey' column cannot be found in the response.
+        requests.HTTPError: If the API request fails.
+        ValueError: If no polygons are returned.
     """
+    from shapely import wkt as shapely_wkt
+
+    SDA_TABULAR_URL = "https://sdmdataaccess.sc.egov.usda.gov/Tabular/SDMTabularService/post.rest"
+
     if cache_path.exists():
         print(f"[SSURGO] Loading cached polygons from {cache_path.name}")
         gdf = gpd.read_file(cache_path)
-    else:
-        west, south, east, north = _NAPA_BBOX_WGS84
-        bbox_str = f"{west},{south},{east},{north},urn:ogc:def:crs:EPSG::4326"
-        url = (
-            f"{_SDA_WFS_BASE}?service=WFS&version=1.1.0&request=GetFeature"
-            f"&typeName=MapunitPoly&BBOX={bbox_str}"
-        )
-        print(f"[SSURGO] Downloading map unit polygons for {areasymbol} from SDA WFS...")
-        print(f"  URL: {url}")
-        response = requests.get(url, timeout=300)
-        response.raise_for_status()
+        gdf["mukey"] = gdf["mukey"].astype(str)
+        print(f"[SSURGO] {len(gdf):,} map unit polygons loaded (CRS: {gdf.crs})")
+        return gdf
 
-        gdf = gpd.read_file(io.BytesIO(response.content))
-        cache_path.parent.mkdir(parents=True, exist_ok=True)
-        gdf.to_file(cache_path, driver="GPKG")
-        print(f"[SSURGO] {len(gdf):,} polygons downloaded → cached at {cache_path.name}")
+    sql = f"""
+        SELECT mapunit.mukey,
+               CAST(mupolygon.mupolygongeo.STAsText() AS VARCHAR(MAX)) AS wkt
+        FROM mapunit
+            INNER JOIN legend ON mapunit.lkey = legend.lkey
+            INNER JOIN mupolygon ON mupolygon.mukey = mapunit.mukey
+        WHERE legend.areasymbol = '{areasymbol}'
+    """
+    print(f"[SSURGO] Downloading map unit polygons for {areasymbol} via SDA tabular API...")
+    response = requests.post(
+        SDA_TABULAR_URL,
+        data={"query": sql, "format": "JSON+COLUMNNAME"},
+        timeout=300,
+    )
+    response.raise_for_status()
 
-    # Normalise column names to lowercase
-    gdf.columns = [c.lower() for c in gdf.columns]
-    if "mukey" not in gdf.columns:
-        raise ValueError(
-            f"Expected 'mukey' column in SSURGO polygon layer; "
-            f"found columns: {list(gdf.columns)}"
-        )
-    gdf["mukey"] = gdf["mukey"].astype(str)
+    table = response.json().get("Table", [])
+    if len(table) < 2:
+        raise ValueError(f"No polygon data returned for {areasymbol}")
 
-    print(f"[SSURGO] {len(gdf):,} map unit polygons loaded (CRS: {gdf.crs})")
+    columns = table[0]
+    rows = table[1:]
+    df = pd.DataFrame(rows, columns=columns)
+    df["mukey"] = df["mukey"].astype(str)
+    df["geometry"] = df["wkt"].apply(shapely_wkt.loads)
+
+    gdf = gpd.GeoDataFrame(df[["mukey", "geometry"]], crs="EPSG:4326")
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    gdf.to_file(cache_path, driver="GPKG")
+    print(f"[SSURGO] {len(gdf):,} polygons downloaded → cached at {cache_path.name}")
     return gdf
 
 
@@ -401,20 +406,28 @@ def load_ava_boundaries(cache_path: Path) -> gpd.GeoDataFrame:
         print(f"[AVA] Loading cached boundaries from {cache_path.name}")
         return gpd.read_file(cache_path)
 
-    print(f"[AVA] Downloading AVA boundaries from UC Davis AVA project...")
-    response = requests.get(_AVA_GEOJSON_URL, timeout=120)
-    response.raise_for_status()
-    gdf_all = gpd.read_file(io.BytesIO(response.content))
+    # Prefer the locally placed GeoJSON (data/raw/ava/napa_avas.geojson) over
+    # a network download — the file was already assembled in step 1.
+    if AVA_GEOJSON.exists():
+        print(f"[AVA] Loading AVA boundaries from local file {AVA_GEOJSON.name}")
+        gdf_all = gpd.read_file(AVA_GEOJSON)
+    else:
+        print(f"[AVA] Downloading AVA boundaries from UC Davis AVA project...")
+        response = requests.get(_AVA_GEOJSON_URL, timeout=120)
+        response.raise_for_status()
+        import io as _io
+        gdf_all = gpd.read_file(_io.BytesIO(response.content))
+
     gdf_all.columns = [c.lower() for c in gdf_all.columns]
 
     # Locate the AVA name column — UC Davis project uses 'name'
     name_col = next(
-        (c for c in ("name", "ava_name", "avaname") if c in gdf_all.columns),
+        (c for c in ("name", "ava_name", "avaname", "ava_district") if c in gdf_all.columns),
         None,
     )
     if name_col is None:
         raise ValueError(
-            f"Could not find AVA name column in UC Davis dataset; "
+            f"Could not find AVA name column in dataset; "
             f"found columns: {list(gdf_all.columns)}"
         )
 
@@ -422,7 +435,7 @@ def load_ava_boundaries(cache_path: Path) -> gpd.GeoDataFrame:
     if gdf_napa.empty:
         sample = gdf_all[name_col].dropna().head(15).tolist()
         raise ValueError(
-            f"No Napa County AVAs matched in the UC Davis dataset. "
+            f"No Napa County AVAs matched. "
             f"Check NAPA_AVA_NAMES against actual name values. "
             f"Sample names found: {sample}"
         )
@@ -473,7 +486,7 @@ def spatial_aggregate_to_ava(
 
     - awc_r, claytotal_r: area-weighted mean across all polygon fragments
       within each AVA district.
-    - drainagecl, texcl: area-weighted plurality (mode) — the category with
+    - drainagecl, texturerv: area-weighted plurality (mode) — the category with
       the greatest total intersection area within each AVA district.
 
     Both input GeoDataFrames must already be projected to _CRS_AREA.
@@ -484,7 +497,7 @@ def spatial_aggregate_to_ava(
 
     Returns:
         DataFrame with one row per AVA district and columns:
-        ava_district, awc_r, drainagecl, claytotal_r, texcl.
+        ava_district, awc_r, drainagecl, claytotal_r, texturerv.
 
     Raises:
         ValueError: If the overlay produces no intersections.
@@ -511,14 +524,14 @@ def spatial_aggregate_to_ava(
         awc_r = (group["awc_r"] * group["area_m2"]).sum() / total_area
         claytotal_r = (group["claytotal_r"] * group["area_m2"]).sum() / total_area
         drainagecl = _area_weighted_mode(group["drainagecl"], group["area_m2"])
-        texcl = _area_weighted_mode(group["texcl"], group["area_m2"])
+        texturerv = _area_weighted_mode(group["texturerv"], group["area_m2"])
         records.append(
             {
                 "ava_district": ava,
                 "awc_r": awc_r,
                 "drainagecl": drainagecl,
                 "claytotal_r": claytotal_r,
-                "texcl": texcl,
+                "texturerv": texturerv,
             }
         )
 
@@ -602,7 +615,7 @@ def clean_ssurgo(apply: bool = False) -> Optional[pd.DataFrame]:
     print(f"         awc_r range     : {df_result['awc_r'].min():.3f} – {df_result['awc_r'].max():.3f} cm/cm")
     print(f"         claytotal range : {df_result['claytotal_r'].min():.1f} – {df_result['claytotal_r'].max():.1f} %")
     print(f"         drainage classes: {sorted(df_result['drainagecl'].unique())}")
-    print(f"         texture classes : {sorted(df_result['texcl'].unique())}")
+    print(f"         texture classes : {sorted(df_result['texturerv'].unique())}")
     print(f"\nPreview:\n{df_result.to_string(index=False)}\n")
 
     if not apply:
