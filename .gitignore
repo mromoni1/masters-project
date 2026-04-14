@@ -25,6 +25,8 @@ uv.lock          # optional: commit this if you want reproducible installs
 
 # ── Data ──
 data/feedback.db # SQLite binary — track schema in git, not the file
+data/raw/        # raw source files (large binaries and downloads)
+data/processed/  # derived parquet files
 
 # ── PRISM rasters specifically ──
 *.bil
@@ -33,6 +35,13 @@ data/feedback.db # SQLite binary — track schema in git, not the file
 *.aux
 *.stx
 *.ovr
+
+# ── GIS / geospatial binaries ──
+*.gpkg
+*.shp
+*.dbf
+*.shx
+*.cpg
 
 # ── Model artifacts ──
 models/*.pkl
