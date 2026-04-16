@@ -1,0 +1,170 @@
+{
+  "historical_mean": {
+    "Cabernet Sauvignon": {
+      "brix": {
+        "rmse": 0.4123,
+        "mae": 0.34,
+        "r2": -0.6602
+      },
+      "tons_crushed": {
+        "rmse": 15533.1988,
+        "mae": 12789.802,
+        "r2": -0.0782
+      }
+    },
+    "Pinot Noir": {
+      "brix": {
+        "rmse": 1.3752,
+        "mae": 1.36,
+        "r2": -44.4615
+      },
+      "tons_crushed": {
+        "rmse": 2135.901,
+        "mae": 2034.09,
+        "r2": -9.7456
+      }
+    },
+    "Chardonnay": {
+      "brix": {
+        "rmse": 0.445,
+        "mae": 0.42,
+        "r2": -8.1667
+      },
+      "tons_crushed": {
+        "rmse": 8996.3415,
+        "mae": 8539.49,
+        "r2": -9.1025
+      }
+    }
+  },
+  "winkler_linear": {
+    "Cabernet Sauvignon": {
+      "brix": {
+        "rmse": 0.5788,
+        "mae": 0.4997,
+        "r2": -2.272
+      },
+      "tons_crushed": {
+        "rmse": 24910.2235,
+        "mae": 21734.2423,
+        "r2": -1.7729
+      }
+    },
+    "Pinot Noir": {
+      "brix": {
+        "rmse": 1.0579,
+        "mae": 1.0389,
+        "r2": -25.9015
+      },
+      "tons_crushed": {
+        "rmse": 2886.8566,
+        "mae": 2526.9438,
+        "r2": -18.63
+      }
+    },
+    "Chardonnay": {
+      "brix": {
+        "rmse": 0.6627,
+        "mae": 0.6518,
+        "r2": -19.3325
+      },
+      "tons_crushed": {
+        "rmse": 10719.7576,
+        "mae": 10320.8191,
+        "r2": -13.3439
+      }
+    }
+  },
+  "full_ols": {
+    "Cabernet Sauvignon": {
+      "brix": {
+        "rmse": 0.6568,
+        "mae": 0.588,
+        "r2": -3.2125
+      },
+      "tons_crushed": {
+        "rmse": 32464.4708,
+        "mae": 28271.2742,
+        "r2": -3.7097
+      }
+    },
+    "Pinot Noir": {
+      "brix": {
+        "rmse": 1.3529,
+        "mae": 1.2787,
+        "r2": -43.0004
+      },
+      "tons_crushed": {
+        "rmse": 2982.5387,
+        "mae": 2551.0894,
+        "r2": -19.9528
+      }
+    },
+    "Chardonnay": {
+      "brix": {
+        "rmse": 0.7782,
+        "mae": 0.7729,
+        "r2": -27.0363
+      },
+      "tons_crushed": {
+        "rmse": 9901.1227,
+        "mae": 9079.064,
+        "r2": -11.2368
+      }
+    }
+  },
+  "persistence": {
+    "Cabernet Sauvignon": {
+      "brix": {
+        "rmse": 0.4858,
+        "mae": 0.32,
+        "r2": -1.3047
+      },
+      "tons_crushed": {
+        "rmse": 20772.12,
+        "mae": 18768.32,
+        "r2": -0.9281
+      }
+    },
+    "Pinot Noir": {
+      "brix": {
+        "rmse": 0.5254,
+        "mae": 0.4,
+        "r2": -5.6346
+      },
+      "tons_crushed": {
+        "rmse": 1405.9476,
+        "mae": 1178.6,
+        "r2": -3.656
+      }
+    },
+    "Chardonnay": {
+      "brix": {
+        "rmse": 0.2366,
+        "mae": 0.2,
+        "r2": -1.5926
+      },
+      "tons_crushed": {
+        "rmse": 4940.261,
+        "mae": 3901.1,
+        "r2": -2.0465
+      }
+    }
+  },
+  "_meta": {
+    "train_years": "1991\u20132019",
+    "test_years": "2020\u20132024",
+    "train_cutoff": 2019,
+    "rolling_window": 10,
+    "features_used_full_ols": [
+      "gdd",
+      "winkler_index",
+      "frost_days",
+      "heat_stress_days",
+      "tmax_veraison",
+      "precip_winter",
+      "eto_season",
+      "severity_score"
+    ]
+  }
+}
