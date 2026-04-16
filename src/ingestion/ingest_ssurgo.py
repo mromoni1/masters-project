@@ -79,7 +79,7 @@ def fetch_survey_version(areasymbol: str) -> tuple[str, str]:
         Both values are 'unknown' if the survey area is not found.
     """
     sql = f"""
-        SELECT sacatalog.tabularversion, sacatalog.saverest
+        SELECT sacatalog.saversion, sacatalog.saverest
         FROM sacatalog
         WHERE sacatalog.areasymbol = '{areasymbol}'
     """
@@ -87,7 +87,7 @@ def fetch_survey_version(areasymbol: str) -> tuple[str, str]:
     if df.empty:
         return "unknown", "unknown"
     row = df.iloc[0]
-    return str(row["tabularversion"]), str(row["saverest"])
+    return str(row["saversion"]), str(row["saverest"])
 
 
 # ---------------------------------------------------------------------------
@@ -97,8 +97,10 @@ def fetch_survey_version(areasymbol: str) -> tuple[str, str]:
 def fetch_soil_data(areasymbol: str) -> pd.DataFrame:
     """Fetch horizon-level soil properties for all map unit components in the survey area.
 
-    Joins legend → mapunit → component → chorizon to retrieve awc_r,
-    drainagecl, claytotal_r, and texcl for every map unit component horizon.
+    Joins legend → mapunit → component → chorizon → chtexturegrp → chtexture
+    to retrieve awc_r, drainagecl, claytotal_r, and texcl. texcl lives in the
+    chtexture table (not chorizon); the LEFT JOINs through chtexturegrp
+    (rvindicator = 'Yes') pull only the representative texture group.
 
     Args:
         areasymbol: SSURGO survey area symbol (e.g. 'CA055').
@@ -120,11 +122,14 @@ def fetch_soil_data(areasymbol: str) -> pd.DataFrame:
             chorizon.hzdepb_r,
             chorizon.awc_r,
             chorizon.claytotal_r,
-            chorizon.texcl
+            chtexture.texcl
         FROM legend
             INNER JOIN mapunit ON mapunit.lkey = legend.lkey
             INNER JOIN component ON component.mukey = mapunit.mukey
             INNER JOIN chorizon ON chorizon.cokey = component.cokey
+            LEFT JOIN chtexturegrp ON chtexturegrp.chkey = chorizon.chkey
+                AND chtexturegrp.rvindicator = 'Yes'
+            LEFT JOIN chtexture ON chtexture.chtgkey = chtexturegrp.chtgkey
         WHERE legend.areasymbol = '{areasymbol}'
         ORDER BY mapunit.mukey, component.comppct_r DESC, chorizon.hzdept_r
     """
@@ -167,7 +172,7 @@ def ingest_ssurgo() -> None:
     metadata_path.write_text(
         f"source:           USDA NRCS Soil Data Access (SDA)\n"
         f"survey_area:      {NAPA_AREASYMBOL} (Napa County, CA)\n"
-        f"tabular_version:  {tabular_version}\n"
+        f"saversion:        {tabular_version}\n"
         f"ssurgo_saverest:  {saverest}\n"
         f"download_date:    {download_date}\n"
         f"target_variables: {', '.join(TARGET_VARS)}\n"

@@ -1,0 +1,720 @@
+mukey,muname,cokey,compname,comppct_r,drainagecl,hzname,hzdept_r,hzdepb_r,awc_r,claytotal_r,texcl
+458924,"Aiken loam, 2 to 15 percent slopes",26691477,Aiken,85,Well drained,H1,0,20,0.15,23.5,Loam
+458924,"Aiken loam, 2 to 15 percent slopes",26691477,Aiken,85,Well drained,H2,20,36,0.16,33.5,Clay loam
+458924,"Aiken loam, 2 to 15 percent slopes",26691477,Aiken,85,Well drained,H3,36,112,0.18,45,Clay
+458924,"Aiken loam, 2 to 15 percent slopes",26691477,Aiken,85,Well drained,H4,112,137,0,,
+458925,"Aiken loam, 15 to 30 percent slopes",26691478,Aiken,85,Well drained,H1,0,20,0.15,23.5,Loam
+458925,"Aiken loam, 15 to 30 percent slopes",26691478,Aiken,85,Well drained,H2,20,36,0.16,33.5,Clay loam
+458925,"Aiken loam, 15 to 30 percent slopes",26691478,Aiken,85,Well drained,H3,36,112,0.18,45,Clay
+458925,"Aiken loam, 15 to 30 percent slopes",26691478,Aiken,85,Well drained,H4,112,137,0,,
+458926,"Aiken loam, 30 to 50 percent slopes",26691479,Aiken,85,Well drained,H1,0,20,0.15,23.5,Loam
+458926,"Aiken loam, 30 to 50 percent slopes",26691479,Aiken,85,Well drained,H2,20,36,0.16,33.5,Clay loam
+458926,"Aiken loam, 30 to 50 percent slopes",26691479,Aiken,85,Well drained,H3,36,112,0.18,45,Clay
+458926,"Aiken loam, 30 to 50 percent slopes",26691479,Aiken,85,Well drained,H4,112,137,0,,
+458927,"Bale loam, 0 to 2 percent slopes",26691481,Bale,85,Somewhat poorly drained,H1,0,61,0.15,21.5,Loam
+458927,"Bale loam, 0 to 2 percent slopes",26691481,Bale,85,Somewhat poorly drained,H2,61,152,0.1,13,Sandy loam
+458927,"Bale loam, 0 to 2 percent slopes",26691481,Bale,85,Somewhat poorly drained,H2,61,152,0.1,13,Loam
+458928,"Bale clay loam, 0 to 2 percent slopes",26691482,Bale,85,Somewhat poorly drained,H1,0,61,0.15,31,Clay loam
+458928,"Bale clay loam, 0 to 2 percent slopes",26691482,Bale,85,Somewhat poorly drained,H2,61,152,0.1,18,Sandy loam
+458928,"Bale clay loam, 0 to 2 percent slopes",26691482,Bale,85,Somewhat poorly drained,H2,61,152,0.1,18,Loam
+458929,"Bale clay loam, 2 to 5 percent slopes",26691484,Bale,85,Somewhat poorly drained,H1,0,61,0.15,31,Clay loam
+458929,"Bale clay loam, 2 to 5 percent slopes",26691484,Bale,85,Somewhat poorly drained,H2,61,152,0.1,18,Sandy loam
+458929,"Bale clay loam, 2 to 5 percent slopes",26691484,Bale,85,Somewhat poorly drained,H2,61,152,0.1,18,Loam
+458930,"Bale complex, 0 to 2 percent slopes, seeped",26691485,Bale,40,Somewhat poorly drained,H1,0,61,0.14,21.5,Loam
+458930,"Bale complex, 0 to 2 percent slopes, seeped",26691485,Bale,40,Somewhat poorly drained,H2,61,152,0.1,18,Sandy loam
+458930,"Bale complex, 0 to 2 percent slopes, seeped",26691485,Bale,40,Somewhat poorly drained,H2,61,152,0.1,18,Loam
+458930,"Bale complex, 0 to 2 percent slopes, seeped",26691486,Bale,30,Somewhat poorly drained,H1,0,61,0.14,31,Clay loam
+458930,"Bale complex, 0 to 2 percent slopes, seeped",26691486,Bale,30,Somewhat poorly drained,H2,61,152,0.14,18,Sandy loam
+458930,"Bale complex, 0 to 2 percent slopes, seeped",26691486,Bale,30,Somewhat poorly drained,H2,61,152,0.14,18,Loam
+458931,"Boomer loam, volcanic bedrock, 2 to 35 percent slopes, MLRA 15",26691490,Boomer,85,Well drained,Oi,0,5,0,15,
+458931,"Boomer loam, volcanic bedrock, 2 to 35 percent slopes, MLRA 15",26691490,Boomer,85,Well drained,A,5,15,0.2,20,Loam
+458931,"Boomer loam, volcanic bedrock, 2 to 35 percent slopes, MLRA 15",26691490,Boomer,85,Well drained,BAt,15,33,0.18,26,Loam
+458931,"Boomer loam, volcanic bedrock, 2 to 35 percent slopes, MLRA 15",26691490,Boomer,85,Well drained,Bt1,33,61,0.18,28,Clay loam
+458931,"Boomer loam, volcanic bedrock, 2 to 35 percent slopes, MLRA 15",26691490,Boomer,85,Well drained,Bt2,61,91,0.17,30,Clay loam
+458931,"Boomer loam, volcanic bedrock, 2 to 35 percent slopes, MLRA 15",26691490,Boomer,85,Well drained,Bt3,91,117,0.17,27,Clay loam
+458931,"Boomer loam, volcanic bedrock, 2 to 35 percent slopes, MLRA 15",26691490,Boomer,85,Well drained,Cr,117,147,,,
+458932,"Boomer gravelly loam, volcanic bedrock, 11 to 43 percent slopes, MLRA 15",26691494,Boomer,85,Well drained,Oi,0,5,0,15,
+458932,"Boomer gravelly loam, volcanic bedrock, 11 to 43 percent slopes, MLRA 15",26691494,Boomer,85,Well drained,A,5,15,0.16,20,Loam
+458932,"Boomer gravelly loam, volcanic bedrock, 11 to 43 percent slopes, MLRA 15",26691494,Boomer,85,Well drained,BAt,15,33,0.15,26,Loam
+458932,"Boomer gravelly loam, volcanic bedrock, 11 to 43 percent slopes, MLRA 15",26691494,Boomer,85,Well drained,Bt1,33,61,0.15,28,Clay loam
+458932,"Boomer gravelly loam, volcanic bedrock, 11 to 43 percent slopes, MLRA 15",26691494,Boomer,85,Well drained,Bt2,61,91,0.15,30,Clay loam
+458932,"Boomer gravelly loam, volcanic bedrock, 11 to 43 percent slopes, MLRA 15",26691494,Boomer,85,Well drained,Bt3,91,117,0.14,27,Clay loam
+458932,"Boomer gravelly loam, volcanic bedrock, 11 to 43 percent slopes, MLRA 15",26691494,Boomer,85,Well drained,Cr,117,147,,,
+458933,"Boomer gravelly loam, volcanic bedrock, 14 to 60 percent slopes, MLRA 15",26691498,Boomer,85,Well drained,Oi,0,5,0,15,
+458933,"Boomer gravelly loam, volcanic bedrock, 14 to 60 percent slopes, MLRA 15",26691498,Boomer,85,Well drained,A,5,15,0.16,20,Loam
+458933,"Boomer gravelly loam, volcanic bedrock, 14 to 60 percent slopes, MLRA 15",26691498,Boomer,85,Well drained,BAt,15,33,0.15,26,Loam
+458933,"Boomer gravelly loam, volcanic bedrock, 14 to 60 percent slopes, MLRA 15",26691498,Boomer,85,Well drained,Bt1,33,61,0.15,28,Clay loam
+458933,"Boomer gravelly loam, volcanic bedrock, 14 to 60 percent slopes, MLRA 15",26691498,Boomer,85,Well drained,Bt2,61,91,0.15,30,Clay loam
+458933,"Boomer gravelly loam, volcanic bedrock, 14 to 60 percent slopes, MLRA 15",26691498,Boomer,85,Well drained,Bt3,91,117,0.14,27,Clay loam
+458933,"Boomer gravelly loam, volcanic bedrock, 14 to 60 percent slopes, MLRA 15",26691498,Boomer,85,Well drained,Cr,117,147,,,
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691499,Boomer,40,Well drained,H1,0,10,0.16,22.5,Loam
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691499,Boomer,40,Well drained,H2,10,112,0.17,31,Clay loam
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691499,Boomer,40,Well drained,H3,112,150,0,,
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691500,Forward,35,Well drained,H1,0,10,0.09,14,Loam
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691500,Forward,35,Well drained,H2,10,89,0.09,14,Loam
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691500,Forward,35,Well drained,H3,89,150,0,,
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691501,Felta,15,Well drained,H1,0,18,0.06,23.5,Loam
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691501,Felta,15,Well drained,H2,18,66,0.06,31,Clay loam
+458934,"Boomer-Forward-Felta complex, 30 to 50 percent slopes",26691501,Felta,15,Well drained,H3,66,152,0.07,30,Sandy clay loam
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691502,Boomer,40,Well drained,H1,0,10,0.16,22.5,Loam
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691502,Boomer,40,Well drained,H2,10,112,0.21,31,Clay loam
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691502,Boomer,40,Well drained,H3,112,150,0,,
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691503,Forward,35,Well drained,H1,0,10,0.09,14,Loam
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691503,Forward,35,Well drained,H2,10,89,0.09,14,Loam
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691503,Forward,35,Well drained,H3,89,150,0,,
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691504,Felta,20,Well drained,H1,0,18,0.08,23.5,Loam
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691504,Felta,20,Well drained,H2,18,66,0.06,31,Clay loam
+458935,"Boomer-Forward-Felta complex, 5 to 30 percent slopes",26691504,Felta,20,Well drained,H3,66,152,0.08,30,Sandy clay loam
+458936,"Bressa-Dibble complex, 5 to 15 percent slopes",26691506,Bressa,65,Well drained,H1,0,25,0.16,20,Silt loam
+458936,"Bressa-Dibble complex, 5 to 15 percent slopes",26691506,Bressa,65,Well drained,H2,25,84,0.16,31,Silty clay loam
+458936,"Bressa-Dibble complex, 5 to 15 percent slopes",26691506,Bressa,65,Well drained,H3,84,150,0,,
+458936,"Bressa-Dibble complex, 5 to 15 percent slopes",26691505,Dibble,25,Well drained,H1,0,23,0.17,31,Silty clay loam
+458936,"Bressa-Dibble complex, 5 to 15 percent slopes",26691505,Dibble,25,Well drained,H2,23,86,0.16,41,Clay
+458936,"Bressa-Dibble complex, 5 to 15 percent slopes",26691505,Dibble,25,Well drained,H3,86,150,0,,
+458937,"Bressa-Dibble complex, 15 to 30 percent slopes",26691508,Bressa,70,Well drained,H1,0,25,0.16,20,Silt loam
+458937,"Bressa-Dibble complex, 15 to 30 percent slopes",26691508,Bressa,70,Well drained,H2,25,84,0.16,31,Silty clay loam
+458937,"Bressa-Dibble complex, 15 to 30 percent slopes",26691508,Bressa,70,Well drained,H3,84,152,0,,
+458937,"Bressa-Dibble complex, 15 to 30 percent slopes",26691507,Dibble,20,Well drained,H1,0,23,0.17,31,Silty clay loam
+458937,"Bressa-Dibble complex, 15 to 30 percent slopes",26691507,Dibble,20,Well drained,H2,23,86,0.16,41,Clay
+458937,"Bressa-Dibble complex, 15 to 30 percent slopes",26691507,Dibble,20,Well drained,H3,86,152,0,,
+458938,"Bressa-Dibble complex, 30 to 50 percent slopes",26691510,Bressa,70,Well drained,H1,0,25,0.16,20,Silt loam
+458938,"Bressa-Dibble complex, 30 to 50 percent slopes",26691510,Bressa,70,Well drained,H2,25,84,0.16,31,Silty clay loam
+458938,"Bressa-Dibble complex, 30 to 50 percent slopes",26691510,Bressa,70,Well drained,H3,84,152,0,,
+458938,"Bressa-Dibble complex, 30 to 50 percent slopes",26691509,Dibble,15,Well drained,H1,0,23,0.17,31,Silty clay loam
+458938,"Bressa-Dibble complex, 30 to 50 percent slopes",26691509,Dibble,15,Well drained,H2,23,86,0.16,41,Silty clay
+458938,"Bressa-Dibble complex, 30 to 50 percent slopes",26691509,Dibble,15,Well drained,H3,86,152,0,,
+458939,"Bressa-Dibble complex, 50 to 75 percent slopes",26691512,Bressa,75,Well drained,H1,0,25,0.16,20,Silt loam
+458939,"Bressa-Dibble complex, 50 to 75 percent slopes",26691512,Bressa,75,Well drained,H2,25,84,0.16,31,Silty clay loam
+458939,"Bressa-Dibble complex, 50 to 75 percent slopes",26691512,Bressa,75,Well drained,H3,84,152,0,,
+458939,"Bressa-Dibble complex, 50 to 75 percent slopes",26691511,Dibble,15,Well drained,H1,0,23,0.17,25,Silt loam
+458939,"Bressa-Dibble complex, 50 to 75 percent slopes",26691511,Dibble,15,Well drained,H2,23,86,0.16,41,Silty clay
+458939,"Bressa-Dibble complex, 50 to 75 percent slopes",26691511,Dibble,15,Well drained,H3,86,152,0,,
+458940,"Clear Lake clay, drained, 0 to 2 percent slopes, MLRA 14",26691516,Clear Lake,90,Poorly drained,Ap,0,15,0.15,45,Clay
+458940,"Clear Lake clay, drained, 0 to 2 percent slopes, MLRA 14",26691516,Clear Lake,90,Poorly drained,Bss1,15,66,0.15,49,Clay
+458940,"Clear Lake clay, drained, 0 to 2 percent slopes, MLRA 14",26691516,Clear Lake,90,Poorly drained,Bss2,66,91,0.15,50,Clay
+458940,"Clear Lake clay, drained, 0 to 2 percent slopes, MLRA 14",26691516,Clear Lake,90,Poorly drained,C,91,152,0.15,45,Clay
+458941,"Clear Lake clay, overwashed",26691517,Clear Lake,85,Poorly drained,H1,0,46,0.15,17.5,Fine sandy loam
+458941,"Clear Lake clay, overwashed",26691517,Clear Lake,85,Poorly drained,H2,46,175,0.16,50,Clay
+458942,"Cole silt loam, 0 to 2 percent slopes, MLRA 14",26691522,Cole,85,Somewhat poorly drained,Ap,0,20,0.23,25,Silt loam
+458942,"Cole silt loam, 0 to 2 percent slopes, MLRA 14",26691522,Cole,85,Somewhat poorly drained,BAt,20,46,0.22,33,Silty clay loam
+458942,"Cole silt loam, 0 to 2 percent slopes, MLRA 14",26691522,Cole,85,Somewhat poorly drained,Bt1,46,81,0.19,35,Silty clay loam
+458942,"Cole silt loam, 0 to 2 percent slopes, MLRA 14",26691522,Cole,85,Somewhat poorly drained,Bt2,81,104,0.19,37,Silty clay loam
+458942,"Cole silt loam, 0 to 2 percent slopes, MLRA 14",26691522,Cole,85,Somewhat poorly drained,Bt3,104,122,0.18,39,Clay loam
+458942,"Cole silt loam, 0 to 2 percent slopes, MLRA 14",26691522,Cole,85,Somewhat poorly drained,Bt4,122,152,0.15,42,Clay
+458942,"Cole silt loam, 0 to 2 percent slopes, MLRA 14",26691522,Cole,85,Somewhat poorly drained,BCt,152,163,0.17,35,Clay loam
+458943,"Cole silt loam, 0 to 4 percent slopes, MLRA 14",26691527,Cole,85,Somewhat poorly drained,Ap,0,20,0.23,25,Silt loam
+458943,"Cole silt loam, 0 to 4 percent slopes, MLRA 14",26691527,Cole,85,Somewhat poorly drained,BAt,20,46,0.22,33,Silty clay loam
+458943,"Cole silt loam, 0 to 4 percent slopes, MLRA 14",26691527,Cole,85,Somewhat poorly drained,Bt1,46,81,0.19,35,Silty clay loam
+458943,"Cole silt loam, 0 to 4 percent slopes, MLRA 14",26691527,Cole,85,Somewhat poorly drained,Bt2,81,104,0.19,37,Silty clay loam
+458943,"Cole silt loam, 0 to 4 percent slopes, MLRA 14",26691527,Cole,85,Somewhat poorly drained,Bt3,104,122,0.18,39,Clay loam
+458943,"Cole silt loam, 0 to 4 percent slopes, MLRA 14",26691527,Cole,85,Somewhat poorly drained,Bt4,122,152,0.15,42,Clay
+458943,"Cole silt loam, 0 to 4 percent slopes, MLRA 14",26691527,Cole,85,Somewhat poorly drained,BCt,152,163,0.17,35,Clay loam
+458944,"Contra Costa loam, 5 to 15 percent slopes",26691528,Contra Costa,85,Well drained,H1,0,13,0.19,23.5,Loam
+458944,"Contra Costa loam, 5 to 15 percent slopes",26691528,Contra Costa,85,Well drained,H2,13,56,0.2,39,Clay loam
+458944,"Contra Costa loam, 5 to 15 percent slopes",26691528,Contra Costa,85,Well drained,H3,56,86,0.18,41,Clay
+458944,"Contra Costa loam, 5 to 15 percent slopes",26691528,Contra Costa,85,Well drained,H4,86,150,0,,
+458945,"Contra Costa gravelly loam, 5 to 15 percent slopes",26691529,Contra Costa,85,Well drained,H1,0,13,0.17,23.5,Loam
+458945,"Contra Costa gravelly loam, 5 to 15 percent slopes",26691529,Contra Costa,85,Well drained,H2,13,86,0.18,39,Clay loam
+458945,"Contra Costa gravelly loam, 5 to 15 percent slopes",26691529,Contra Costa,85,Well drained,H3,86,150,0,,
+458946,"Coombs gravelly loam, 0 to 2 percent slopes",26691531,Coombs,85,Well drained,H1,0,36,0.17,23.5,Loam
+458946,"Coombs gravelly loam, 0 to 2 percent slopes",26691531,Coombs,85,Well drained,H2,36,137,0.17,31,Clay loam
+458946,"Coombs gravelly loam, 0 to 2 percent slopes",26691531,Coombs,85,Well drained,H3,137,152,0.04,2.5,Loamy fine sand
+458947,"Coombs gravelly loam, 2 to 5 percent slopes",26691533,Coombs,85,Well drained,H1,0,36,0.17,23.5,Loam
+458947,"Coombs gravelly loam, 2 to 5 percent slopes",26691533,Coombs,85,Well drained,H2,36,137,0.17,31,Clay loam
+458947,"Coombs gravelly loam, 2 to 5 percent slopes",26691533,Coombs,85,Well drained,H3,137,152,0.04,2.5,Loamy fine sand
+458948,"Cortina very gravelly loam, 0 to 5 percent slopes, moist, MLRA 14",26691537,Cortina,85,Excessively drained,Ap,0,28,0.09,12,Loam
+458948,"Cortina very gravelly loam, 0 to 5 percent slopes, moist, MLRA 14",26691537,Cortina,85,Excessively drained,A,28,53,0.07,8,Sandy loam
+458948,"Cortina very gravelly loam, 0 to 5 percent slopes, moist, MLRA 14",26691537,Cortina,85,Excessively drained,C1,53,81,0.02,5,Loamy sand
+458948,"Cortina very gravelly loam, 0 to 5 percent slopes, moist, MLRA 14",26691537,Cortina,85,Excessively drained,C2,81,152,0.01,4,Loamy sand
+458949,"Cortina very stony loam, 0 to 5 percent slopes",26691538,Cortina,85,Excessively drained,H1,0,53,0.05,17.5,Loam
+458949,"Cortina very stony loam, 0 to 5 percent slopes",26691538,Cortina,85,Excessively drained,H2,53,152,0.05,15,Loam
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691542,Diablo,90,Well drained,A1,0,13,0.17,52,Clay
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691542,Diablo,90,Well drained,A2,13,46,0.17,52,Clay
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691542,Diablo,90,Well drained,Bkss1,46,76,0.17,52,Clay
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691542,Diablo,90,Well drained,Bkss2,76,99,0.17,52,Clay
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691542,Diablo,90,Well drained,Ck,99,135,0.17,52,Clay
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691542,Diablo,90,Well drained,Cr,135,200,,,
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691540,Cropley,5,Moderately well drained,A1,0,32,0.15,45,Clay
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691540,Cropley,5,Moderately well drained,Bss,32,82,0.15,50,Clay
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691540,Cropley,5,Moderately well drained,Bk,82,91,0.16,32,Sandy clay loam
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691540,Cropley,5,Moderately well drained,BCk2,91,132,0.16,28,Sandy clay loam
+458950,"Diablo clay, 5 to 9 percent slopes, MLRA 15",26691540,Cropley,5,Moderately well drained,BCk2,132,200,0.16,28,Sandy clay loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691547,Diablo,85,Well drained,A1,0,13,0.17,52,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691547,Diablo,85,Well drained,A2,13,46,0.17,52,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691547,Diablo,85,Well drained,Bkss1,46,76,0.17,52,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691547,Diablo,85,Well drained,Bkss2,76,99,0.17,52,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691547,Diablo,85,Well drained,Ck,99,135,0.17,52,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691547,Diablo,85,Well drained,Cr,135,200,,,
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691548,Cropley,5,Moderately well drained,A1,0,32,0.15,45,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691548,Cropley,5,Moderately well drained,Bss,32,82,0.15,50,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691548,Cropley,5,Moderately well drained,Bk,82,91,0.16,32,Sandy clay loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691548,Cropley,5,Moderately well drained,BCk2,91,132,0.16,28,Sandy clay loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691548,Cropley,5,Moderately well drained,BCk2,132,200,0.16,28,Sandy clay loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691549,Antioch,1,Moderately well drained,Ap,0,25,0.18,20,Loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691549,Antioch,1,Moderately well drained,A,25,33,0.18,22,Loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691549,Antioch,1,Moderately well drained,Btn1,33,64,0.16,45,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691549,Antioch,1,Moderately well drained,Btn2,64,94,0.16,50,Clay
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691549,Antioch,1,Moderately well drained,Btn3,94,119,0.18,22,Loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691549,Antioch,1,Moderately well drained,C1,119,137,0.1,20,Loam
+458951,"Diablo clay, 9 to 15 percent slopes, MLRA 15",26691549,Antioch,1,Moderately well drained,C2,137,200,0.19,35,Silty clay loam
+458952,"Diablo clay, 15 to 30 percent slopes",26691550,Diablo,85,Well drained,H1,0,152,0.16,47.5,Clay
+458952,"Diablo clay, 15 to 30 percent slopes",26691550,Diablo,85,Well drained,H2,152,163,0,,
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691553,Diablo,85,Well drained,A1,0,13,0.17,52,Clay
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691553,Diablo,85,Well drained,A2,13,46,0.17,52,Clay
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691553,Diablo,85,Well drained,Bkss1,46,76,0.17,52,Clay
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691553,Diablo,85,Well drained,Bkss2,76,99,0.17,52,Clay
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691553,Diablo,85,Well drained,Ck,99,135,0.17,52,Clay
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691553,Diablo,85,Well drained,Cr,135,200,,,
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691554,Lodo,2,Somewhat excessively drained,H1,0,30,0.16,26.5,Clay loam
+458953,"Diablo clay, 30 to 50 percent slopes, MLRA 15",26691554,Lodo,2,Somewhat excessively drained,H2,30,55,,,
+458954,Egbert silty clay loam,26691555,Egbert,85,Poorly drained,H1,0,84,0.17,37.5,Silty clay loam
+458954,Egbert silty clay loam,26691555,Egbert,85,Poorly drained,H2,84,152,0.17,42.5,Clay
+458955,"Fagan clay loam, 5 to 15 percent slopes",26691558,Fagan,85,Well drained,H1,0,41,0.17,31,Clay loam
+458955,"Fagan clay loam, 5 to 15 percent slopes",26691558,Fagan,85,Well drained,H2,41,71,0.17,50,Clay
+458955,"Fagan clay loam, 5 to 15 percent slopes",26691558,Fagan,85,Well drained,H3,71,117,0.17,32.5,Sandy clay loam
+458955,"Fagan clay loam, 5 to 15 percent slopes",26691558,Fagan,85,Well drained,H4,117,150,0,,
+458956,"Fagan clay loam, 15 to 30 percent slopes",26691559,Fagan,85,Well drained,H1,0,41,0.17,31,Clay loam
+458956,"Fagan clay loam, 15 to 30 percent slopes",26691559,Fagan,85,Well drained,H2,41,71,0.17,50,Clay
+458956,"Fagan clay loam, 15 to 30 percent slopes",26691559,Fagan,85,Well drained,H3,71,117,0.17,32.5,Sandy clay loam
+458956,"Fagan clay loam, 15 to 30 percent slopes",26691559,Fagan,85,Well drained,H4,117,150,0,,
+458957,"Fagan clay loam, 30 to 50 percent slopes",26691560,Fagan,85,Well drained,H1,0,41,0.17,31,Clay loam
+458957,"Fagan clay loam, 30 to 50 percent slopes",26691560,Fagan,85,Well drained,H2,41,71,0.17,50,Clay
+458957,"Fagan clay loam, 30 to 50 percent slopes",26691560,Fagan,85,Well drained,H3,71,117,0.17,32.5,Sandy clay loam
+458957,"Fagan clay loam, 30 to 50 percent slopes",26691560,Fagan,85,Well drained,H4,117,150,0,,
+458958,"Fagan clay loam, 30 to 50 percent slopes, slipped",26691561,Fagan,85,Well drained,H1,0,41,0.17,31,Clay loam
+458958,"Fagan clay loam, 30 to 50 percent slopes, slipped",26691561,Fagan,85,Well drained,H2,41,71,0.17,50,Clay
+458958,"Fagan clay loam, 30 to 50 percent slopes, slipped",26691561,Fagan,85,Well drained,H3,71,117,0.17,32.5,Sandy clay loam
+458958,"Fagan clay loam, 30 to 50 percent slopes, slipped",26691561,Fagan,85,Well drained,H4,117,150,0,,
+458959,"Felton gravelly loam, 15 to 30 percent slopes",26691562,Felton,85,Well drained,H1,0,25,0.18,22.5,Loam
+458959,"Felton gravelly loam, 15 to 30 percent slopes",26691562,Felton,85,Well drained,H2,25,84,0.2,31,Clay loam
+458959,"Felton gravelly loam, 15 to 30 percent slopes",26691562,Felton,85,Well drained,H3,84,150,0,,
+458960,"Felton gravelly loam, 30 to 50 percent slopes",26691563,Felton,85,Well drained,H1,0,25,0.19,22.5,Loam
+458960,"Felton gravelly loam, 30 to 50 percent slopes",26691563,Felton,85,Well drained,H2,25,84,0.2,31,Clay loam
+458960,"Felton gravelly loam, 30 to 50 percent slopes",26691563,Felton,85,Well drained,H3,84,150,0,,
+458961,"Felton gravelly loam, 50 to 75 percent slopes",26691564,Felton,85,Well drained,H1,0,25,0.19,22.5,Loam
+458961,"Felton gravelly loam, 50 to 75 percent slopes",26691564,Felton,85,Well drained,H2,25,84,0.2,31,Clay loam
+458961,"Felton gravelly loam, 50 to 75 percent slopes",26691564,Felton,85,Well drained,H3,84,150,0,,
+458962,"Forward silt loam, 3 to 26 percent slopes, MLRA 15",26691569,Forward,85,Well drained,Oi,0,5,0,15,
+458962,"Forward silt loam, 3 to 26 percent slopes, MLRA 15",26691569,Forward,85,Well drained,A,5,15,0.22,13,Silt loam
+458962,"Forward silt loam, 3 to 26 percent slopes, MLRA 15",26691569,Forward,85,Well drained,BA,15,30,0.2,13,Silt loam
+458962,"Forward silt loam, 3 to 26 percent slopes, MLRA 15",26691569,Forward,85,Well drained,Bw1,30,48,0.19,12,Silt loam
+458962,"Forward silt loam, 3 to 26 percent slopes, MLRA 15",26691569,Forward,85,Well drained,Bw2,48,71,0.17,12,Silt loam
+458962,"Forward silt loam, 3 to 26 percent slopes, MLRA 15",26691569,Forward,85,Well drained,Bw3,71,94,0.15,14,Silt loam
+458962,"Forward silt loam, 3 to 26 percent slopes, MLRA 15",26691569,Forward,85,Well drained,Cr,94,130,,,
+458963,"Forward silt loam, 5 to 39 percent slopes, MLRA 15",26691574,Forward,85,Well drained,Oi,0,5,0,15,
+458963,"Forward silt loam, 5 to 39 percent slopes, MLRA 15",26691574,Forward,85,Well drained,A,5,15,0.22,13,Silt loam
+458963,"Forward silt loam, 5 to 39 percent slopes, MLRA 15",26691574,Forward,85,Well drained,BA,15,30,0.2,13,Silt loam
+458963,"Forward silt loam, 5 to 39 percent slopes, MLRA 15",26691574,Forward,85,Well drained,Bw1,30,48,0.19,12,Silt loam
+458963,"Forward silt loam, 5 to 39 percent slopes, MLRA 15",26691574,Forward,85,Well drained,Bw2,48,71,0.17,12,Silt loam
+458963,"Forward silt loam, 5 to 39 percent slopes, MLRA 15",26691574,Forward,85,Well drained,Bw3,71,94,0.15,14,Silt loam
+458963,"Forward silt loam, 5 to 39 percent slopes, MLRA 15",26691574,Forward,85,Well drained,Cr,94,130,,,
+458964,"Forward silt loam, 12 to 57 percent slopes, MLRA 15",26691579,Forward,85,Well drained,Oi,0,5,0,15,
+458964,"Forward silt loam, 12 to 57 percent slopes, MLRA 15",26691579,Forward,85,Well drained,A,5,15,0.22,13,Silt loam
+458964,"Forward silt loam, 12 to 57 percent slopes, MLRA 15",26691579,Forward,85,Well drained,BA,15,30,0.2,13,Silt loam
+458964,"Forward silt loam, 12 to 57 percent slopes, MLRA 15",26691579,Forward,85,Well drained,Bw1,30,48,0.19,12,Silt loam
+458964,"Forward silt loam, 12 to 57 percent slopes, MLRA 15",26691579,Forward,85,Well drained,Bw2,48,71,0.17,12,Silt loam
+458964,"Forward silt loam, 12 to 57 percent slopes, MLRA 15",26691579,Forward,85,Well drained,Bw3,71,94,0.15,14,Silt loam
+458964,"Forward silt loam, 12 to 57 percent slopes, MLRA 15",26691579,Forward,85,Well drained,Cr,94,130,,,
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691583,Forward,50,Well drained,Oi,0,5,0,15,
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691583,Forward,50,Well drained,A,5,15,0.22,13,Silt loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691583,Forward,50,Well drained,BA,15,30,0.2,13,Silt loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691583,Forward,50,Well drained,Bw1,30,48,0.19,12,Silt loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691583,Forward,50,Well drained,Bw2,48,71,0.17,12,Silt loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691583,Forward,50,Well drained,Bw3,71,94,0.15,14,Silt loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691583,Forward,50,Well drained,Cr,94,130,,,
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691584,Kidd,40,Well drained,A,0,10,0.17,18,Loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691584,Kidd,40,Well drained,Bw1,10,25,0.16,20,Loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691584,Kidd,40,Well drained,Bw2,25,36,0.17,21,Loam
+458965,"Forward-Kidd complex, 11 to 60 percent slopes, MLRA 15",26691584,Kidd,40,Well drained,R,36,64,,,
+458966,"Guenoc loam, 15 to 50 percent slopes, MLRA 15",26691588,Guenoc,85,Well drained,A1,0,8,0.2,24,Loam
+458966,"Guenoc loam, 15 to 50 percent slopes, MLRA 15",26691588,Guenoc,85,Well drained,A2,8,30,0.17,26,Loam
+458966,"Guenoc loam, 15 to 50 percent slopes, MLRA 15",26691588,Guenoc,85,Well drained,Bt1,30,56,0.16,37,Clay loam
+458966,"Guenoc loam, 15 to 50 percent slopes, MLRA 15",26691588,Guenoc,85,Well drained,Bt2,56,76,0.14,39,Clay loam
+458966,"Guenoc loam, 15 to 50 percent slopes, MLRA 15",26691588,Guenoc,85,Well drained,R,76,101,,,
+458967,"Guenoc-Rock outcrop complex, 5 to 30 percent slopes",26691589,Guenoc,60,Well drained,H1,0,30,0.17,23.5,Loam
+458967,"Guenoc-Rock outcrop complex, 5 to 30 percent slopes",26691589,Guenoc,60,Well drained,H2,30,76,0.15,39,Clay loam
+458967,"Guenoc-Rock outcrop complex, 5 to 30 percent slopes",26691589,Guenoc,60,Well drained,H3,76,101,0,,
+458967,"Guenoc-Rock outcrop complex, 5 to 30 percent slopes",26691590,Rock outcrop,30,,H1,0,25,,,
+458968,"Guenoc-Rock outcrop complex, 30 to 75 percent slopes",26691591,Guenoc,50,Well drained,H1,0,30,0.17,23.5,Loam
+458968,"Guenoc-Rock outcrop complex, 30 to 75 percent slopes",26691591,Guenoc,50,Well drained,H2,30,76,0.15,39,Clay loam
+458968,"Guenoc-Rock outcrop complex, 30 to 75 percent slopes",26691591,Guenoc,50,Well drained,H3,76,101,0,,
+458968,"Guenoc-Rock outcrop complex, 30 to 75 percent slopes",26691592,Rock outcrop,40,,H1,0,25,,,
+458969,"Haire loam, 0 to 2 percent slopes",26691593,Haire,85,Moderately well drained,H1,0,56,0.18,23.5,Loam
+458969,"Haire loam, 0 to 2 percent slopes",26691593,Haire,85,Moderately well drained,H2,56,69,0.18,27.5,Sandy clay loam
+458969,"Haire loam, 0 to 2 percent slopes",26691593,Haire,85,Moderately well drained,H3,69,114,0.05,50,Clay
+458969,"Haire loam, 0 to 2 percent slopes",26691593,Haire,85,Moderately well drained,H4,114,152,0.05,40,Sandy clay
+458970,"Haire loam, 2 to 9 percent slopes",26691596,Haire,85,Moderately well drained,H1,0,56,0.18,23.5,Loam
+458970,"Haire loam, 2 to 9 percent slopes",26691596,Haire,85,Moderately well drained,H2,56,69,0.18,27.5,Sandy clay loam
+458970,"Haire loam, 2 to 9 percent slopes",26691596,Haire,85,Moderately well drained,H3,69,114,0.05,50,Clay
+458970,"Haire loam, 2 to 9 percent slopes",26691596,Haire,85,Moderately well drained,H4,114,152,0.05,40,Sandy clay
+458971,"Haire clay loam, 0 to 2 percent slopes",26691599,Haire,85,Moderately well drained,H1,0,56,0.18,33.5,Clay loam
+458971,"Haire clay loam, 0 to 2 percent slopes",26691599,Haire,85,Moderately well drained,H2,56,69,0.18,27.5,Sandy clay loam
+458971,"Haire clay loam, 0 to 2 percent slopes",26691599,Haire,85,Moderately well drained,H3,69,114,0.05,50,Clay
+458971,"Haire clay loam, 0 to 2 percent slopes",26691599,Haire,85,Moderately well drained,H4,114,152,0.03,40,Sandy clay
+458972,"Haire clay loam, 2 to 9 percent slopes",26691600,Haire,85,Moderately well drained,H1,0,56,0.18,33.5,Clay loam
+458972,"Haire clay loam, 2 to 9 percent slopes",26691600,Haire,85,Moderately well drained,H2,56,69,0.18,27.5,Sandy clay loam
+458972,"Haire clay loam, 2 to 9 percent slopes",26691600,Haire,85,Moderately well drained,H3,69,114,0.05,50,Clay
+458972,"Haire clay loam, 2 to 9 percent slopes",26691600,Haire,85,Moderately well drained,H4,114,152,0.05,37.5,Sandy clay
+458973,"Haire clay loam, 9 to 15 percent slopes",26691602,Haire,85,Moderately well drained,H1,0,56,0.18,33.5,Clay loam
+458973,"Haire clay loam, 9 to 15 percent slopes",26691602,Haire,85,Moderately well drained,H2,56,69,0.18,27.5,Sandy clay loam
+458973,"Haire clay loam, 9 to 15 percent slopes",26691602,Haire,85,Moderately well drained,H3,69,114,0.05,50,Clay
+458973,"Haire clay loam, 9 to 15 percent slopes",26691602,Haire,85,Moderately well drained,H4,114,152,0.05,37.5,Sandy clay
+458974,"Haire clay loam, 15 to 30 percent slopes",26691603,Haire,85,Moderately well drained,H1,0,56,0.18,33.5,Clay loam
+458974,"Haire clay loam, 15 to 30 percent slopes",26691603,Haire,85,Moderately well drained,H2,56,69,0.18,27.5,Sandy clay loam
+458974,"Haire clay loam, 15 to 30 percent slopes",26691603,Haire,85,Moderately well drained,H3,69,114,0.05,50,Clay
+458974,"Haire clay loam, 15 to 30 percent slopes",26691603,Haire,85,Moderately well drained,H4,114,152,0.05,37.5,Sandy clay
+458975,"Hambright-Rock outcrop complex, 2 to 30 percent slopes",26691604,Hambright,50,Well drained,H1,0,30,0.09,23.5,Loam
+458975,"Hambright-Rock outcrop complex, 2 to 30 percent slopes",26691604,Hambright,50,Well drained,H2,30,55,0,,
+458975,"Hambright-Rock outcrop complex, 2 to 30 percent slopes",26691605,Rock outcrop,35,,H1,0,25,,,
+458976,"Hambright rock-Outcrop complex, 30 to 75 percent slopes",26691606,Hambright,50,Well drained,H1,0,30,0.09,23.5,Loam
+458976,"Hambright rock-Outcrop complex, 30 to 75 percent slopes",26691606,Hambright,50,Well drained,H2,30,55,0,,
+458976,"Hambright rock-Outcrop complex, 30 to 75 percent slopes",26691607,Rock outcrop,40,,H1,0,25,,,
+458977,"Henneke gravelly loam, 4 to 46 percent slopes, MLRA 15",26691613,Henneke,85,Well drained,A,0,13,0.13,25,Loam
+458977,"Henneke gravelly loam, 4 to 46 percent slopes, MLRA 15",26691613,Henneke,85,Well drained,Bt,13,41,0.08,42,Clay
+458977,"Henneke gravelly loam, 4 to 46 percent slopes, MLRA 15",26691613,Henneke,85,Well drained,R,41,66,,,
+458978,"Henneke gravelly loam, 30 to 75 percent slopes",26691614,Henneke,85,Excessively drained,H1,0,18,0.15,23.5,Loam
+458978,"Henneke gravelly loam, 30 to 75 percent slopes",26691614,Henneke,85,Excessively drained,H2,18,38,0.15,39,Clay loam
+458978,"Henneke gravelly loam, 30 to 75 percent slopes",26691614,Henneke,85,Excessively drained,H3,38,63,0,,
+458979,"Kidd loam, 15 to 30 percent slopes",26691615,Kidd,85,Well drained,H1,0,36,0.15,14,Loam
+458979,"Kidd loam, 15 to 30 percent slopes",26691615,Kidd,85,Well drained,H2,36,46,,,
+458980,"Kidd loam, 30 to 75 percent slopes",26691616,Kidd,85,Well drained,H1,0,36,0.15,14,Loam
+458980,"Kidd loam, 30 to 75 percent slopes",26691616,Kidd,85,Well drained,H2,36,46,,,
+458981,"Lodo-Maymen-Felton association, 30 to 75 percent slopes",26691618,Lodo,45,Somewhat excessively drained,H1,0,18,0.16,22.5,Loam
+458981,"Lodo-Maymen-Felton association, 30 to 75 percent slopes",26691618,Lodo,45,Somewhat excessively drained,H2,18,43,0,,
+458981,"Lodo-Maymen-Felton association, 30 to 75 percent slopes",26691617,Maymen,25,Somewhat excessively drained,H1,0,30,0.11,17.5,Loam
+458981,"Lodo-Maymen-Felton association, 30 to 75 percent slopes",26691617,Maymen,25,Somewhat excessively drained,H2,30,55,0,,
+458981,"Lodo-Maymen-Felton association, 30 to 75 percent slopes",26691619,Felton,20,Somewhat excessively drained,H1,0,25,0.19,21,Loam
+458981,"Lodo-Maymen-Felton association, 30 to 75 percent slopes",26691619,Felton,20,Somewhat excessively drained,H2,25,84,0.2,31,Clay loam
+458981,"Lodo-Maymen-Felton association, 30 to 75 percent slopes",26691619,Felton,20,Somewhat excessively drained,H3,84,150,0,,
+458982,"Los Gatos loam, 5 to 30 percent slopes",26691620,Los Gatos,85,Well drained,H1,0,64,0.18,22.5,Loam
+458982,"Los Gatos loam, 5 to 30 percent slopes",26691620,Los Gatos,85,Well drained,H2,64,91,0.17,31,Clay loam
+458982,"Los Gatos loam, 5 to 30 percent slopes",26691620,Los Gatos,85,Well drained,H3,91,116,0,,
+458983,"Los Gatos loam, 30 to 50 percent slopes",26691621,Los Gatos,85,Well drained,H1,0,64,0.18,22.5,Loam
+458983,"Los Gatos loam, 30 to 50 percent slopes",26691621,Los Gatos,85,Well drained,H2,64,91,0.17,31,Clay loam
+458983,"Los Gatos loam, 30 to 50 percent slopes",26691621,Los Gatos,85,Well drained,H3,91,116,0,,
+458984,"Los Gatos loam, 50 to 75 percent slopes",26691622,Los Gatos,85,Well drained,H1,0,64,0.18,22.5,Loam
+458984,"Los Gatos loam, 50 to 75 percent slopes",26691622,Los Gatos,85,Well drained,H2,64,91,0.17,31,Clay loam
+458984,"Los Gatos loam, 50 to 75 percent slopes",26691622,Los Gatos,85,Well drained,H3,91,116,0,,
+458985,"Maxwell clay, 2 to 9 percent slopes",26691623,Maxwell,85,Somewhat poorly drained,H1,0,157,0.19,47.5,Clay
+458986,"Maymen-Los Gatos complex, 50 to 75 percent slopes",26691624,Maymen,60,Somewhat excessively drained,H1,0,30,0.11,17.5,Loam
+458986,"Maymen-Los Gatos complex, 50 to 75 percent slopes",26691624,Maymen,60,Somewhat excessively drained,H2,30,55,0,,
+458986,"Maymen-Los Gatos complex, 50 to 75 percent slopes",26691625,Los Gatos,25,Well drained,H1,0,64,0.18,22.5,Loam
+458986,"Maymen-Los Gatos complex, 50 to 75 percent slopes",26691625,Los Gatos,25,Well drained,H2,64,91,0.17,31,Clay loam
+458986,"Maymen-Los Gatos complex, 50 to 75 percent slopes",26691625,Los Gatos,25,Well drained,H3,91,116,0,,
+458987,"Maymen-Millsholm-Lodo association, 30-75 percent slopes",26691627,Maymen,31,Somewhat excessively drained,H1,0,30,0.14,17.5,Loam
+458987,"Maymen-Millsholm-Lodo association, 30-75 percent slopes",26691627,Maymen,31,Somewhat excessively drained,H2,30,55,0,,
+458987,"Maymen-Millsholm-Lodo association, 30-75 percent slopes",26691628,Millsholm,29,Well drained,H1,0,30,0.18,23.5,Loam
+458987,"Maymen-Millsholm-Lodo association, 30-75 percent slopes",26691628,Millsholm,29,Well drained,H2,30,55,0,,
+458987,"Maymen-Millsholm-Lodo association, 30-75 percent slopes",26691626,Lodo,20,Somewhat excessively drained,H1,0,18,0.16,22.5,Loam
+458987,"Maymen-Millsholm-Lodo association, 30-75 percent slopes",26691626,Lodo,20,Somewhat excessively drained,H2,18,152,0,,
+458988,"Millsholm loam, 15 to 30 percent slopes, MLRA 15",26691631,Millsholm,85,Well drained,A,0,20,0.19,22,Loam
+458988,"Millsholm loam, 15 to 30 percent slopes, MLRA 15",26691631,Millsholm,85,Well drained,Bt,20,43,0.18,24,Loam
+458988,"Millsholm loam, 15 to 30 percent slopes, MLRA 15",26691631,Millsholm,85,Well drained,R,43,68,,,
+458989,"Millsholm loam, 6 to 55 percent slopes, MLRA 15",26691636,Millsholm,85,Well drained,A,0,10,0.18,25,Loam
+458989,"Millsholm loam, 6 to 55 percent slopes, MLRA 15",26691636,Millsholm,85,Well drained,Bw,10,30,0.18,29,Clay loam
+458989,"Millsholm loam, 6 to 55 percent slopes, MLRA 15",26691636,Millsholm,85,Well drained,R,30,55,,,
+458990,"Montara clay loam, 5 to 30 percent slopes",26691637,Montara,85,Well drained,H1,0,30,0.18,31,Clay loam
+458990,"Montara clay loam, 5 to 30 percent slopes",26691637,Montara,85,Well drained,H2,30,55,0,,
+458991,"Montara clay loam, 30 to 50 percent slopes",26691638,Montara,85,Well drained,H1,0,30,0.19,31,Clay loam
+458991,"Montara clay loam, 30 to 50 percent slopes",26691638,Montara,85,Well drained,H2,30,55,0,,
+458992,"Perkins gravelly loam, 1 to 10 percent slopes, MLRA 14",26691642,Perkins,85,Well drained,Ap,0,18,0.14,18,Loam
+458992,"Perkins gravelly loam, 1 to 10 percent slopes, MLRA 14",26691642,Perkins,85,Well drained,Bt1,18,48,0.13,20,Loam
+458992,"Perkins gravelly loam, 1 to 10 percent slopes, MLRA 14",26691642,Perkins,85,Well drained,Bt2,48,74,0.14,23,Loam
+458992,"Perkins gravelly loam, 1 to 10 percent slopes, MLRA 14",26691642,Perkins,85,Well drained,Bt3,74,112,0.14,28,Clay loam
+458992,"Perkins gravelly loam, 1 to 10 percent slopes, MLRA 14",26691642,Perkins,85,Well drained,Bt4,112,145,0.13,29,Clay loam
+458992,"Perkins gravelly loam, 1 to 10 percent slopes, MLRA 14",26691642,Perkins,85,Well drained,Bt5,145,152,0.11,22,Loam
+458993,"Perkins gravelly loam, 5 to 9 percent slopes",26691643,Perkins,85,Well drained,H1,0,74,0.1,20,Loam
+458993,"Perkins gravelly loam, 5 to 9 percent slopes",26691643,Perkins,85,Well drained,H2,74,152,0.12,30,Clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691647,Pleasanton,85,Well drained,Ap,0,13,0.17,20,Loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691647,Pleasanton,85,Well drained,A,13,45,0.17,22,Loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691647,Pleasanton,85,Well drained,Bt1,45,58,0.16,32,Clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691647,Pleasanton,85,Well drained,Bt2,58,112,0.15,33,Clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691647,Pleasanton,85,Well drained,Bt3,112,168,0.13,32,Sandy clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691648,Cortina,3,Somewhat excessively drained,A,0,8,0.1,10,Coarse sandy loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691649,Yolo,3,Well drained,Ap,0,18,0.19,32,Silty clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691645,San Ysidro,3,Moderately well drained,A,0,58,0.18,20,Loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691644,Hillgate,3,Well drained,A1,0,8,0.16,17.9,Loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691644,Hillgate,3,Well drained,A2,8,28,0.16,19.5,Loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691648,Cortina,3,Somewhat excessively drained,C1,8,38,0.07,12,Coarse sandy loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691649,Yolo,3,Well drained,A,18,74,0.19,30,Silty clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691644,Hillgate,3,Well drained,A3,28,48,0.16,21.4,Loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691648,Cortina,3,Somewhat excessively drained,C2,38,91,0.02,4,Coarse sand
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691644,Hillgate,3,Well drained,2Bt1,48,97,0.15,42.5,Clay
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691645,San Ysidro,3,Moderately well drained,B1,58,97,0.17,39,Clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691649,Yolo,3,Well drained,C,74,152,0.19,28,Silty clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691648,Cortina,3,Somewhat excessively drained,C3,91,142,0.01,7,Coarse sand
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691644,Hillgate,3,Well drained,2Bt2,97,135,0.19,36.4,Clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691645,San Ysidro,3,Moderately well drained,Bt2,97,163,0.18,20,Loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691644,Hillgate,3,Well drained,2Bt3,135,160,0.19,34.6,Clay loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691648,Cortina,3,Somewhat excessively drained,C4,142,183,0.09,16,Coarse sandy loam
+458994,"Pleasanton loam, 0 to 2 percent slopes, MLRA 14",26691644,Hillgate,3,Well drained,2Bt4,160,185,0.19,34.1,Clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691652,Pleasanton,85,Well drained,A,0,53,0.15,19.5,Loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691652,Pleasanton,85,Well drained,Bt1,53,84,0.17,31,Clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691652,Pleasanton,85,Well drained,Bt2,84,114,0.11,31,Clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691652,Pleasanton,85,Well drained,C,114,140,0.17,31,Clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691652,Pleasanton,85,Well drained,2C,140,200,0.09,30,Clay
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691651,Antioch,5,Moderately well drained,Ap,0,25,0.18,20,Loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691653,Rincon,5,Well drained,A,0,15,0.18,35,Clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691650,Soper,5,Well drained,A,0,20,0.14,20,Loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691653,Rincon,5,Well drained,Ap,15,30,0.18,35,Clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691650,Soper,5,Well drained,Bt,20,74,0.13,30,Clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691651,Antioch,5,Moderately well drained,A,25,33,0.18,22,Loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691653,Rincon,5,Well drained,Bt,30,74,0.16,41,Clay
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691651,Antioch,5,Moderately well drained,Btn1,33,64,0.16,45,Clay
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691651,Antioch,5,Moderately well drained,Btn2,64,94,0.16,50,Clay
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691653,Rincon,5,Well drained,Bk,74,97,0.19,35,Silty clay loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691650,Soper,5,Well drained,Cr,74,200,,,
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691651,Antioch,5,Moderately well drained,Btn3,94,119,0.18,22,Loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691653,Rincon,5,Well drained,Ck,97,200,0.18,26,Loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691651,Antioch,5,Moderately well drained,C1,119,137,0.1,20,Loam
+458995,"Pleasanton loam, 2 to 5 percent slopes, MLRA 14",26691651,Antioch,5,Moderately well drained,C2,137,200,0.19,35,Silty clay loam
+458996,Reyes silty clay loam,26691654,Reyes,85,Poorly drained,Ap,0,36,0.12,35,Silty clay loam
+458996,Reyes silty clay loam,26691654,Reyes,85,Poorly drained,Cg,36,152,0.14,39,Silty clay loam
+458996,Reyes silty clay loam,26691655,Clear Lake,5,Poorly drained,A,0,20,0.16,50,Clay
+458996,Reyes silty clay loam,26691656,Haire,5,Moderately well drained,Ap,0,38,0.16,24,Loam
+458996,Reyes silty clay loam,26691655,Clear Lake,5,Poorly drained,Bss,20,117,0.16,50,Clay
+458996,Reyes silty clay loam,26691656,Haire,5,Moderately well drained,A,38,69,0.17,28,Sandy clay loam
+458996,Reyes silty clay loam,26691656,Haire,5,Moderately well drained,Bt1,69,114,0.17,50,Clay
+458996,Reyes silty clay loam,26691656,Haire,5,Moderately well drained,Bt2,114,152,0.13,40,Sandy clay
+458996,Reyes silty clay loam,26691655,Clear Lake,5,Poorly drained,Ck,117,175,0.16,50,Clay
+458996,Reyes silty clay loam,26691658,Reyes,3,Very poorly drained,Ap,0,36,0.08,35,Silty clay loam
+458996,Reyes silty clay loam,26691658,Reyes,3,Very poorly drained,Cg,36,152,0.1,39,Silty clay loam
+458996,Reyes silty clay loam,26691657,Reyes,2,Very poorly drained,A,0,20,0.17,21,Loam
+458996,Reyes silty clay loam,26691657,Reyes,2,Very poorly drained,2A,20,56,0.12,35,Silty clay loam
+458996,Reyes silty clay loam,26691657,Reyes,2,Very poorly drained,2Cg,56,152,0.14,39,Silty clay loam
+458997,"Reyes silty clay loam, salt ponds",26691659,Reyes,100,Very poorly drained,A,0,36,0.08,35,Silty clay loam
+458997,"Reyes silty clay loam, salt ponds",26691659,Reyes,100,Very poorly drained,Cg,36,152,0.1,39,Silty clay loam
+458999,Rock outcrop,26691661,Rock outcrop,100,,H1,0,25,,,
+459000,"Rock outcrop-Hambright complex, 50 to 75 percent slopes",26691663,Rock outcrop,60,,H1,0,25,,,
+459000,"Rock outcrop-Hambright complex, 50 to 75 percent slopes",26691662,Hambright,30,Well drained,H1,0,30,0.09,23.5,Loam
+459000,"Rock outcrop-Hambright complex, 50 to 75 percent slopes",26691662,Hambright,30,Well drained,H2,30,55,0,,
+459001,"Rock outcrop-Kidd complex, 50 to 75 percent slopes",26691665,Rock outcrop,70,,H1,0,25,,,
+459001,"Rock outcrop-Kidd complex, 50 to 75 percent slopes",26691664,Kidd,25,Well drained,H1,0,36,0.15,14,Loam
+459001,"Rock outcrop-Kidd complex, 50 to 75 percent slopes",26691664,Kidd,25,Well drained,H2,36,46,,,
+459002,"Sobrante loam, 5 to 30 percent slopes",26691666,Sobrante,85,Well drained,H1,0,15,0.16,17.5,Loam
+459002,"Sobrante loam, 5 to 30 percent slopes",26691666,Sobrante,85,Well drained,H2,15,76,0.16,30,Clay loam
+459002,"Sobrante loam, 5 to 30 percent slopes",26691666,Sobrante,85,Well drained,H3,76,101,0,,
+459003,"Sobrante loam, 30 to 50 percent slopes",26691667,Sobrante,85,Well drained,H1,0,15,0.16,17.5,Loam
+459003,"Sobrante loam, 30 to 50 percent slopes",26691667,Sobrante,85,Well drained,H2,15,76,0.16,30,Clay loam
+459003,"Sobrante loam, 30 to 50 percent slopes",26691667,Sobrante,85,Well drained,H3,76,101,0,,
+459004,"Tehama silt loam, 0 to 5 percent slopes",26691668,Tehama,85,Well drained,H1,0,30,0.18,16,Silt loam
+459004,"Tehama silt loam, 0 to 5 percent slopes",26691668,Tehama,85,Well drained,H2,30,152,0.19,31,Silty clay loam
+459005,"Yolo loam, 0 to 10 percent slopes, moist, MLRA 14",26691672,Yolo,85,Well drained,Ap,0,15,0.18,22,Loam
+459005,"Yolo loam, 0 to 10 percent slopes, moist, MLRA 14",26691672,Yolo,85,Well drained,A,15,61,0.21,21,Silt loam
+459005,"Yolo loam, 0 to 10 percent slopes, moist, MLRA 14",26691672,Yolo,85,Well drained,C1,61,114,0.21,20,Silt loam
+459005,"Yolo loam, 0 to 10 percent slopes, moist, MLRA 14",26691672,Yolo,85,Well drained,C2,114,152,0.21,20,Silt loam
+459006,"Yolo loam, 0 to 15 percent slopes,  moist, MLRA 15",26691676,Yolo,85,Well drained,Ap,0,15,0.18,22,Loam
+459006,"Yolo loam, 0 to 15 percent slopes,  moist, MLRA 15",26691676,Yolo,85,Well drained,A,15,61,0.21,21,Silt loam
+459006,"Yolo loam, 0 to 15 percent slopes,  moist, MLRA 15",26691676,Yolo,85,Well drained,C1,61,114,0.21,20,Silt loam
+459006,"Yolo loam, 0 to 15 percent slopes,  moist, MLRA 15",26691676,Yolo,85,Well drained,C2,114,152,0.21,20,Silt loam
+813825,"Collayomi-Whispering complex, 30 to 50 percent slopes",26691680,Collayomi,60,Well drained,H1,0,38,0.06,15,Loam
+813825,"Collayomi-Whispering complex, 30 to 50 percent slopes",26691680,Collayomi,60,Well drained,H2,38,152,0.06,25,Loam
+813825,"Collayomi-Whispering complex, 30 to 50 percent slopes",26691681,Whispering,30,Well drained,H1,0,13,0.14,15,Loam
+813825,"Collayomi-Whispering complex, 30 to 50 percent slopes",26691681,Whispering,30,Well drained,H2,13,38,0.12,23.5,Loam
+813825,"Collayomi-Whispering complex, 30 to 50 percent slopes",26691681,Whispering,30,Well drained,H3,38,66,0.1,31,Clay loam
+813825,"Collayomi-Whispering complex, 30 to 50 percent slopes",26691681,Whispering,30,Well drained,H4,66,91,,,
+813826,"Forward variant-Kidd association, 30 to 50 percent slopes",26691691,Forward variant,50,Well drained,H1,0,18,0.11,15,Loam
+813826,"Forward variant-Kidd association, 30 to 50 percent slopes",26691691,Forward variant,50,Well drained,H2,18,157,0.11,15,Loam
+813826,"Forward variant-Kidd association, 30 to 50 percent slopes",26691691,Forward variant,50,Well drained,H3,157,182,,,
+813826,"Forward variant-Kidd association, 30 to 50 percent slopes",26691689,Kidd,20,Somewhat excessively drained,H1,0,10,0.12,15,Loam
+813826,"Forward variant-Kidd association, 30 to 50 percent slopes",26691689,Kidd,20,Somewhat excessively drained,H2,10,33,0.11,15,Sandy loam
+813826,"Forward variant-Kidd association, 30 to 50 percent slopes",26691689,Kidd,20,Somewhat excessively drained,H3,33,58,,,
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691693,Henneke,40,Well drained,A,0,8,0.18,19,Loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691693,Henneke,40,Well drained,Bt1,8,28,0.14,33,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691693,Henneke,40,Well drained,Bt2,28,41,0.08,43,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691693,Henneke,40,Well drained,Bt3,41,48,0.08,40,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691693,Henneke,40,Well drained,R,48,73,,,
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691694,Montara,30,Well drained,A,0,15,0.17,30,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691694,Montara,30,Well drained,Bt,15,30,0.16,28,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691694,Montara,30,Well drained,R,30,41,,,
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691697,Dubakella,5,Well drained,Oi,0,5,0,15,
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691697,Dubakella,5,Well drained,A,5,23,0.12,22,Loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691697,Dubakella,5,Well drained,Bt1,23,38,0.1,34,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691697,Dubakella,5,Well drained,Bt2,38,81,0.07,42,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691697,Dubakella,5,Well drained,R,81,106,,,
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691698,Okiota,4,Well drained,A1,0,3,0.11,29,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691698,Okiota,4,Well drained,A2,3,8,0.16,32,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691698,Okiota,4,Well drained,Bt1,8,13,0.14,43,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691698,Okiota,4,Well drained,Bt2,13,36,0.14,45,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691698,Okiota,4,Well drained,R,36,61,,,
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,Apg1,0,8,0.18,30,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,Apg2,8,15,0.18,38,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,2Bssg1,15,56,0.15,45,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,2Bssg2,56,97,0.15,40,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,2Bkssg1,97,135,0.15,40,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,2Bkssg2,135,173,0.14,45,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,2Bkssg3,173,206,0.14,45,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691695,Maxwell,3,Somewhat poorly drained,2Bkssg4,206,213,0.14,40,Clay
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691696,Millsholm,2,Well drained,A,0,23,0.17,25,Loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691696,Millsholm,2,Well drained,AB,23,38,0.16,28,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691696,Millsholm,2,Well drained,Bt,38,46,0.16,29,Clay loam
+813827,"Henneke-Montara-Rock outcrop complex, 10 to 50 percent slopes, MLRA 15",26691696,Millsholm,2,Well drained,R,46,71,,,
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691700,Henneke,45,Well drained,A,0,8,0.18,19,Loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691700,Henneke,45,Well drained,Bt1,8,28,0.14,33,Clay loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691700,Henneke,45,Well drained,Bt2,28,41,0.08,43,Clay
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691700,Henneke,45,Well drained,Bt3,41,48,0.08,40,Clay
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691700,Henneke,45,Well drained,R,48,73,,,
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691704,Okiota,35,Well drained,A1,0,3,0.11,29,Clay loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691704,Okiota,35,Well drained,A2,3,8,0.16,32,Clay loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691704,Okiota,35,Well drained,Bt1,8,13,0.14,43,Clay
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691704,Okiota,35,Well drained,Bt2,13,36,0.14,45,Clay
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691704,Okiota,35,Well drained,R,36,61,,,
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691702,Rock outcrop,9,,R,0,25,,,
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691705,Montara,5,Well drained,A,0,15,0.17,30,Clay loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691701,Dubakella,5,Well drained,Oi,0,5,0,15,
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691701,Dubakella,5,Well drained,A,5,23,0.12,22,Loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691705,Montara,5,Well drained,Bt,15,30,0.16,28,Clay loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691701,Dubakella,5,Well drained,Bt1,23,38,0.1,34,Clay loam
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691705,Montara,5,Well drained,R,30,41,,,
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691701,Dubakella,5,Well drained,Bt2,38,81,0.07,42,Clay
+813828,"Henneke-Okiota complex, 10 to 50 percent slopes",26691701,Dubakella,5,Well drained,R,81,106,,,
+813829,"Kidd-Forward complex, 5 to 30 percent slopes",26691708,Kidd,60,Well drained,H1,0,23,0.12,12.5,Loam
+813829,"Kidd-Forward complex, 5 to 30 percent slopes",26691708,Kidd,60,Well drained,H2,23,41,0.11,12.5,Sandy loam
+813829,"Kidd-Forward complex, 5 to 30 percent slopes",26691708,Kidd,60,Well drained,H3,41,66,,,
+813829,"Kidd-Forward complex, 5 to 30 percent slopes",26691709,Forward,20,Somewhat excessively drained,H1,0,23,0.15,14,Loam
+813829,"Kidd-Forward complex, 5 to 30 percent slopes",26691709,Forward,20,Somewhat excessively drained,H2,23,64,0.11,14,Sandy loam
+813829,"Kidd-Forward complex, 5 to 30 percent slopes",26691709,Forward,20,Somewhat excessively drained,H3,64,152,,,
+813830,"Kidd-Forward complex, 30 to 50 percent slopes",26691711,Kidd,45,Well drained,H1,0,23,0.12,14,Loam
+813830,"Kidd-Forward complex, 30 to 50 percent slopes",26691711,Kidd,45,Well drained,H2,23,41,0.11,14,Sandy loam
+813830,"Kidd-Forward complex, 30 to 50 percent slopes",26691711,Kidd,45,Well drained,H3,41,66,,,
+813830,"Kidd-Forward complex, 30 to 50 percent slopes",26691712,Forward,35,Somewhat excessively drained,H1,0,23,0.15,14,Loam
+813830,"Kidd-Forward complex, 30 to 50 percent slopes",26691712,Forward,35,Somewhat excessively drained,H2,23,64,0.11,14,Sandy loam
+813830,"Kidd-Forward complex, 30 to 50 percent slopes",26691712,Forward,35,Somewhat excessively drained,H3,64,152,,,
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691716,Maymen,30,Somewhat excessively drained,H1,0,30,0.11,17.5,Loam
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691716,Maymen,30,Somewhat excessively drained,H2,30,55,,,
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691717,Millsholm,20,Well drained,H1,0,8,0.16,23.5,Loam
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691717,Millsholm,20,Well drained,H2,8,28,0.18,28.5,Clay loam
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691717,Millsholm,20,Well drained,H3,28,53,,,
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691718,Bressa,15,Well drained,H1,0,30,0.16,20,Loam
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691718,Bressa,15,Well drained,H2,30,66,0.18,31,Clay loam
+813831,"Maymen-Millsholm-Bressa complex, 30 to 50 percent slopes",26691718,Bressa,15,Well drained,H3,66,91,,,
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691724,Okiota,45,Well drained,H1,0,3,0.1,31,Clay loam
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691724,Okiota,45,Well drained,H2,3,8,0.17,31,Clay loam
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691724,Okiota,45,Well drained,H3,8,36,0.15,47.5,Clay
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691724,Okiota,45,Well drained,H4,36,41,,,
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691725,Henneke,35,Somewhat excessively drained,H1,0,8,0.1,30,Clay loam
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691725,Henneke,35,Somewhat excessively drained,H2,8,28,0.11,35,Clay loam
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691725,Henneke,35,Somewhat excessively drained,H3,28,48,0.08,45,Clay
+813832,"Okiota-Henneke complex, 5 to 30 percent slopes",26691725,Henneke,35,Somewhat excessively drained,H4,48,73,,,
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691728,Okiota,30,Well drained,H1,0,3,0.1,31,Clay loam
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691728,Okiota,30,Well drained,H2,3,8,0.17,31,Clay loam
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691728,Okiota,30,Well drained,H3,8,36,0.15,47.5,Clay
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691728,Okiota,30,Well drained,H4,36,41,,,
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691729,Henneke,25,Somewhat excessively drained,H1,0,8,0.1,30,Clay loam
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691730,Dubakella,25,Well drained,H1,0,18,0.1,23.5,Loam
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691729,Henneke,25,Somewhat excessively drained,H2,8,28,0.11,35,Clay loam
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691730,Dubakella,25,Well drained,H2,18,76,0.09,42.5,Clay
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691729,Henneke,25,Somewhat excessively drained,H3,28,48,0.08,45,Clay
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691729,Henneke,25,Somewhat excessively drained,H4,48,73,,,
+813833,"Okiota-Henneke-Dubakella association, 15 to 50 percent slopes",26691730,Dubakella,25,Well drained,H3,76,101,,,
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691736,Sanhedrin,35,Well drained,H1,0,20,0.13,21.5,Loam
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691736,Sanhedrin,35,Well drained,H2,20,145,0.12,30,Clay loam
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691736,Sanhedrin,35,Well drained,H3,145,170,,,
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691737,Kekawaka,30,Well drained,H1,0,23,0.16,23.5,Loam
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691737,Kekawaka,30,Well drained,H2,23,71,0.17,37.5,Clay loam
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691737,Kekawaka,30,Well drained,H3,71,107,0.15,47.5,Clay
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691737,Kekawaka,30,Well drained,H4,107,173,0.13,47.5,Clay
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691737,Kekawaka,30,Well drained,H5,173,200,,,
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691738,Speaker,15,Well drained,H1,0,20,0.14,21.5,Loam
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691738,Speaker,15,Well drained,H2,20,69,0.16,30,Clay loam
+813834,"Sanhedrin-Kekawaka-Speaker complex, 30 to 50 percent slopes",26691738,Speaker,15,Well drained,H3,69,152,,,
+813835,"Skyhigh-Millsholm loams, 15 to 50 percent slopes",26691753,Skyhigh,45,Well drained,H1,0,5,0.16,23.5,Loam
+813835,"Skyhigh-Millsholm loams, 15 to 50 percent slopes",26691753,Skyhigh,45,Well drained,H2,5,20,0.18,31,Clay loam
+813835,"Skyhigh-Millsholm loams, 15 to 50 percent slopes",26691753,Skyhigh,45,Well drained,H3,20,97,0.16,42.5,Clay
+813835,"Skyhigh-Millsholm loams, 15 to 50 percent slopes",26691753,Skyhigh,45,Well drained,H4,97,122,,,
+813835,"Skyhigh-Millsholm loams, 15 to 50 percent slopes",26691754,Millsholm,25,Well drained,H1,0,15,0.16,23.5,Loam
+813835,"Skyhigh-Millsholm loams, 15 to 50 percent slopes",26691754,Millsholm,25,Well drained,H2,15,41,0.18,28.5,Clay loam
+813835,"Skyhigh-Millsholm loams, 15 to 50 percent slopes",26691754,Millsholm,25,Well drained,H3,41,66,,,
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691755,Sobrante,35,Well drained,H1,0,25,0.15,17.5,Loam
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691755,Sobrante,35,Well drained,H2,25,97,0.16,30,Clay loam
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691755,Sobrante,35,Well drained,H3,97,122,,,
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691756,Guenoc,25,Well drained,H1,0,28,0.18,31,Clay loam
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691756,Guenoc,25,Well drained,H2,28,91,0.16,40,Clay
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691756,Guenoc,25,Well drained,H3,91,116,,,
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691757,Hambright,20,Well drained,H1,0,10,0.08,23.5,Loam
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691757,Hambright,20,Well drained,H2,10,41,0.09,23.5,Loam
+813836,"Sobrante-Guenoc-Hambright complex, 15 to 30 percent slopes",26691757,Hambright,20,Well drained,H3,41,66,,,
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691762,Sobrante,30,Well drained,H1,0,25,0.15,17.5,Loam
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691762,Sobrante,30,Well drained,H2,25,97,0.16,30,Clay loam
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691762,Sobrante,30,Well drained,H3,97,122,,,
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691763,Hambright,25,Well drained,H1,0,10,0.08,23.5,Loam
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691763,Hambright,25,Well drained,H2,10,41,0.09,23.5,Loam
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691763,Hambright,25,Well drained,H3,41,66,,,
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691764,Guenoc,20,Well drained,H1,0,28,0.18,31,Clay loam
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691764,Guenoc,20,Well drained,H2,28,91,0.16,40,Clay
+813837,"Sobrante-Hambright-Guenoc complex, 30 to 50 percent slopes",26691764,Guenoc,20,Well drained,H3,91,116,,,
+816078,"Altamont clay, 30 to 50 percent slopes eroded",26691772,Altamont,85,Well drained,H1,0,56,0.15,47.5,Clay
+816078,"Altamont clay, 30 to 50 percent slopes eroded",26691772,Altamont,85,Well drained,H2,56,86,0.16,38,Silty clay loam
+816078,"Altamont clay, 30 to 50 percent slopes eroded",26691772,Altamont,85,Well drained,H3,86,150,,,
+816079,"Altamont-Diablo clays, 9 to 30 percent slopes",26691775,Altamont,50,Well drained,H1,0,71,0.15,47.5,Clay
+816079,"Altamont-Diablo clays, 9 to 30 percent slopes",26691775,Altamont,50,Well drained,H2,71,97,0.16,38,Silty clay loam
+816079,"Altamont-Diablo clays, 9 to 30 percent slopes",26691775,Altamont,50,Well drained,H3,97,150,,,
+816079,"Altamont-Diablo clays, 9 to 30 percent slopes",26691776,Diablo,40,Well drained,H1,0,76,0.15,50,Clay
+816079,"Altamont-Diablo clays, 9 to 30 percent slopes",26691776,Diablo,40,Well drained,H2,76,102,0.15,47.5,Silty clay
+816079,"Altamont-Diablo clays, 9 to 30 percent slopes",26691776,Diablo,40,Well drained,H3,102,150,,,
+816080,"Dibble-Los Osos loams, 9 to 30 percent slopes",26691778,Dibble,60,Well drained,H1,0,33,0.15,23.5,Loam
+816080,"Dibble-Los Osos loams, 9 to 30 percent slopes",26691778,Dibble,60,Well drained,H2,33,76,0.16,38,Clay loam
+816080,"Dibble-Los Osos loams, 9 to 30 percent slopes",26691778,Dibble,60,Well drained,H3,76,150,,,
+816080,"Dibble-Los Osos loams, 9 to 30 percent slopes",26691779,Los Osos,30,Well drained,H1,0,18,0.15,23.5,Loam
+816080,"Dibble-Los Osos loams, 9 to 30 percent slopes",26691779,Los Osos,30,Well drained,H2,18,64,0.16,42.5,Clay
+816080,"Dibble-Los Osos loams, 9 to 30 percent slopes",26691779,Los Osos,30,Well drained,H3,64,150,,,
+816081,"Dibble-Los Osos loams, 30 to 50 percent slopes, eroded",26691782,Dibble,60,Well drained,H1,0,8,0.15,23.5,Loam
+816081,"Dibble-Los Osos loams, 30 to 50 percent slopes, eroded",26691782,Dibble,60,Well drained,H2,8,51,0.16,38,Clay loam
+816081,"Dibble-Los Osos loams, 30 to 50 percent slopes, eroded",26691782,Dibble,60,Well drained,H3,51,150,,,
+816081,"Dibble-Los Osos loams, 30 to 50 percent slopes, eroded",26691783,Los Osos,30,Well drained,H1,0,3,0.15,23.5,Loam
+816081,"Dibble-Los Osos loams, 30 to 50 percent slopes, eroded",26691783,Los Osos,30,Well drained,H2,3,51,0.16,42.5,Clay
+816081,"Dibble-Los Osos loams, 30 to 50 percent slopes, eroded",26691783,Los Osos,30,Well drained,H3,51,150,,,
+816082,"Dibble-Los Osos clay loams, 9 to 30 percent slopes",26691786,Dibble,60,Well drained,H1,0,33,0.18,28.5,Clay loam
+816082,"Dibble-Los Osos clay loams, 9 to 30 percent slopes",26691786,Dibble,60,Well drained,H2,33,76,0.16,38,Clay loam
+816082,"Dibble-Los Osos clay loams, 9 to 30 percent slopes",26691786,Dibble,60,Well drained,H3,76,150,,,
+816082,"Dibble-Los Osos clay loams, 9 to 30 percent slopes",26691787,Los Osos,30,Well drained,H1,0,18,0.18,31,Clay loam
+816082,"Dibble-Los Osos clay loams, 9 to 30 percent slopes",26691787,Los Osos,30,Well drained,H2,18,64,0.16,42.5,Clay
+816082,"Dibble-Los Osos clay loams, 9 to 30 percent slopes",26691787,Los Osos,30,Well drained,H3,64,150,,,
+816083,"Dibble-Los Osos clay loams, 30 to 50 percent slopes, eroded",26691791,Dibble,60,Well drained,H1,0,8,0.18,28.5,Clay loam
+816083,"Dibble-Los Osos clay loams, 30 to 50 percent slopes, eroded",26691791,Dibble,60,Well drained,H2,8,51,0.16,38,Clay loam
+816083,"Dibble-Los Osos clay loams, 30 to 50 percent slopes, eroded",26691791,Dibble,60,Well drained,H3,51,150,,,
+816083,"Dibble-Los Osos clay loams, 30 to 50 percent slopes, eroded",26691790,Los Osos,30,Well drained,H1,0,3,0.18,31,Clay loam
+816083,"Dibble-Los Osos clay loams, 30 to 50 percent slopes, eroded",26691790,Los Osos,30,Well drained,H2,3,51,0.16,42.5,Clay
+816083,"Dibble-Los Osos clay loams, 30 to 50 percent slopes, eroded",26691790,Los Osos,30,Well drained,H3,51,150,,,
+816482,"Millsholm loam, 15 to 65 percent slopes, eroded, MLRA 15",26691795,Millsholm,85,Well drained,A,0,15,0.19,22,Loam
+816482,"Millsholm loam, 15 to 65 percent slopes, eroded, MLRA 15",26691795,Millsholm,85,Well drained,Bt,15,38,0.18,24,Loam
+816482,"Millsholm loam, 15 to 65 percent slopes, eroded, MLRA 15",26691795,Millsholm,85,Well drained,R,38,63,,,
+816485,"Rincon clay loam, 2 to 9 percent slopes, MLRA 14",26691802,Rincon,90,Well drained,A,0,15,0.17,35,Clay loam
+816485,"Rincon clay loam, 2 to 9 percent slopes, MLRA 14",26691802,Rincon,90,Well drained,Ap,15,46,0.17,35,Clay loam
+816485,"Rincon clay loam, 2 to 9 percent slopes, MLRA 14",26691802,Rincon,90,Well drained,Bt,46,132,0.16,41,Clay
+816485,"Rincon clay loam, 2 to 9 percent slopes, MLRA 14",26691802,Rincon,90,Well drained,Btk,132,163,0.17,35,Clay loam
+816486,"Toomes stony loam, 30 to 75 percent slopes , eroded",26691804,Toomes,85,Well drained,H1,0,25,0.09,18.5,Loam
+816486,"Toomes stony loam, 30 to 75 percent slopes , eroded",26691804,Toomes,85,Well drained,H2,25,36,,,
+816489,"Cohasset gravelly loam, 15 to 30 percent slopes",26691809,Cohasset,85,Well drained,H1,0,48,0.13,20,Loam
+816489,"Cohasset gravelly loam, 15 to 30 percent slopes",26691809,Cohasset,85,Well drained,H2,48,135,0.15,31,Clay loam
+816489,"Cohasset gravelly loam, 15 to 30 percent slopes",26691809,Cohasset,85,Well drained,H3,135,160,0,,
+816490,"Cohasset gravelly clay loam, 10 to 50 percent slopes, MLRA 15",26691813,Cohasset,85,Well drained,A,0,23,0.15,29,Clay loam
+816490,"Cohasset gravelly clay loam, 10 to 50 percent slopes, MLRA 15",26691813,Cohasset,85,Well drained,Bt1,23,48,0.14,31,Clay loam
+816490,"Cohasset gravelly clay loam, 10 to 50 percent slopes, MLRA 15",26691813,Cohasset,85,Well drained,Bt2,48,74,0.11,34,Clay loam
+816490,"Cohasset gravelly clay loam, 10 to 50 percent slopes, MLRA 15",26691813,Cohasset,85,Well drained,Cr,74,99,,,
+816491,"Cohasset gravelly loam, 50 to 75 percent slopes",26691817,Cohasset,85,Well drained,H1,0,38,0.13,20,Loam
+816491,"Cohasset gravelly loam, 50 to 75 percent slopes",26691817,Cohasset,85,Well drained,H2,38,69,0.13,31,Clay loam
+816491,"Cohasset gravelly loam, 50 to 75 percent slopes",26691817,Cohasset,85,Well drained,H3,69,150,0,,
+816492,"Felta very gravelly loam, 5 to 15 percent slopes",26691823,Felta,85,Well drained,H1,0,13,0.08,23.5,Loam
+816492,"Felta very gravelly loam, 5 to 15 percent slopes",26691823,Felta,85,Well drained,H2,13,61,0.08,31,Clay loam
+816492,"Felta very gravelly loam, 5 to 15 percent slopes",26691823,Felta,85,Well drained,H3,61,152,0.07,30,Sandy clay loam
+816493,"Felta very gravelly loam, 15 to 30 percent slopes",26691827,Felta,85,Well drained,H1,0,13,0.08,23.5,Loam
+816493,"Felta very gravelly loam, 15 to 30 percent slopes",26691827,Felta,85,Well drained,H2,13,61,0.08,31,Clay loam
+816493,"Felta very gravelly loam, 15 to 30 percent slopes",26691827,Felta,85,Well drained,H3,61,152,0.07,30,Sandy clay loam
+816496,"Goulding clay loam, 15 to 30 percent slopes",26691832,Goulding,85,Well drained,H1,0,28,0.17,28.5,Clay loam
+816496,"Goulding clay loam, 15 to 30 percent slopes",26691832,Goulding,85,Well drained,H2,28,51,0.09,28.5,Clay loam
+816496,"Goulding clay loam, 15 to 30 percent slopes",26691832,Goulding,85,Well drained,H3,51,76,0,,
+816497,"Goulding clay loam, 30 to 50 percent slopes",26691837,Goulding,85,Well drained,H1,0,23,0.17,28.5,Clay loam
+816497,"Goulding clay loam, 30 to 50 percent slopes",26691837,Goulding,85,Well drained,H2,23,46,0.09,28.5,Clay loam
+816497,"Goulding clay loam, 30 to 50 percent slopes",26691837,Goulding,85,Well drained,H3,46,61,0,,
+816498,"Goulding clay loam, 50 to 75 percent slopes",26691840,Goulding,85,Well drained,H1,0,23,0.17,28.5,Clay loam
+816498,"Goulding clay loam, 50 to 75 percent slopes",26691840,Goulding,85,Well drained,H2,23,46,0.09,28.5,Clay loam
+816498,"Goulding clay loam, 50 to 75 percent slopes",26691840,Goulding,85,Well drained,H3,46,71,0,,
+816499,"Goulding cobbly clay loam, 5 to 15 percent slopes",26691847,Goulding,85,Well drained,H1,0,28,0.12,28.5,Clay loam
+816499,"Goulding cobbly clay loam, 5 to 15 percent slopes",26691847,Goulding,85,Well drained,H2,28,51,0.09,28.5,Clay loam
+816499,"Goulding cobbly clay loam, 5 to 15 percent slopes",26691847,Goulding,85,Well drained,H3,51,76,0,,
+816500,"Goulding cobbly clay loam, 15 to 30 percent slopes",26691853,Goulding,85,Well drained,H1,0,23,0.12,28.5,Clay loam
+816500,"Goulding cobbly clay loam, 15 to 30 percent slopes",26691853,Goulding,85,Well drained,H2,23,46,0.09,28.5,Clay loam
+816500,"Goulding cobbly clay loam, 15 to 30 percent slopes",26691853,Goulding,85,Well drained,H3,46,61,0,,
+816501,"Goulding cobbly clay loam, 30 to 50 percent slopes",26691858,Goulding,85,Well drained,H1,0,23,0.12,28.5,Clay loam
+816501,"Goulding cobbly clay loam, 30 to 50 percent slopes",26691858,Goulding,85,Well drained,H2,23,46,0.09,28.5,Clay loam
+816501,"Goulding cobbly clay loam, 30 to 50 percent slopes",26691858,Goulding,85,Well drained,H3,46,71,0,,
+816502,"Goulding cobbly clay loam, 30 to 50 percent slopes, eroded",26691863,Goulding,85,Well drained,H1,0,15,0.12,28.5,Clay loam
+816502,"Goulding cobbly clay loam, 30 to 50 percent slopes, eroded",26691863,Goulding,85,Well drained,H2,15,38,0.09,28.5,Clay loam
+816502,"Goulding cobbly clay loam, 30 to 50 percent slopes, eroded",26691863,Goulding,85,Well drained,H3,38,63,0,,
+816503,"Guenoc gravelly silt loam, 30 to 75 percent slopes",26691867,Guenoc,85,Well drained,H1,0,30,0.12,23.5,Silt loam
+816503,"Guenoc gravelly silt loam, 30 to 75 percent slopes",26691867,Guenoc,85,Well drained,H2,30,64,0.16,40,Clay
+816503,"Guenoc gravelly silt loam, 30 to 75 percent slopes",26691867,Guenoc,85,Well drained,H3,64,89,0,,
+816504,"Haire gravelly loam, 0 to 9 percent slopes",26691871,Haire,85,Moderately well drained,H1,0,61,0.14,23.5,Loam
+816504,"Haire gravelly loam, 0 to 9 percent slopes",26691871,Haire,85,Moderately well drained,H2,61,91,0.15,50,Clay
+816504,"Haire gravelly loam, 0 to 9 percent slopes",26691871,Haire,85,Moderately well drained,H3,91,152,0.05,31,Clay loam
+816505,"Haire clay loam, 0 to 9 percent slopes",26691877,Haire,85,Moderately well drained,H1,0,61,0.18,33.5,Clay loam
+816505,"Haire clay loam, 0 to 9 percent slopes",26691877,Haire,85,Moderately well drained,H2,61,91,0.15,50,Clay
+816505,"Haire clay loam, 0 to 9 percent slopes",26691877,Haire,85,Moderately well drained,H3,91,152,0.05,31,Clay loam
+816507,"Haire clay loam, 15 to 30 percent slopes",26691880,Haire,85,Moderately well drained,H1,0,36,0.18,33.5,Clay loam
+816507,"Haire clay loam, 15 to 30 percent slopes",26691880,Haire,85,Moderately well drained,H2,36,69,0.15,50,Clay
+816507,"Haire clay loam, 15 to 30 percent slopes",26691880,Haire,85,Moderately well drained,H3,69,152,0.05,31,Clay loam
+816509,"Henneke gravelly loam, 30 to 75 percent slopes, eroded",26691883,Henneke,85,Well drained,H1,0,13,0.1,23.5,Loam
+816509,"Henneke gravelly loam, 30 to 75 percent slopes, eroded",26691883,Henneke,85,Well drained,H2,13,41,0.08,45,Clay
+816509,"Henneke gravelly loam, 30 to 75 percent slopes, eroded",26691883,Henneke,85,Well drained,H3,41,66,0,,
+816510,"Josephine loam, 30 to 50 percent slopes",26691887,Josephine,85,Well drained,H1,0,33,0.16,21,Loam
+816510,"Josephine loam, 30 to 50 percent slopes",26691887,Josephine,85,Well drained,H2,33,89,0.18,31,Clay loam
+816510,"Josephine loam, 30 to 50 percent slopes",26691887,Josephine,85,Well drained,H3,89,114,0.14,17.5,Fine sandy loam
+816510,"Josephine loam, 30 to 50 percent slopes",26691887,Josephine,85,Well drained,H4,114,150,0,,
+816511,"Laniger loam, 15 to 30 percent slopes",26691891,Laniger,85,Well drained,H1,0,43,0.16,20,Loam
+816511,"Laniger loam, 15 to 30 percent slopes",26691891,Laniger,85,Well drained,H2,43,74,0.16,20,Loam
+816511,"Laniger loam, 15 to 30 percent slopes",26691891,Laniger,85,Well drained,H3,74,99,0,,
+816512,"Laniger loam, 15 to 30 percent slopes, eroded",26691895,Laniger,85,Well drained,H1,0,25,0.16,20,Loam
+816512,"Laniger loam, 15 to 30 percent slopes, eroded",26691895,Laniger,85,Well drained,H2,25,56,0.16,20,Loam
+816512,"Laniger loam, 15 to 30 percent slopes, eroded",26691895,Laniger,85,Well drained,H3,56,81,0,,
+816513,"Laniger loam, 30 to 50 percent slopes",26691899,Laniger,85,Well drained,H1,0,28,0.16,20,Loam
+816513,"Laniger loam, 30 to 50 percent slopes",26691899,Laniger,85,Well drained,H2,28,64,0.16,20,Loam
+816513,"Laniger loam, 30 to 50 percent slopes",26691899,Laniger,85,Well drained,H3,64,89,0,,
+816514,"Laughlin loam, 30 to 50 percent slopes",26691903,Laughlin,85,Well drained,H1,0,10,0.15,21.5,Loam
+816514,"Laughlin loam, 30 to 50 percent slopes",26691903,Laughlin,85,Well drained,H2,10,56,0.15,25,Sandy clay loam
+816514,"Laughlin loam, 30 to 50 percent slopes",26691903,Laughlin,85,Well drained,H3,56,81,0,,
+816515,"Maymen gravelly sandy loam, 30 to 50 percent slopes",26691909,Maymen,85,Well drained,H1,0,30,0.09,15,Sandy loam
+816515,"Maymen gravelly sandy loam, 30 to 50 percent slopes",26691909,Maymen,85,Well drained,H2,30,46,0.1,20,Loam
+816515,"Maymen gravelly sandy loam, 30 to 50 percent slopes",26691909,Maymen,85,Well drained,H3,46,71,0,,
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691910,Maymen,55,Well drained,A1,0,13,0.1,15,Sandy loam
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691910,Maymen,55,Well drained,A2,13,30,0.1,15,Sandy loam
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691910,Maymen,55,Well drained,Bw,30,46,0.14,20,Loam
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691910,Maymen,55,Well drained,Cr,46,71,,,
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691911,Los Gatos,45,Well drained,A1,0,5,0.16,22.5,Loam
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691911,Los Gatos,45,Well drained,A2,5,18,0.16,22.5,Loam
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691911,Los Gatos,45,Well drained,BAt,18,43,0.15,26,Loam
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691911,Los Gatos,45,Well drained,Bt,43,64,0.12,30,Clay loam
+816516,"Maymen-Los Gatos complex, 30 to 75 percent slopes, MLRA 15",26691911,Los Gatos,45,Well drained,R,64,89,,,
+816517,"Montara cobbly clay loam, 2 to 30 percent slopes",26691916,Montara,85,Well drained,H1,0,25,0.13,31,Clay loam
+816517,"Montara cobbly clay loam, 2 to 30 percent slopes",26691916,Montara,85,Well drained,H2,25,50,0,,
+816518,"Montara cobbly clay loam, 30 to 75 percent slopes",26691920,Montara,85,Well drained,H1,0,25,0.13,31,Clay loam
+816518,"Montara cobbly clay loam, 30 to 75 percent slopes",26691920,Montara,85,Well drained,H2,25,50,0,,
+816519,"Raynor clay, 9 to 15 percent slopes",26691924,Raynor,85,Well drained,H1,0,43,0.15,50,Clay
+816519,"Raynor clay, 9 to 15 percent slopes",26691924,Raynor,85,Well drained,H2,43,89,0.15,50,Clay
+816519,"Raynor clay, 9 to 15 percent slopes",26691924,Raynor,85,Well drained,H3,89,114,0.09,50,Clay
+816519,"Raynor clay, 9 to 15 percent slopes",26691924,Raynor,85,Well drained,H4,114,152,0,,
+816520,"Red Hill clay loam, 30 to 50 percent slopes",26691929,Red Hill,85,Moderately well drained,H1,0,41,0.18,31,Clay loam
+816520,"Red Hill clay loam, 30 to 50 percent slopes",26691929,Red Hill,85,Moderately well drained,H2,41,122,0.18,35,Clay loam
+816520,"Red Hill clay loam, 30 to 50 percent slopes",26691929,Red Hill,85,Moderately well drained,H3,122,203,0.15,42.5,Clay
+816521,"Spreckels loam, 30 to 50 percent slopes",26691935,Spreckels,85,Well drained,H1,0,23,0.15,21,Loam
+816521,"Spreckels loam, 30 to 50 percent slopes",26691935,Spreckels,85,Well drained,H2,23,46,0.17,28.5,Clay loam
+816521,"Spreckels loam, 30 to 50 percent slopes",26691935,Spreckels,85,Well drained,H3,46,94,0.09,47.5,Clay
+816521,"Spreckels loam, 30 to 50 percent slopes",26691935,Spreckels,85,Well drained,H4,94,152,,,
+816522,"Suther loam, 15 to 30 percent slopes",26691940,Suther,85,Moderately well drained,H1,0,8,0.15,23.5,Loam
+816522,"Suther loam, 15 to 30 percent slopes",26691940,Suther,85,Moderately well drained,H2,8,36,0.17,31,Clay loam
+816522,"Suther loam, 15 to 30 percent slopes",26691940,Suther,85,Moderately well drained,H3,36,91,0.11,47.5,Clay
+816522,"Suther loam, 15 to 30 percent slopes",26691940,Suther,85,Moderately well drained,H4,91,150,0,,
+816523,"Toomes rocky loam, 30 to 75 percent slopes",26691944,Toomes,75,Well drained,H1,0,10,0.15,23.5,Loam
+816523,"Toomes rocky loam, 30 to 75 percent slopes",26691944,Toomes,75,Well drained,H2,10,33,0.15,28.5,Clay loam
+816523,"Toomes rocky loam, 30 to 75 percent slopes",26691944,Toomes,75,Well drained,H3,33,58,0,,
+816523,"Toomes rocky loam, 30 to 75 percent slopes",26691945,Rock outcrop,10,Excessively drained,H1,0,10,,,
+816527,"Dibble clay loam, 14 to 55 percent slopes, eroded, MLRA 15",26691950,Dibble,85,Well drained,A,0,10,0.18,30,Clay loam
+816527,"Dibble clay loam, 14 to 55 percent slopes, eroded, MLRA 15",26691950,Dibble,85,Well drained,Bt1,10,38,0.15,40,Silty clay
+816527,"Dibble clay loam, 14 to 55 percent slopes, eroded, MLRA 15",26691950,Dibble,85,Well drained,Bt2,38,51,0.15,42,Clay
+816527,"Dibble clay loam, 14 to 55 percent slopes, eroded, MLRA 15",26691950,Dibble,85,Well drained,BCt,51,76,0.13,45,Silty clay
+816527,"Dibble clay loam, 14 to 55 percent slopes, eroded, MLRA 15",26691950,Dibble,85,Well drained,Cr,76,101,,,
+816528,"Dibble clay loam, 50 to 75 percent slopes, eroded",26691954,Dibble,85,Well drained,H1,0,10,0.18,28.5,Clay loam
+816528,"Dibble clay loam, 50 to 75 percent slopes, eroded",26691954,Dibble,85,Well drained,H2,10,76,0.16,40,Silty clay
+816528,"Dibble clay loam, 50 to 75 percent slopes, eroded",26691954,Dibble,85,Well drained,H3,76,152,0,,
+816530,"Hambright-Toomes stony loams, 9 to 30 percent slopes",26691956,Hambright,70,Well drained,H1,0,13,0.08,23.5,Loam
+816530,"Hambright-Toomes stony loams, 9 to 30 percent slopes",26691956,Hambright,70,Well drained,H2,13,48,0.09,25,Loam
+816530,"Hambright-Toomes stony loams, 9 to 30 percent slopes",26691956,Hambright,70,Well drained,H3,48,73,,,
+816530,"Hambright-Toomes stony loams, 9 to 30 percent slopes",26691957,Toomes,20,Well drained,H1,0,48,0.09,18.5,Loam
+816530,"Hambright-Toomes stony loams, 9 to 30 percent slopes",26691957,Toomes,20,Well drained,H2,48,56,,,
+816533,"Yolo silty clay loam, 0 to 2 percent slopes, MLRA 17",26691961,Yolo,85,Well drained,Ap,0,23,0.19,30,Silty clay loam
+816533,"Yolo silty clay loam, 0 to 2 percent slopes, MLRA 17",26691961,Yolo,85,Well drained,A1,23,46,0.19,30,Silty clay loam
+816533,"Yolo silty clay loam, 0 to 2 percent slopes, MLRA 17",26691961,Yolo,85,Well drained,A2,46,71,0.19,30,Silty clay loam
+816533,"Yolo silty clay loam, 0 to 2 percent slopes, MLRA 17",26691961,Yolo,85,Well drained,Bw1,71,91,0.18,28,Clay loam
+816533,"Yolo silty clay loam, 0 to 2 percent slopes, MLRA 17",26691961,Yolo,85,Well drained,Bw2,91,112,0.18,25,Loam
+816533,"Yolo silty clay loam, 0 to 2 percent slopes, MLRA 17",26691961,Yolo,85,Well drained,Bw3,112,152,0.18,25,Loam
+825270,"Gilroy loam, 9 to 30 percent slopes",26691964,Gilroy,85,Well drained,H1,0,30,0.16,23.5,Loam
+825270,"Gilroy loam, 9 to 30 percent slopes",26691964,Gilroy,85,Well drained,H2,30,97,0.17,25,Loam
+825270,"Gilroy loam, 9 to 30 percent slopes",26691964,Gilroy,85,Well drained,H3,97,122,,,
+825271,"Hambright loam, 15 to 40 percent slopes",26691967,Hambright,85,Well drained,H1,0,13,0.12,23.5,Loam
+825271,"Hambright loam, 15 to 40 percent slopes",26691967,Hambright,85,Well drained,H2,13,48,0.09,23.5,Loam
+825271,"Hambright loam, 15 to 40 percent slopes",26691967,Hambright,85,Well drained,H3,48,73,,,
+2833410,"Rincon clay loam, 0 to 2 percent slopes, MLRA 14",26691976,Rincon,85,Well drained,A,0,15,0.18,35,Clay loam
+2833410,"Rincon clay loam, 0 to 2 percent slopes, MLRA 14",26691976,Rincon,85,Well drained,Ap,15,30,0.18,35,Clay loam
+2833410,"Rincon clay loam, 0 to 2 percent slopes, MLRA 14",26691976,Rincon,85,Well drained,Bt,30,74,0.16,41,Clay
+2833410,"Rincon clay loam, 0 to 2 percent slopes, MLRA 14",26691976,Rincon,85,Well drained,Bk,74,97,0.19,35,Silty clay loam
+2833410,"Rincon clay loam, 0 to 2 percent slopes, MLRA 14",26691976,Rincon,85,Well drained,Ck,97,200,0.18,26,Loam

@@ -25,10 +25,9 @@ uv.lock          # optional: commit this if you want reproducible installs
 
 # ── Data ──
 data/feedback.db # SQLite binary — track schema in git, not the file
-data/raw/        # raw source files (large binaries and downloads)
-data/processed/  # derived parquet files
 
 # ── PRISM rasters specifically ──
+data/raw/prism/
 *.bil
 *.hdr
 *.prj
