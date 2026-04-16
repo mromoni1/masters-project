@@ -4,6 +4,7 @@ Joins:
     - features_climate.parquet  (year × AVA district) — PRISM agroclimatic features
     - features_water.parquet    (year)                — CIMIS ETo + DWR drought class
     - ssurgo_clean.parquet      (AVA district)        — soil properties
+    - acreage_clean.parquet     (year × variety)      — NASS bearing acres (optional)
 
 Output: data/processed/feature_matrix.parquet
     One row per (year × AVA district). All years where climate and water
@@ -37,10 +38,11 @@ import pandas as pd
 # ---------------------------------------------------------------------------
 
 _ROOT = Path(__file__).parents[2]
-CLIMATE_PATH = _ROOT / "data" / "processed" / "features_climate.parquet"
-WATER_PATH = _ROOT / "data" / "processed" / "features_water.parquet"
-SSURGO_PATH = _ROOT / "data" / "processed" / "ssurgo_clean.parquet"
-OUTPUT_PATH = _ROOT / "data" / "processed" / "feature_matrix.parquet"
+CLIMATE_PATH  = _ROOT / "data" / "processed" / "features_climate.parquet"
+WATER_PATH    = _ROOT / "data" / "processed" / "features_water.parquet"
+SSURGO_PATH   = _ROOT / "data" / "processed" / "ssurgo_clean.parquet"
+ACREAGE_PATH  = _ROOT / "data" / "processed" / "acreage_clean.parquet"
+OUTPUT_PATH   = _ROOT / "data" / "processed" / "feature_matrix.parquet"
 
 
 # ---------------------------------------------------------------------------
@@ -82,6 +84,25 @@ def build_feature_matrix(apply: bool = False) -> pd.DataFrame:
     missing_ssurgo = df[df["awc_r"].isna()]["ava_district"].unique().tolist()
     if missing_ssurgo:
         print(f"[matrix] WARNING: SSURGO data missing for AVAs: {sorted(missing_ssurgo)}")
+
+    # Join acreage features (year × variety), if available
+    if ACREAGE_PATH.exists():
+        print(f"[matrix] Loading {ACREAGE_PATH.name} ...")
+        acreage = pd.read_parquet(ACREAGE_PATH)[["year", "variety", "bearing_acres"]]
+        print(f"[matrix]   {len(acreage):,} rows | varieties: {sorted(acreage['variety'].unique())}")
+        # Pivot to wide so each variety gets its own column (year-level join)
+        acreage_wide = acreage.pivot(index="year", columns="variety", values="bearing_acres")
+        acreage_wide.columns = [
+            f"bearing_acres_{v.lower().replace(' ', '_')}"
+            for v in acreage_wide.columns
+        ]
+        acreage_wide = acreage_wide.reset_index()
+        df = df.merge(acreage_wide, on="year", how="left")
+        missing_acreage = df[df["bearing_acres_cabernet_sauvignon"].isna()]["year"].unique().tolist()
+        if missing_acreage:
+            print(f"[matrix] WARNING: acreage missing for years: {sorted(missing_acreage)}")
+    else:
+        print(f"[matrix] NOTE: {ACREAGE_PATH.name} not found — acreage features skipped.")
 
     df = df.sort_values(["year", "ava_district"]).reset_index(drop=True)
 

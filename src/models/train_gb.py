@@ -65,12 +65,18 @@ CV_FOLDS = [
     (2014, 2019),
 ]
 
-NUMERIC_FEATURES = [
+NUMERIC_FEATURES_BASE = [
     "gdd", "frost_days", "heat_stress_days",
     "tmax_veraison", "precip_winter", "eto_season", "severity_score",
     "awc_r", "claytotal_r",
     "brix_lag1", "tons_crushed_lag1",
 ]
+
+# Acreage columns are added dynamically in load_data() when acreage_clean.parquet
+# is available. They are variety-specific (e.g. bearing_acres_cabernet_sauvignon).
+_ACREAGE_COLS: list[str] = []  # populated at load time
+
+NUMERIC_FEATURES: list[str] = NUMERIC_FEATURES_BASE  # updated in load_data()
 
 CATEGORICAL_FEATURES = ["texcl", "drainagecl"]
 
@@ -91,19 +97,41 @@ PARAM_GRID = [
 def load_data() -> pd.DataFrame:
     """Load feature matrix joined with CDFA targets, add lag features.
 
+    Also joins acreage_clean.parquet (when available) and adds a lag-1
+    bearing_acres column per variety. Updates the module-level NUMERIC_FEATURES
+    list to include acreage columns so downstream functions pick them up.
+
     Returns:
-        DataFrame with one row per (year × variety × AVA), including
-        lag-1 brix and lag-1 tons_crushed computed within each (variety × AVA).
+        DataFrame with one row per (year × variety), including
+        lag-1 brix, lag-1 tons_crushed, and (if available) lag-1 bearing_acres.
     """
+    global NUMERIC_FEATURES, _ACREAGE_COLS
+
     features = pd.read_parquet(FEATURE_MATRIX)
     cdfa = pd.read_parquet(CDFA_CLEAN)[["year", "variety", "brix", "tons_crushed"]]
 
     # Join CDFA onto Napa Valley AVA (district-level targets)
     napa = features[features["ava_district"] == "Napa Valley"].copy()
     df = cdfa.merge(napa.drop(columns=["ava_district"]), on="year", how="inner")
+
+    # Join acreage features if available
+    acreage_path = _ROOT / "data" / "processed" / "acreage_clean.parquet"
+    if acreage_path.exists():
+        acreage = pd.read_parquet(acreage_path)[["year", "variety", "bearing_acres"]]
+        df = df.merge(acreage, on=["year", "variety"], how="left")
+        # Lag-1 acreage within each variety
+        df = df.sort_values(["variety", "year"]).reset_index(drop=True)
+        df["bearing_acres_lag1"] = df.groupby("variety")["bearing_acres"].shift(1)
+        _ACREAGE_COLS = ["bearing_acres_lag1"]
+        print(f"[gb] Acreage feature joined: {acreage['year'].min()}–{acreage['year'].max()}")
+    else:
+        _ACREAGE_COLS = []
+
+    NUMERIC_FEATURES = NUMERIC_FEATURES_BASE + _ACREAGE_COLS
+
     df = df.sort_values(["variety", "year"]).reset_index(drop=True)
 
-    # Lag features within each variety
+    # Lag features for targets within each variety
     for tgt in TARGETS:
         df[f"{tgt}_lag1"] = df.groupby("variety")[tgt].shift(1)
 
