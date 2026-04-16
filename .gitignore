@@ -27,12 +27,20 @@ uv.lock          # optional: commit this if you want reproducible installs
 data/feedback.db # SQLite binary — track schema in git, not the file
 
 # ── PRISM rasters specifically ──
+data/raw/prism/
 *.bil
 *.hdr
 *.prj
 *.aux
 *.stx
 *.ovr
+
+# ── GIS / geospatial binaries ──
+*.gpkg
+*.shp
+*.dbf
+*.shx
+*.cpg
 
 # ── Model artifacts ──
 models/*.pkl

@@ -1,7 +1,7 @@
 source:           USDA NRCS Soil Data Access (SDA)
 survey_area:      CA055 (Napa County, CA)
-tabular_version:  18
+saversion:        18
 ssurgo_saverest:  9/2/2025 5:29:15 PM
-download_date:    2026-04-14
-target_variables: awc_r, drainagecl, claytotal_r, texturerv
+download_date:    2026-04-15
+target_variables: awc_r, drainagecl, claytotal_r, texcl
 output_file:      ssurgo_napa.csv

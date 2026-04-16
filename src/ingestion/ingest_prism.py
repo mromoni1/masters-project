@@ -212,4 +212,25 @@ def ingest_prism(
 
 
 if __name__ == "__main__":
-    ingest_prism()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Ingest PRISM daily rasters for Napa Valley.")
+    parser.add_argument(
+        "--variable",
+        dest="variables",
+        action="append",
+        choices=VARIABLES,
+        metavar="VAR",
+        help=f"Variable to ingest (one of: {', '.join(VARIABLES)}). "
+             "Repeat to ingest multiple. Defaults to all variables.",
+    )
+    parser.add_argument("--start-year", type=int, default=START_YEAR)
+    parser.add_argument("--end-year", type=int, default=None)
+    parser.add_argument("--apply", action="store_true", help="No-op flag kept for compatibility.")
+    args = parser.parse_args()
+
+    ingest_prism(
+        variables=args.variables or VARIABLES,
+        start_year=args.start_year,
+        end_year=args.end_year,
+    )

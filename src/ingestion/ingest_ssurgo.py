@@ -7,7 +7,7 @@ Downloads the following variables for each map unit component and horizon:
   - awc_r       : available water capacity (cm/cm)
   - drainagecl  : drainage class
   - claytotal_r : clay fraction (%)
-  - texturerv   : texture class (representative value)
+  - texcl       : texture class
 
 Data is fetched from the USDA Soil Data Access (SDA) REST API and written to
 data/raw/ssurgo/ssurgo_napa.csv. A metadata.txt file records the SSURGO
@@ -34,7 +34,7 @@ SSURGO_DIR = DATA_RAW_DIR / "ssurgo"
 NAPA_AREASYMBOL = "CA055"  # SSURGO survey area symbol for Napa County, CA
 SDA_URL = "https://sdmdataaccess.sc.egov.usda.gov/Tabular/SDMTabularService/post.rest"
 
-TARGET_VARS = ["awc_r", "drainagecl", "claytotal_r", "texturerv"]
+TARGET_VARS = ["awc_r", "drainagecl", "claytotal_r", "texcl"]
 
 
 # ---------------------------------------------------------------------------
@@ -97,15 +97,17 @@ def fetch_survey_version(areasymbol: str) -> tuple[str, str]:
 def fetch_soil_data(areasymbol: str) -> pd.DataFrame:
     """Fetch horizon-level soil properties for all map unit components in the survey area.
 
-    Joins legend → mapunit → component → chorizon to retrieve awc_r,
-    drainagecl, claytotal_r, and texturerv for every map unit component horizon.
+    Joins legend → mapunit → component → chorizon → chtexturegrp → chtexture
+    to retrieve awc_r, drainagecl, claytotal_r, and texcl. texcl lives in the
+    chtexture table (not chorizon); the LEFT JOINs through chtexturegrp
+    (rvindicator = 'Yes') pull only the representative texture group.
 
     Args:
         areasymbol: SSURGO survey area symbol (e.g. 'CA055').
 
     Returns:
         DataFrame with columns: mukey, muname, cokey, compname, comppct_r,
-        drainagecl, hzname, hzdept_r, hzdepb_r, awc_r, claytotal_r, texturerv.
+        drainagecl, hzname, hzdept_r, hzdepb_r, awc_r, claytotal_r, texcl.
     """
     sql = f"""
         SELECT
@@ -120,11 +122,14 @@ def fetch_soil_data(areasymbol: str) -> pd.DataFrame:
             chorizon.hzdepb_r,
             chorizon.awc_r,
             chorizon.claytotal_r,
-            chorizon.texturerv
+            chtexture.texcl
         FROM legend
             INNER JOIN mapunit ON mapunit.lkey = legend.lkey
             INNER JOIN component ON component.mukey = mapunit.mukey
             INNER JOIN chorizon ON chorizon.cokey = component.cokey
+            LEFT JOIN chtexturegrp ON chtexturegrp.chkey = chorizon.chkey
+                AND chtexturegrp.rvindicator = 'Yes'
+            LEFT JOIN chtexture ON chtexture.chtgkey = chtexturegrp.chtgkey
         WHERE legend.areasymbol = '{areasymbol}'
         ORDER BY mapunit.mukey, component.comppct_r DESC, chorizon.hzdept_r
     """
@@ -167,7 +172,7 @@ def ingest_ssurgo() -> None:
     metadata_path.write_text(
         f"source:           USDA NRCS Soil Data Access (SDA)\n"
         f"survey_area:      {NAPA_AREASYMBOL} (Napa County, CA)\n"
-        f"tabular_version:  {tabular_version}\n"
+        f"saversion:        {tabular_version}\n"
         f"ssurgo_saverest:  {saverest}\n"
         f"download_date:    {download_date}\n"
         f"target_variables: {', '.join(TARGET_VARS)}\n"
