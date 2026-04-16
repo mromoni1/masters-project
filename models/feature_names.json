@@ -1,0 +1,47 @@
+{
+  "Cabernet Sauvignon": [
+    "gdd",
+    "frost_days",
+    "heat_stress_days",
+    "tmax_veraison",
+    "precip_winter",
+    "eto_season",
+    "severity_score",
+    "awc_r",
+    "claytotal_r",
+    "brix_lag1",
+    "tons_crushed_lag1",
+    "texcl_Loam",
+    "drainagecl_Well drained"
+  ],
+  "Pinot Noir": [
+    "gdd",
+    "frost_days",
+    "heat_stress_days",
+    "tmax_veraison",
+    "precip_winter",
+    "eto_season",
+    "severity_score",
+    "awc_r",
+    "claytotal_r",
+    "brix_lag1",
+    "tons_crushed_lag1",
+    "texcl_Loam",
+    "drainagecl_Well drained"
+  ],
+  "Chardonnay": [
+    "gdd",
+    "frost_days",
+    "heat_stress_days",
+    "tmax_veraison",
+    "precip_winter",
+    "eto_season",
+    "severity_score",
+    "awc_r",
+    "claytotal_r",
+    "brix_lag1",
+    "tons_crushed_lag1",
+    "texcl_Loam",
+    "drainagecl_Well drained"
+  ]
+}
