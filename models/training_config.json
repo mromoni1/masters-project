@@ -1,0 +1,107 @@
+{
+  "train_cutoff": 2019,
+  "train_years": "1991\u20132019",
+  "test_years": "2020\u20132024",
+  "targets": [
+    "brix",
+    "tons_crushed"
+  ],
+  "numeric_features": [
+    "gdd",
+    "frost_days",
+    "heat_stress_days",
+    "tmax_veraison",
+    "precip_winter",
+    "eto_season",
+    "severity_score",
+    "awc_r",
+    "claytotal_r",
+    "brix_lag1",
+    "tons_crushed_lag1"
+  ],
+  "categorical_features": [
+    "texcl",
+    "drainagecl"
+  ],
+  "cv_folds": [
+    {
+      "train_end": 2004,
+      "test_end": 2009
+    },
+    {
+      "train_end": 2009,
+      "test_end": 2014
+    },
+    {
+      "train_end": 2014,
+      "test_end": 2019
+    }
+  ],
+  "best_params": {
+    "Cabernet Sauvignon": {
+      "n_estimators": 200,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_samples": 3,
+      "subsample": 0.9
+    },
+    "Pinot Noir": {
+      "n_estimators": 100,
+      "learning_rate": 0.05,
+      "max_depth": 3,
+      "min_child_samples": 5,
+      "subsample": 0.8
+    },
+    "Chardonnay": {
+      "n_estimators": 100,
+      "learning_rate": 0.05,
+      "max_depth": 2,
+      "min_child_samples": 5,
+      "subsample": 1.0
+    }
+  },
+  "holdout_metrics": {
+    "Cabernet Sauvignon": {
+      "brix": {
+        "rmse": 0.4507,
+        "mae": 0.4056,
+        "r2": -0.9836,
+        "n": 5
+      },
+      "tons_crushed": {
+        "rmse": 16965.1422,
+        "mae": 16205.3354,
+        "r2": -0.2861,
+        "n": 5
+      }
+    },
+    "Pinot Noir": {
+      "brix": {
+        "rmse": 0.6048,
+        "mae": 0.4993,
+        "r2": -7.7915,
+        "n": 5
+      },
+      "tons_crushed": {
+        "rmse": 2444.2784,
+        "mae": 2322.8711,
+        "r2": -13.0725,
+        "n": 5
+      }
+    },
+    "Chardonnay": {
+      "brix": {
+        "rmse": 0.473,
+        "mae": 0.4603,
+        "r2": -9.3557,
+        "n": 5
+      },
+      "tons_crushed": {
+        "rmse": 11613.1709,
+        "mae": 11072.9379,
+        "r2": -15.8345,
+        "n": 5
+      }
+    }
+  }
+}

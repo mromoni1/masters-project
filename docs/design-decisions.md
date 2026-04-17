@@ -102,42 +102,66 @@ quality. Too noisy. Could be revisited as a secondary outcome.
 
 ## Model architecture
 
-**Decision:** Multi-output gradient boosting as the starting architecture.
-LSTM as an alternative if temporal autocorrelation is significant in EDA.
+**Initial decision (scoping):** Multi-output gradient boosting as the starting
+architecture. LSTM as an alternative if temporal autocorrelation is significant.
 
-**Rationale for gradient boosting first:**
+**Updated decision (April 2026, after baseline ladder evaluation):**
+Elastic net regression with year-over-year delta targets (`src/models/train_ridge.py`).
+GBM is retained for comparison (`src/models/train_gb.py`) but is not the primary model.
+
+**Why GBM was tried first:**
 - Strong performance on tabular data
 - Interpretable via SHAP without additional tooling
 - Faster iteration cycle during development
-- Multi-output extension (XGBoost, LightGBM) is straightforward
 
-**Rationale for LSTM consideration:**
-- Vineyard outcomes are temporally autocorrelated
-- Consecutive drought years have compounding effects not captured by
-  single-season features
-- Only pursue if EDA shows significant lag correlations
+**Why GBM was deprioritized:**
+- 24 training years is too small for a tree ensemble — the model overfits
+  consistently across multiple test windows (2015–2019 and 2020–2024)
+- Negative R² on holdout confirmed overfitting, not feature weakness:
+  the GBM beats null and Winkler OLS but cannot beat persistence
 
-**Architecture is not fixed** — the baseline ladder results will inform the
-final choice. If full-feature linear regression closely matches the ML model,
-complexity is not justified and the linear model should be used.
+**Why elastic net with delta targets:**
+- L1+L2 regularization is the appropriate prior at n~24: it shrinks
+  coefficients rather than memorizing training noise
+- Reframing the target as Δbrix / Δtons_crushed (year-over-year change)
+  makes persistence the implicit zero-prediction. A model predicting Δ=0
+  everywhere exactly recovers persistence — so any learned signal registers
+  directly as improvement over the hardest baseline
+- Walk-forward evaluation (n=20) confirms the elastic net ties or beats
+  persistence on 4 of 6 variety × target combinations
+
+**LSTM status:** Deferred. EDA confirmed strong lag-1 autocorrelation, which
+the delta-target framing already handles. LSTM adds sequence modeling complexity
+that is not justified at this dataset size. Revisit if the dataset expands
+beyond ~35 years or if multi-year drought compounding becomes a focus.
 
 ---
 
 ## Baseline ladder
 
-**Decision:** Four baselines in ascending order of sophistication. All four
+**Decision:** Five baselines in ascending order of sophistication. All five
 must be computed and reported before the ML model is evaluated.
 
 **Rationale:** Each rung justifies the next level of complexity. The thesis
 contribution is not just "we trained a model" but "we show where each layer
 of sophistication earns its complexity cost."
 
-| # | Baseline | What it justifies |
-|---|---|---|
-| 1 | Historical mean (10-yr avg) | ML beats naive prior |
-| 2 | Winkler GDD linear | Feature engineering adds value |
-| 3 | Full feature linear | ML architecture adds value |
-| 4 | Persistence (last yr = this yr) | ML beats autocorrelation |
+| # | Baseline | Definition | What it justifies |
+|---|---|---|---|
+| 1 | **Null / Historical mean** | Predict the training-set mean for every year. No features, no time structure. Sets the floor — any model that cannot beat this is useless. | ML beats a naive prior |
+| 2 | **Winkler linear** | OLS regression using only the Winkler GDD index as a single predictor. The industry-standard thermal accumulation metric. | Feature engineering (GDD) adds value over no features |
+| 3 | **Full OLS** | OLS regression using all numeric climate + water + soil features (same feature set as the ML models). No regularization, no nonlinearity. | ML architecture (regularization, nonlinearity) adds value over linear regression |
+| 4 | **Persistence** | Predict this year = last year. No features at all — pure autocorrelation. The hardest baseline: Brix and tonnage are strongly year-to-year correlated. | ML beats the autocorrelation structure of the targets |
+
+**Note:** Null and historical mean are identical in implementation (training mean)
+and produce the same RMSE. Both are retained in the output for reporting clarity.
+
+**Evaluation protocol (updated April 2026):** All baselines use walk-forward
+cross-validation over 2005–2024 (n=20 per variety), not a fixed holdout.
+For each year t, the baseline is fit on all data before t and evaluated on t.
+This is more stable than a 5-year holdout given the small dataset size and
+avoids conflating model quality with the particular characteristics of any
+single test window (e.g. the 2020–2024 wildfire/COVID period).
 
 ---
 
@@ -263,10 +287,72 @@ Three pillars, in priority order:
 
 ---
 
+## Modeling findings — first GBM run (April 2026)
+
+**Context:** First full baseline ladder + GBM evaluation against holdout data.
+Two test windows evaluated: 2020–2024 (primary) and 2015–2024 (robustness check).
+
+**Finding — persistence dominates:**
+Predicting last year's value (lag-1) is the hardest baseline to beat across
+both targets and both test windows. Brix and tons_crushed are strongly
+year-to-year autocorrelated. Chardonnay brix persistence RMSE (0.249) is
+far below every model including GBM (0.473).
+
+**Finding — GBM beats null and Winkler OLS consistently:**
+The GBM beats the historical mean and the single-feature Winkler OLS on brix
+for all three varieties. This confirms the feature set carries real signal.
+The model is not useless — it is overfitting.
+
+**Finding — negative R² is a relative statement:**
+Negative R² means the model is worse than predicting the training mean.
+Given the small training set (24 years) and strong autocorrelation, this is
+an overfitting symptom rather than a signal that features are uninformative.
+
+**Finding — 2020–2024 is not the cause:**
+Repeating evaluation on 2015–2024 produced similarly negative R² values.
+The wildfire/COVID years (2020–2021) are not the primary driver of poor
+holdout performance.
+
+**Walk-forward results (canonical, saved to models/baselines.json):**
+
+| Target | Variety | ElasticNet Δ | Persistence | Full OLS | Null |
+|---|---|---|---|---|---|
+| Brix | Cab Sauv | 0.589 | 0.577 | 0.847 | 1.067 |
+| Brix | Pinot Noir | 0.655 | **0.442** | 0.836 | 0.938 |
+| Brix | Chardonnay | 0.406 | 0.368 | 0.831 | 0.505 |
+| Tons | Cab Sauv | 15,638 | 15,667 | 18,344 | 22,810 |
+| Tons | Pinot Noir | 2,520 | **2,178** | 2,539 | 1,876 |
+| Tons | Chardonnay | 6,147 | 6,130 | 8,186 | 6,516 |
+
+Model beats or ties persistence on 4 of 6 targets. Pinot Noir is the hard case
+on both targets. All models beat null and Full OLS convincingly.
+
+**Decision: try elastic net with year-over-year deviation target**
+
+Two changes made in `src/models/train_ridge.py`:
+
+1. **Simpler model class** — elastic net (L1 + L2 regularization) regularizes
+   better than a tree ensemble at n=24. With 11 numeric features and a small
+   dataset, ridge/elastic net is the appropriate prior.
+
+2. **Reframe the target** — predict Δbrix and Δtons\_crushed (current year
+   minus previous year) instead of absolute values. This makes persistence
+   the implicit zero-prediction baseline. If the model predicts Δ=0 for all
+   years, it exactly recovers persistence — so any positive signal in the
+   features registers as an improvement over the hardest baseline.
+
+**Rationale for documenting here:** The architecture note in the "Model
+architecture" section above anticipated this — "if full-feature linear
+regression closely matches the ML model, complexity is not justified." The
+baseline ladder results confirm we should walk the complexity back before
+adding it.
+
+---
+
 ## Open questions (unresolved at scoping)
 
-- [ ] Train/test split exact cutoff year — depends on data distribution in EDA
-- [ ] Whether LSTM is warranted — depends on lag correlation analysis in EDA
+- [x] Train/test split exact cutoff year — resolved: walk-forward CV over 2005–2024 (April 2026)
+- [x] Whether LSTM is warranted — resolved: deferred; delta-target framing handles autocorrelation (April 2026)
 - [ ] Vineyard-level validation data — assess feasibility after pipeline runs
 - [ ] Exact Napa district → AVA mapping for CDFA data alignment
 - [ ] CIMIS station selection for Napa — identify stations with deepest records

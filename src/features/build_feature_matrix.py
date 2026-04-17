@@ -4,6 +4,7 @@ Joins:
     - features_climate.parquet  (year × AVA district) — PRISM agroclimatic features
     - features_water.parquet    (year)                — CIMIS ETo + DWR drought class
     - ssurgo_clean.parquet      (AVA district)        — soil properties
+    - acreage_clean.parquet     (year × variety)      — NASS bearing acres (optional)
 
 Output: data/processed/feature_matrix.parquet
     One row per (year × AVA district). All years where climate and water
@@ -20,6 +21,7 @@ Columns
     eto_season, eto_days, stations_used             — seasonal ETo (inches)
     drought_class, severity_score, is_dry           — DWR water year classification
     awc_r, drainagecl, claytotal_r, texcl           — SSURGO soil properties
+    tons_crushed_*, brix_*, price_per_ton_*         — CDFA crush report by variety (District 4)
 
 Usage
 -----
@@ -37,10 +39,12 @@ import pandas as pd
 # ---------------------------------------------------------------------------
 
 _ROOT = Path(__file__).parents[2]
-CLIMATE_PATH = _ROOT / "data" / "processed" / "features_climate.parquet"
-WATER_PATH = _ROOT / "data" / "processed" / "features_water.parquet"
-SSURGO_PATH = _ROOT / "data" / "processed" / "ssurgo_clean.parquet"
-OUTPUT_PATH = _ROOT / "data" / "processed" / "feature_matrix.parquet"
+CLIMATE_PATH  = _ROOT / "data" / "processed" / "features_climate.parquet"
+WATER_PATH    = _ROOT / "data" / "processed" / "features_water.parquet"
+SSURGO_PATH   = _ROOT / "data" / "processed" / "ssurgo_clean.parquet"
+ACREAGE_PATH  = _ROOT / "data" / "processed" / "acreage_clean.parquet"
+CDFA_PATH     = _ROOT / "data" / "processed" / "cdfa_clean.parquet"
+OUTPUT_PATH   = _ROOT / "data" / "processed" / "feature_matrix.parquet"
 
 
 # ---------------------------------------------------------------------------
@@ -82,6 +86,44 @@ def build_feature_matrix(apply: bool = False) -> pd.DataFrame:
     missing_ssurgo = df[df["awc_r"].isna()]["ava_district"].unique().tolist()
     if missing_ssurgo:
         print(f"[matrix] WARNING: SSURGO data missing for AVAs: {sorted(missing_ssurgo)}")
+
+    # Join CDFA crush features (year × variety) — tons crushed, Brix, price per ton
+    if CDFA_PATH.exists():
+        print(f"[matrix] Loading {CDFA_PATH.name} ...")
+        cdfa = pd.read_parquet(CDFA_PATH)[["year", "variety", "tons_crushed", "brix", "price_per_ton"]]
+        print(f"[matrix]   {len(cdfa):,} rows | years {cdfa['year'].min()}–{cdfa['year'].max()}")
+        cdfa_wide = cdfa.pivot(index="year", columns="variety",
+                               values=["tons_crushed", "brix", "price_per_ton"])
+        cdfa_wide.columns = [
+            f"{metric}_{variety.lower().replace(' ', '_')}"
+            for metric, variety in cdfa_wide.columns
+        ]
+        cdfa_wide = cdfa_wide.reset_index()
+        df = df.merge(cdfa_wide, on="year", how="left")
+        missing_cdfa = df[df["tons_crushed_cabernet_sauvignon"].isna()]["year"].unique().tolist()
+        if missing_cdfa:
+            print(f"[matrix] WARNING: CDFA data missing for years: {sorted(missing_cdfa)}")
+    else:
+        print(f"[matrix] NOTE: {CDFA_PATH.name} not found — CDFA features skipped.")
+
+    # Join acreage features (year × variety), if available
+    if ACREAGE_PATH.exists():
+        print(f"[matrix] Loading {ACREAGE_PATH.name} ...")
+        acreage = pd.read_parquet(ACREAGE_PATH)[["year", "variety", "bearing_acres"]]
+        print(f"[matrix]   {len(acreage):,} rows | varieties: {sorted(acreage['variety'].unique())}")
+        # Pivot to wide so each variety gets its own column (year-level join)
+        acreage_wide = acreage.pivot(index="year", columns="variety", values="bearing_acres")
+        acreage_wide.columns = [
+            f"bearing_acres_{v.lower().replace(' ', '_')}"
+            for v in acreage_wide.columns
+        ]
+        acreage_wide = acreage_wide.reset_index()
+        df = df.merge(acreage_wide, on="year", how="left")
+        missing_acreage = df[df["bearing_acres_cabernet_sauvignon"].isna()]["year"].unique().tolist()
+        if missing_acreage:
+            print(f"[matrix] WARNING: acreage missing for years: {sorted(missing_acreage)}")
+    else:
+        print(f"[matrix] NOTE: {ACREAGE_PATH.name} not found — acreage features skipped.")
 
     df = df.sort_values(["year", "ava_district"]).reset_index(drop=True)
 
