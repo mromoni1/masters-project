@@ -59,11 +59,15 @@ TRAIN_CUTOFF = 2019
 VARIETIES    = ["Cabernet Sauvignon", "Pinot Noir", "Chardonnay"]
 TARGETS      = ["brix", "tons_crushed"]
 
-CV_FOLDS = [
+_ALL_CV_FOLDS = [
     (2004, 2009),
     (2009, 2014),
     (2014, 2019),
 ]
+
+
+def _cv_folds(train_cutoff: int) -> list[tuple[int, int]]:
+    return [(a, b) for a, b in _ALL_CV_FOLDS if b <= train_cutoff]
 
 NUMERIC_FEATURES_BASE = [
     "gdd", "frost_days", "heat_stress_days",
@@ -193,6 +197,7 @@ def metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
 def tune_hyperparams(
     df: pd.DataFrame,
     variety: str,
+    train_cutoff: int = TRAIN_CUTOFF,
 ) -> dict:
     """Select best hyperparameters via expanding-window CV for one variety.
 
@@ -211,7 +216,7 @@ def tune_hyperparams(
 
     for params in PARAM_GRID:
         fold_scores = []
-        for train_end, test_end in CV_FOLDS:
+        for train_end, test_end in _cv_folds(train_cutoff):
             cv_train = sub[sub["year"] <= train_end].dropna(subset=NUMERIC_FEATURES + TARGETS)
             cv_test  = sub[(sub["year"] > train_end) & (sub["year"] <= test_end)]
             if len(cv_train) < 10 or len(cv_test) < 1:
@@ -256,6 +261,7 @@ def train_variety(
     df: pd.DataFrame,
     variety: str,
     params: dict,
+    train_cutoff: int = TRAIN_CUTOFF,
 ) -> tuple[MultiOutputRegressor, OneHotEncoder, list[str]]:
     """Fit a multi-output GBM on the full training set for one variety.
 
@@ -263,11 +269,12 @@ def train_variety(
         df: Full dataset.
         variety: Variety to train on.
         params: LightGBM hyperparameters.
+        train_cutoff: Last year included in training.
 
     Returns:
         (fitted model, fitted encoder, feature names list)
     """
-    sub = df[(df["variety"] == variety) & (df["year"] <= TRAIN_CUTOFF)]
+    sub = df[(df["variety"] == variety) & (df["year"] <= train_cutoff)]
     sub = sub.dropna(subset=NUMERIC_FEATURES + TARGETS)
 
     X_train, encoder = build_feature_matrix(sub, fit_encoder=True)
@@ -284,6 +291,7 @@ def evaluate(
     encoder: OneHotEncoder,
     df: pd.DataFrame,
     variety: str,
+    train_cutoff: int = TRAIN_CUTOFF,
 ) -> dict[str, dict[str, float]]:
     """Evaluate model on holdout test set for one variety.
 
@@ -292,11 +300,12 @@ def evaluate(
         encoder: Fitted OneHotEncoder.
         df: Full dataset.
         variety: Variety to evaluate.
+        train_cutoff: Last training year; test set is years after this.
 
     Returns:
         {target: metrics_dict}
     """
-    sub = df[(df["variety"] == variety) & (df["year"] > TRAIN_CUTOFF)]
+    sub = df[(df["variety"] == variety) & (df["year"] > train_cutoff)]
     X_test, _ = build_feature_matrix(sub, encoder=encoder)
     valid_mask = ~np.isnan(X_test.values).any(axis=1)
 
@@ -327,14 +336,16 @@ def load_baseline_metrics() -> dict | None:
         return json.load(f)
 
 
-def print_comparison(gbm_results: dict, baselines: dict | None) -> None:
+def print_comparison(gbm_results: dict, baselines: dict | None,
+                     train_cutoff: int = TRAIN_CUTOFF) -> None:
     """Print GBM results alongside baseline holdout metrics."""
     baseline_keys   = ["null", "historical_mean", "winkler_linear", "full_ols", "persistence"]
     baseline_labels = ["Null", "Hist. Mean", "Winkler OLS", "Full OLS", "Persistence"]
+    test_label      = f"test {train_cutoff+1}–"
 
     for tgt in TARGETS:
         print(f"\n{'='*72}")
-        print(f"  {tgt.upper()} — holdout RMSE comparison (test 2020–2024)")
+        print(f"  {tgt.upper()} — holdout RMSE comparison ({test_label}...)")
         print(f"{'='*72}")
         print(f"  {'Model':<20}  {'Cab Sauv':>10}  {'Pinot Noir':>10}  {'Chardonnay':>10}")
         print(f"  {'-'*55}")
@@ -384,21 +395,23 @@ def _beats_best_baseline(rmse: float, tgt: str, variety: str, baselines: dict | 
 # Main
 # ---------------------------------------------------------------------------
 
-def train_and_evaluate(apply: bool = False) -> dict:
+def train_and_evaluate(apply: bool = False, train_cutoff: int = TRAIN_CUTOFF) -> dict:
     """Full train + tune + evaluate pipeline.
 
     Args:
         apply: If True, save model artifacts to models/.
+        train_cutoff: Last training year (inclusive); years after this form the test set.
 
     Returns:
         Dict of {variety: {target: metrics}} on holdout set.
     """
     print("[gb] Loading data ...")
     df = load_data()
-    train_df = df[df["year"] <= TRAIN_CUTOFF]
-    test_df  = df[df["year"] >  TRAIN_CUTOFF]
-    print(f"[gb] Train: {train_df['year'].nunique()} years | "
-          f"Test: {test_df['year'].nunique()} years | "
+    train_df = df[df["year"] <= train_cutoff]
+    test_df  = df[df["year"] >  train_cutoff]
+    folds    = _cv_folds(train_cutoff)
+    print(f"[gb] Train: {train_df['year'].nunique()} years ({train_df['year'].min()}–{train_cutoff}) | "
+          f"Test: {test_df['year'].nunique()} years ({test_df['year'].min()}–{test_df['year'].max()}) | "
           f"Lag-1 coverage: {df['brix_lag1'].notna().sum()}/{len(df)} rows")
 
     all_models   = {}
@@ -410,19 +423,20 @@ def train_and_evaluate(apply: bool = False) -> dict:
     for variety in VARIETIES:
         print(f"\n[gb] {variety}")
 
-        print(f"  Tuning hyperparameters via {len(CV_FOLDS)}-fold CV ...")
-        best_params = tune_hyperparams(df, variety)
+        print(f"  Tuning hyperparameters via {len(folds)}-fold CV ...")
+        best_params = tune_hyperparams(df, variety, train_cutoff=train_cutoff)
         all_params[variety] = best_params
         print(f"  Best params: {best_params}")
 
-        print(f"  Training on 1991–{TRAIN_CUTOFF} ...")
-        model, encoder, feat_names = train_variety(df, variety, best_params)
+        print(f"  Training on {train_df['year'].min()}–{train_cutoff} ...")
+        model, encoder, feat_names = train_variety(df, variety, best_params,
+                                                   train_cutoff=train_cutoff)
         all_models[variety]    = model
         all_encoders[variety]  = encoder
         all_feat_names[variety] = feat_names
 
-        print(f"  Evaluating on {TRAIN_CUTOFF+1}–{test_df['year'].max()} ...")
-        results = evaluate(model, encoder, df, variety)
+        print(f"  Evaluating on {train_cutoff+1}–{test_df['year'].max()} ...")
+        results = evaluate(model, encoder, df, variety, train_cutoff=train_cutoff)
         gbm_results[variety] = results
 
         for tgt in TARGETS:
@@ -430,7 +444,7 @@ def train_and_evaluate(apply: bool = False) -> dict:
             print(f"  {tgt:<15} RMSE={m['rmse']:.3f}  MAE={m['mae']:.3f}  R²={m['r2']:.3f}  n={m['n']}")
 
     baselines = load_baseline_metrics()
-    print_comparison(gbm_results, baselines)
+    print_comparison(gbm_results, baselines, train_cutoff=train_cutoff)
 
     if apply:
         _ROOT.joinpath("models").mkdir(exist_ok=True)
@@ -444,15 +458,15 @@ def train_and_evaluate(apply: bool = False) -> dict:
         print(f"[gb] Saved feature names → {FEAT_NAMES_PATH.relative_to(_ROOT)}")
 
         config = {
-            "train_cutoff":      TRAIN_CUTOFF,
-            "train_years":       f"{train_df['year'].min()}–{TRAIN_CUTOFF}",
-            "test_years":        f"{test_df['year'].min()}–{test_df['year'].max()}",
-            "targets":           TARGETS,
-            "numeric_features":  NUMERIC_FEATURES,
+            "train_cutoff":         train_cutoff,
+            "train_years":          f"{train_df['year'].min()}–{train_cutoff}",
+            "test_years":           f"{test_df['year'].min()}–{test_df['year'].max()}",
+            "targets":              TARGETS,
+            "numeric_features":     NUMERIC_FEATURES,
             "categorical_features": CATEGORICAL_FEATURES,
-            "cv_folds":          [{"train_end": a, "test_end": b} for a, b in CV_FOLDS],
-            "best_params":       all_params,
-            "holdout_metrics":   gbm_results,
+            "cv_folds":             [{"train_end": a, "test_end": b} for a, b in folds],
+            "best_params":          all_params,
+            "holdout_metrics":      gbm_results,
         }
         with open(CONFIG_PATH, "w") as f:
             json.dump(config, f, indent=2)
@@ -466,5 +480,7 @@ def train_and_evaluate(apply: bool = False) -> dict:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train gradient boosting model for vintage prediction.")
     parser.add_argument("--apply", action="store_true", help="Save trained model artifacts to models/.")
+    parser.add_argument("--train-cutoff", type=int, default=TRAIN_CUTOFF,
+                        help=f"Last training year (default: {TRAIN_CUTOFF}).")
     args = parser.parse_args()
-    train_and_evaluate(apply=args.apply)
+    train_and_evaluate(apply=args.apply, train_cutoff=args.train_cutoff)

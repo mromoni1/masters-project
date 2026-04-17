@@ -87,6 +87,8 @@ def _fetch(params: dict, api_key: str, retries: int = 3) -> list[dict]:
     Raises:
         RuntimeError: If the API returns an error after all retries.
     """
+    safe_params = {k: v for k, v in params.items() if k != "key"}
+    print(f"[nass]   query: {safe_params}")
     params = {"key": api_key, "format": "JSON", **params}
     url = NASS_API_BASE + "?" + urllib.parse.urlencode(params)
 
@@ -95,6 +97,13 @@ def _fetch(params: dict, api_key: str, retries: int = 3) -> list[dict]:
             with urllib.request.urlopen(url, timeout=30) as resp:
                 payload = json.loads(resp.read().decode())
                 return payload.get("data", [])
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode(errors="replace")
+            if attempt == retries:
+                raise RuntimeError(
+                    f"NASS API request failed after {retries} attempts: {exc}\nResponse body: {body}"
+                ) from exc
+            time.sleep(2 ** attempt)
         except Exception as exc:
             if attempt == retries:
                 raise RuntimeError(f"NASS API request failed after {retries} attempts: {exc}") from exc
@@ -128,66 +137,61 @@ def _parse_value(raw: str) -> float | None:
 def fetch_acreage(api_key: str) -> pd.DataFrame:
     """Fetch Napa County bearing acreage for the three key varieties.
 
-    Queries NASS for each variety individually to avoid the 50,000-row
-    API limit and to ensure clean results.
+    Issues one broad GRAPES query per geographic level (county then state
+    fallback) and filters to bearing-acreage rows by variety in Python,
+    avoiding NASS domain/domaincat parameter validation issues.
 
     Args:
         api_key: NASS QuickStats API key.
 
     Returns:
-        DataFrame with columns: year (int), variety (str), bearing_acres (float).
-        Rows with suppressed or missing values are excluded.
+        DataFrame with columns: year (int), variety (str), bearing_acres (float),
+        geo_level (str). Rows with suppressed or missing values are excluded.
     """
-    records = []
+    # Fetch all grape survey rows for Napa County in one call
+    print("[nass] Fetching all GRAPES data for Napa County ...")
+    all_rows = _fetch(
+        params={
+            "source_desc":    "SURVEY",
+            "commodity_desc": "GRAPES",
+            "state_alpha":    "CA",
+            "county_name":    "NAPA",
+            "year__GE":       str(START_YEAR),
+            "year__LE":       str(END_YEAR),
+        },
+        api_key=api_key,
+    )
+    geo_level = "county"
 
-    for nass_name, clean_name in VARIETIES.items():
-        print(f"[nass] Fetching {clean_name} ...")
-
-        # NASS structures grape acreage under domain categories like
-        # "VARIETY: CABERNET SAUVIGNON". We query by short_desc contains
-        # both the variety and "BEARING" to get bearing-age acreage.
-        # The short_desc format is e.g.:
-        #   "GRAPES, WINE, CABERNET SAUVIGNON - ACRES BEARING"
-        rows = _fetch(
+    if not all_rows:
+        print("[nass]   No county rows — falling back to CA state-level ...")
+        all_rows = _fetch(
             params={
-                "source_desc":      "SURVEY",
-                "commodity_desc":   "GRAPES",
-                "class_desc":       "WINE",
-                "statisticcat_desc": "AREA BEARING",
-                "unit_desc":        "ACRES",
-                "domaincat_desc":   f"VARIETY: {nass_name}",
-                "state_alpha":      "CA",
-                "county_name":      "NAPA",
-                "year__GE":         str(START_YEAR),
-                "year__LE":         str(END_YEAR),
+                "source_desc":    "SURVEY",
+                "commodity_desc": "GRAPES",
+                "state_alpha":    "CA",
+                "agg_level_desc": "STATE",
+                "year__GE":       str(START_YEAR),
+                "year__LE":       str(END_YEAR),
             },
             api_key=api_key,
         )
+        geo_level = "state"
 
-        if not rows:
-            # Try state-level if county data is suppressed/absent
-            print(f"[nass]   No county data found for {clean_name}, trying state-level ...")
-            rows = _fetch(
-                params={
-                    "source_desc":      "SURVEY",
-                    "commodity_desc":   "GRAPES",
-                    "class_desc":       "WINE",
-                    "statisticcat_desc": "AREA BEARING",
-                    "unit_desc":        "ACRES",
-                    "domaincat_desc":   f"VARIETY: {nass_name}",
-                    "state_alpha":      "CA",
-                    "agg_level_desc":   "STATE",
-                    "year__GE":         str(START_YEAR),
-                    "year__LE":         str(END_YEAR),
-                },
-                api_key=api_key,
-            )
-            level = "state"
-        else:
-            level = "county"
+    print(f"[nass]   {len(all_rows)} total rows returned ({geo_level}-level)")
 
+    # Filter to bearing-acreage rows for the target varieties.
+    # NASS stores variety in domaincat_desc as "VARIETY: (CABERNET SAUVIGNON)".
+    records = []
+    for nass_name, clean_name in VARIETIES.items():
+        variety_rows = [
+            r for r in all_rows
+            if nass_name in r.get("domaincat_desc", "").upper()
+            and "BEARING" in r.get("statisticcat_desc", "").upper()
+            and r.get("unit_desc", "").upper() == "ACRES"
+        ]
         parsed = 0
-        for row in rows:
+        for row in variety_rows:
             val = _parse_value(row.get("Value", ""))
             if val is None:
                 continue
@@ -195,15 +199,18 @@ def fetch_acreage(api_key: str) -> pd.DataFrame:
                 "year":          int(row["year"]),
                 "variety":       clean_name,
                 "bearing_acres": val,
-                "geo_level":     level,
+                "geo_level":     geo_level,
             })
             parsed += 1
-
-        print(f"[nass]   {parsed} years parsed ({level}-level)")
+        print(f"[nass]   {clean_name}: {parsed} years parsed")
 
     df = pd.DataFrame(records)
     if df.empty:
-        print("[nass] WARNING: no records returned — check API key and parameters")
+        print("[nass] WARNING: no matching variety/bearing rows found.")
+        print("[nass] Sample domaincat_desc values in response:")
+        seen = {r.get("domaincat_desc") for r in all_rows[:50]}
+        for v in sorted(seen):
+            print(f"         {v}")
         return df
 
     df = df.sort_values(["variety", "year"]).reset_index(drop=True)

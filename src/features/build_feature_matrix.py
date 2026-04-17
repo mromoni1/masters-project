@@ -21,6 +21,7 @@ Columns
     eto_season, eto_days, stations_used             — seasonal ETo (inches)
     drought_class, severity_score, is_dry           — DWR water year classification
     awc_r, drainagecl, claytotal_r, texcl           — SSURGO soil properties
+    tons_crushed_*, brix_*, price_per_ton_*         — CDFA crush report by variety (District 4)
 
 Usage
 -----
@@ -42,6 +43,7 @@ CLIMATE_PATH  = _ROOT / "data" / "processed" / "features_climate.parquet"
 WATER_PATH    = _ROOT / "data" / "processed" / "features_water.parquet"
 SSURGO_PATH   = _ROOT / "data" / "processed" / "ssurgo_clean.parquet"
 ACREAGE_PATH  = _ROOT / "data" / "processed" / "acreage_clean.parquet"
+CDFA_PATH     = _ROOT / "data" / "processed" / "cdfa_clean.parquet"
 OUTPUT_PATH   = _ROOT / "data" / "processed" / "feature_matrix.parquet"
 
 
@@ -84,6 +86,25 @@ def build_feature_matrix(apply: bool = False) -> pd.DataFrame:
     missing_ssurgo = df[df["awc_r"].isna()]["ava_district"].unique().tolist()
     if missing_ssurgo:
         print(f"[matrix] WARNING: SSURGO data missing for AVAs: {sorted(missing_ssurgo)}")
+
+    # Join CDFA crush features (year × variety) — tons crushed, Brix, price per ton
+    if CDFA_PATH.exists():
+        print(f"[matrix] Loading {CDFA_PATH.name} ...")
+        cdfa = pd.read_parquet(CDFA_PATH)[["year", "variety", "tons_crushed", "brix", "price_per_ton"]]
+        print(f"[matrix]   {len(cdfa):,} rows | years {cdfa['year'].min()}–{cdfa['year'].max()}")
+        cdfa_wide = cdfa.pivot(index="year", columns="variety",
+                               values=["tons_crushed", "brix", "price_per_ton"])
+        cdfa_wide.columns = [
+            f"{metric}_{variety.lower().replace(' ', '_')}"
+            for metric, variety in cdfa_wide.columns
+        ]
+        cdfa_wide = cdfa_wide.reset_index()
+        df = df.merge(cdfa_wide, on="year", how="left")
+        missing_cdfa = df[df["tons_crushed_cabernet_sauvignon"].isna()]["year"].unique().tolist()
+        if missing_cdfa:
+            print(f"[matrix] WARNING: CDFA data missing for years: {sorted(missing_cdfa)}")
+    else:
+        print(f"[matrix] NOTE: {CDFA_PATH.name} not found — CDFA features skipped.")
 
     # Join acreage features (year × variety), if available
     if ACREAGE_PATH.exists():
