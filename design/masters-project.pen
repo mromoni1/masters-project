@@ -1,0 +1,696 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "jFzd7",
+      "x": 0,
+      "y": 0,
+      "name": "Ask",
+      "width": 1440,
+      "height": 900,
+      "fill": "$--bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "OqQyi",
+          "x": 0,
+          "y": 0,
+          "name": "navBg",
+          "fill": "$--nav-bg",
+          "width": 1440,
+          "height": 64
+        },
+        {
+          "type": "rectangle",
+          "id": "8sn47",
+          "x": 0,
+          "y": 63,
+          "name": "navBorder",
+          "fill": "$--border",
+          "width": 1440,
+          "height": 1
+        },
+        {
+          "type": "text",
+          "id": "zmCkc",
+          "x": 80,
+          "y": 19,
+          "name": "logo",
+          "fill": "$--wine",
+          "content": "Napa Vine Advisor",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 20,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "eeUZQ",
+          "x": 1280,
+          "y": 23,
+          "name": "aboutLink",
+          "fill": "$--text-secondary",
+          "content": "About",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "q12gk",
+          "x": 1352,
+          "y": 23,
+          "name": "askLink",
+          "fill": "$--wine",
+          "content": "Ask",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600"
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 1,
+          "id": "26SFc",
+          "x": 1352,
+          "y": 42,
+          "name": "askUnder",
+          "fill": "$--wine",
+          "width": 20,
+          "height": 2
+        },
+        {
+          "type": "text",
+          "id": "KVqZy",
+          "x": 460,
+          "y": 120,
+          "name": "pageTitle",
+          "fill": "$--text-primary",
+          "textGrowth": "fixed-width",
+          "width": 520,
+          "content": "Ask a question",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 36,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "SypKu",
+          "x": 460,
+          "y": 172,
+          "name": "pageSub",
+          "fill": "$--text-secondary",
+          "textGrowth": "fixed-width",
+          "width": 520,
+          "content": "Type your question about vine data, climate trends, or harvest predictions.",
+          "lineHeight": 1.5,
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 8,
+          "id": "pFR0Q",
+          "x": 380,
+          "y": 240,
+          "name": "inputBg",
+          "fill": "$--card",
+          "width": 548,
+          "height": 48,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$--border"
+          }
+        },
+        {
+          "type": "text",
+          "id": "plYhc",
+          "x": 396,
+          "y": 255,
+          "name": "inputPlaceholder",
+          "fill": "$--text-muted",
+          "content": "e.g. What's the frost risk for Cabernet this spring?",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 8,
+          "id": "jADQA",
+          "x": 940,
+          "y": 240,
+          "name": "submitBg",
+          "fill": "$--wine",
+          "width": 120,
+          "height": 48
+        },
+        {
+          "type": "text",
+          "id": "wNtJS",
+          "x": 964,
+          "y": 253,
+          "name": "submitLabel",
+          "fill": "#FFFFFF",
+          "content": "Submit",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600"
+        },
+        {
+          "type": "icon_font",
+          "id": "rtQzR",
+          "x": 1020,
+          "y": 256,
+          "name": "submitIcon",
+          "width": 16,
+          "height": 16,
+          "iconFontName": "send",
+          "iconFontFamily": "lucide",
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 12,
+          "id": "FgqwM",
+          "x": 380,
+          "y": 320,
+          "name": "cardBg",
+          "fill": "$--card",
+          "width": 680,
+          "height": 420,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$--border"
+          }
+        },
+        {
+          "type": "ellipse",
+          "id": "BsTjq",
+          "x": 412,
+          "y": 352,
+          "name": "respDot",
+          "fill": "$--wine-light",
+          "width": 28,
+          "height": 28
+        },
+        {
+          "type": "icon_font",
+          "id": "ItX3E",
+          "x": 419,
+          "y": 359,
+          "name": "respDotIcon",
+          "width": 14,
+          "height": 14,
+          "iconFontName": "grape",
+          "iconFontFamily": "lucide",
+          "fill": "$--wine"
+        },
+        {
+          "type": "text",
+          "id": "j0IoD",
+          "x": 450,
+          "y": 356,
+          "name": "respLabel",
+          "fill": "$--text-primary",
+          "content": "Response",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 16,
+          "fontWeight": "600"
+        },
+        {
+          "type": "rectangle",
+          "id": "jbw1Z",
+          "x": 412,
+          "y": 400,
+          "name": "cardDivider",
+          "fill": "$--border",
+          "width": 616,
+          "height": 1
+        },
+        {
+          "type": "text",
+          "id": "oehQM",
+          "x": 412,
+          "y": 420,
+          "name": "respBody",
+          "fill": "#4A4A4A",
+          "textGrowth": "fixed-width",
+          "width": 616,
+          "content": "Based on current climate data, Napa Valley's Cabernet Sauvignon vineyards face moderate frost risk this spring. Historical patterns show late-season frost events occurring in approximately 30% of years between March 15 and April 15.\n\nCurrent soil temperature trends and overnight lows suggest implementing frost protection measures, particularly for vineyards below 200 feet elevation on the valley floor.",
+          "lineHeight": 1.7,
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "sA84H",
+          "x": 412,
+          "y": 620,
+          "name": "respSource",
+          "fill": "$--text-muted",
+          "textGrowth": "fixed-width",
+          "width": 616,
+          "content": "Sources: SSURGO, CDFA Grape Crush Reports",
+          "lineHeight": 1.5,
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "DW1a6",
+          "x": 638,
+          "y": 862,
+          "name": "footerTxt",
+          "fill": "$--text-muted",
+          "content": "Built for Napa Valley vintners",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "JrzMl",
+      "x": 1540,
+      "y": 0,
+      "name": "About",
+      "width": 1440,
+      "height": 900,
+      "fill": "$--bg",
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "snGAs",
+          "x": 0,
+          "y": 0,
+          "name": "navBg",
+          "fill": "$--nav-bg",
+          "width": 1440,
+          "height": 64
+        },
+        {
+          "type": "rectangle",
+          "id": "y0cmg",
+          "x": 0,
+          "y": 63,
+          "name": "navBorder",
+          "fill": "$--border",
+          "width": 1440,
+          "height": 1
+        },
+        {
+          "type": "text",
+          "id": "Jikw3",
+          "x": 80,
+          "y": 19,
+          "name": "logo",
+          "fill": "$--wine",
+          "content": "Napa Vine Advisor",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 20,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "Rc6mT",
+          "x": 1280,
+          "y": 23,
+          "name": "aboutLink",
+          "fill": "$--wine",
+          "content": "About",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600"
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 1,
+          "id": "QdDiS",
+          "x": 1280,
+          "y": 42,
+          "name": "aboutUnder",
+          "fill": "$--wine",
+          "width": 36,
+          "height": 2
+        },
+        {
+          "type": "text",
+          "id": "Jrdz9",
+          "x": 1348,
+          "y": 23,
+          "name": "askLink",
+          "fill": "$--text-secondary",
+          "content": "Ask",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 1,
+          "id": "OS0wc",
+          "x": 690,
+          "y": 280,
+          "name": "decLine",
+          "fill": "$--wine-light",
+          "width": 60,
+          "height": 2
+        },
+        {
+          "type": "text",
+          "id": "1HFxU",
+          "x": 320,
+          "y": 310,
+          "name": "heading",
+          "fill": "$--text-primary",
+          "textGrowth": "fixed-width",
+          "width": 800,
+          "content": "Climate-Informed Wine Advisories",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 48,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "a9V4k",
+          "x": 400,
+          "y": 380,
+          "name": "subText",
+          "fill": "$--text-secondary",
+          "textGrowth": "fixed-width",
+          "width": 640,
+          "content": "A decision support tool for small, independent Napa Valley vintners that translates publicly available climate and agricultural data into plain-language wine advisories.",
+          "lineHeight": 1.6,
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "S3nRj",
+          "x": 440,
+          "y": 470,
+          "name": "descText",
+          "fill": "$--text-muted",
+          "textGrowth": "fixed-width",
+          "width": 560,
+          "content": "Ask questions about vine data, harvest predictions, climate trends, or varietal insights and get clear, actionable answers.",
+          "lineHeight": 1.5,
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 8,
+          "id": "PIQrR",
+          "x": 640,
+          "y": 550,
+          "name": "btnBg",
+          "fill": "$--wine",
+          "width": 160,
+          "height": 48
+        },
+        {
+          "type": "text",
+          "id": "7AJjQ",
+          "x": 668,
+          "y": 563,
+          "name": "btnLabel",
+          "fill": "#FFFFFF",
+          "content": "Go to Ask",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "600"
+        },
+        {
+          "type": "icon_font",
+          "id": "f33h6",
+          "x": 748,
+          "y": 565,
+          "name": "btnIcon",
+          "width": 18,
+          "height": 18,
+          "iconFontName": "arrow-right",
+          "iconFontFamily": "lucide",
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "id": "tYBZy",
+          "x": 610,
+          "y": 862,
+          "name": "footerTxt",
+          "fill": "$--text-muted",
+          "content": "Built for Napa Valley vintners",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "MhsCM",
+      "x": 0,
+      "y": 1000,
+      "name": "Logo",
+      "width": 280,
+      "height": 280,
+      "fill": "#FFFFFF",
+      "layout": "none",
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "SaZpH",
+          "x": 90,
+          "y": 40,
+          "name": "circle",
+          "fill": "$--wine",
+          "width": 100,
+          "height": 100
+        },
+        {
+          "type": "icon_font",
+          "id": "4V5JN",
+          "x": 118,
+          "y": 68,
+          "name": "grapeIcon",
+          "width": 44,
+          "height": 44,
+          "iconFontName": "grape",
+          "iconFontFamily": "lucide",
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "id": "aNQK5",
+          "x": 40,
+          "y": 160,
+          "name": "brandName",
+          "fill": "$--wine",
+          "textGrowth": "fixed-width",
+          "width": 200,
+          "content": "Napa Vine\nAdvisor",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 28,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "ESprM",
+          "x": 40,
+          "y": 235,
+          "name": "tagline",
+          "fill": "$--text-secondary",
+          "textGrowth": "fixed-width",
+          "width": 200,
+          "content": "Climate-Informed Decisions",
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "fontWeight": "500",
+          "letterSpacing": 1.5
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "g3fWW",
+      "x": 380,
+      "y": 1000,
+      "name": "Logo - Horizontal",
+      "width": 320,
+      "height": 60,
+      "fill": "#FFFFFF",
+      "layout": "none",
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "J4Oh4",
+          "x": 12,
+          "y": 10,
+          "name": "circleH",
+          "fill": "$--wine",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "type": "icon_font",
+          "id": "YPU3k",
+          "x": 22,
+          "y": 20,
+          "name": "iconH",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "grape",
+          "iconFontFamily": "lucide",
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "id": "OvL9n",
+          "x": 64,
+          "y": 12,
+          "name": "nameH",
+          "fill": "$--wine",
+          "content": "Napa Vine Advisor",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 20,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "kngfW",
+      "x": 0,
+      "y": 1380,
+      "name": "Logo - Dark",
+      "width": 280,
+      "height": 280,
+      "fill": "$--wine-dark",
+      "cornerRadius": 16,
+      "layout": "none",
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "A0koX",
+          "x": 90,
+          "y": 40,
+          "name": "circleDk",
+          "fill": "$--wine-light",
+          "width": 100,
+          "height": 100
+        },
+        {
+          "type": "icon_font",
+          "id": "2uJES",
+          "x": 118,
+          "y": 68,
+          "name": "iconDk",
+          "width": 44,
+          "height": 44,
+          "iconFontName": "grape",
+          "iconFontFamily": "lucide",
+          "fill": "$--wine"
+        },
+        {
+          "type": "text",
+          "id": "jmRHv",
+          "x": 40,
+          "y": 160,
+          "name": "nameDk",
+          "fill": "#FFFFFF",
+          "textGrowth": "fixed-width",
+          "width": 200,
+          "content": "Napa Vine\nAdvisory",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 28,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "aVgEd",
+          "x": 40,
+          "y": 235,
+          "name": "tagDk",
+          "fill": "$--wine-light",
+          "textGrowth": "fixed-width",
+          "width": 200,
+          "content": "Climate-Informed Decisions",
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "fontWeight": "500",
+          "letterSpacing": 1.5
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FAFAF8"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E3"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "--font-heading": {
+      "type": "string",
+      "value": "Georgia"
+    },
+    "--nav-bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--text-muted": {
+      "type": "color",
+      "value": "#9CA3AF"
+    },
+    "--text-primary": {
+      "type": "color",
+      "value": "#1A1A1A"
+    },
+    "--text-secondary": {
+      "type": "color",
+      "value": "#6B6B6B"
+    },
+    "--wine": {
+      "type": "color",
+      "value": "#722F37"
+    },
+    "--wine-dark": {
+      "type": "color",
+      "value": "#5A252C"
+    },
+    "--wine-light": {
+      "type": "color",
+      "value": "#F5ECED"
+    }
+  }
+}
