@@ -48,11 +48,11 @@ export default function App() {
         <main className="flex-1 w-full max-w-3xl mx-auto px-4 py-10 space-y-6">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-slate tracking-tight">
-              Climate-Informed Decisions
+              Historical Explorer
             </h1>
             <p className="mt-2 text-muted text-sm max-w-md mx-auto">
-              Harvest forecasts for Napa Valley small vintners, powered by 34
-              years of climate and crush data.
+              See what the model predicted for a past season alongside the actual
+              CDFA harvest outcome and a climate-driven analysis.
             </p>
           </div>
 

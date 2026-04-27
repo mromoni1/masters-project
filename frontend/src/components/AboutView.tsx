@@ -22,14 +22,13 @@ export default function AboutView({ onNavigate }: Props) {
         <p className="text-slate text-sm leading-relaxed">
           Napa Vine Advisor is a climate-informed decision support tool built for small,
           independent Napa Valley vintners. It translates 34 years of publicly available
-          climate and agricultural data into plain-language harvest advisories — giving
+          climate and agricultural data into plain-language harvest advisories. This tool gives
           growers access to the kind of analytics that large operations take for granted.
         </p>
         <p className="text-slate text-sm leading-relaxed mt-3">
-          Submit your variety and season year to get a model-driven Brix and tonnage
+          Query a variety and season year to get a model-driven Brix and tonnage
           forecast, an estimated harvest window, and a plain-English advisory written
-          by Claude. Or ask Winnie — our data assistant — any question about the
-          historical Napa Valley record.
+          by Claude. You can also ask Winnie any question about the historical Napa Valley record.
         </p>
       </Section>
 
@@ -68,8 +67,8 @@ export default function AboutView({ onNavigate }: Props) {
       {/* navigation */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 pt-2">
         <NavCard
-          title="Harvest Advisory"
-          description="Get a Brix, tonnage, and harvest-window forecast for your variety and season."
+          title="Historical Explorer"
+          description="Compare model predictions against real CDFA harvest outcomes for any season from 1992–2024."
           onClick={() => onNavigate('advisory')}
           icon={<AdvisoryIcon />}
         />

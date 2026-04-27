@@ -1,4 +1,4 @@
-"""Model prediction and Claude advisory generation."""
+"""Model prediction and retrospective analysis generation."""
 
 import json
 import pickle
@@ -74,6 +74,16 @@ def _extract_features(year: int, variety: str) -> tuple[np.ndarray, dict]:
     return np.hstack([num_row, cat_encoded]), climate
 
 
+def _get_actuals(year: int, variety: str) -> dict:
+    df = _features
+    v = variety.lower().replace(" ", "_")
+    cur = df[df["year"] == year]
+    return {
+        "brix": round(float(cur[f"brix_{v}"].dropna().mean()), 1),
+        "tons": round(float(cur[f"tons_crushed_{v}"].dropna().mean()), 0),
+    }
+
+
 def _ten_year_avg(variety: str, year: int) -> dict:
     df = _features
     v = variety.lower().replace(" ", "_")
@@ -84,68 +94,56 @@ def _ten_year_avg(variety: str, year: int) -> dict:
     }
 
 
-def _confidence(severity: int) -> tuple[str, str]:
-    if severity <= 1:
-        return "high", "Season follows a recognizable pattern with all key features present."
-    if severity <= 3:
-        return "moderate", "One or more climate stressors were elevated; estimates carry added uncertainty."
-    return "low", "Unusual season with multiple climate stressors — the model is extrapolating beyond normal patterns."
-
-
-def _harvest_window(brix: float) -> str:
-    if brix < 22:
-        return "early to mid-September"
-    if brix < 24:
-        return "mid to late September"
-    if brix < 26:
-        return "late September to early October"
-    return "early to mid-October"
-
-
-def _call_claude(client: anthropic.Anthropic, *, variety: str, year: int,
-                 brix_pred: float, brix_range: tuple, tons_pred: float,
-                 tons_range: tuple, harvest_window: str, confidence: str,
-                 confidence_note: str, climate: dict, avg: dict) -> str:
-    confidence_instruction = {
-        "high": "The model is confident — write in a direct, assured tone.",
-        "moderate": "Acknowledge the added uncertainty naturally in one phrase (e.g., 'though conditions this season add some variability').",
-        "low": "Lead with the uncertainty in plain language before giving the estimate — do not bury the caveat.",
-    }[confidence]
+def _call_claude(
+    client: anthropic.Anthropic, *,
+    variety: str, year: int,
+    brix_pred: float, brix_range: tuple,
+    tons_pred: float, tons_range: tuple,
+    brix_actual: float, tons_actual: float,
+    climate: dict, avg: dict,
+) -> str:
+    brix_delta = round(brix_actual - brix_pred, 1)
+    tons_delta = round(tons_actual - tons_pred, 0)
+    brix_in_range = brix_range[0] <= brix_actual <= brix_range[1]
+    tons_in_range = tons_range[0] <= tons_actual <= tons_range[1]
 
     prompt = f"""\
-You are a warm, plain-spoken harvest advisor for small Napa Valley vintners.
-Write a friendly, conversational advisory grounded strictly in the model output below.
-Do not add general agronomic advice beyond what the data supports.
-Do not use bullet points, headers, or labels — write flowing prose only.
+You are a viticulture data analyst reviewing a historical Napa Valley growing season.
+Write a concise, engaging retrospective analysis in plain prose — no bullet points, no headers.
 
 VARIETY: {variety}
 SEASON YEAR: {year}
 
-CLIMATE SUMMARY:
-- Growing degree days: {climate['gdd']} (historical Napa avg ~1800)
-- Heat stress days (>35°C, Apr–Oct): {climate['heat_stress_days']}
-- Late-frost days (tmin <0°C, Mar–May): {climate['frost_days']}
-- Mean max temp at veraison (Jul–Aug): {climate['tmax_veraison']}°C
+CLIMATE:
+- Growing degree days: {climate['gdd']} (historical avg ~1800)
+- Heat stress days (>35°C): {climate['heat_stress_days']}
+- Late-frost days (Mar–May): {climate['frost_days']}
+- Mean tmax at veraison (Jul–Aug): {climate['tmax_veraison']}°C
 - Winter precipitation (Oct–Mar): {climate['precip_winter']} mm
-- Drought severity score: {climate['severity_score']}/5
+- Drought severity: {climate['severity_score']}/5
 
-MODEL PREDICTIONS:
-- Projected Brix: {brix_pred:.1f}°Bx (range {brix_range[0]}–{brix_range[1]})
-- Projected tonnage: {tons_pred:,.0f} tons (range {tons_range[0]:,.0f}–{tons_range[1]:,.0f})
-- 10-year average Brix: {avg['brix']}°Bx
-- 10-year average tonnage: {avg['tons']:,.0f} tons
-- Estimated harvest window: {harvest_window}
+MODEL PREDICTION (blind forecast from season-start features):
+- Brix: {brix_pred:.1f}°Bx (range {brix_range[0]}–{brix_range[1]})
+- Tonnage: {tons_pred:,.0f} tons (range {tons_range[0]:,.0f}–{tons_range[1]:,.0f})
 
-Confidence guidance: {confidence_instruction}
+ACTUAL OUTCOME (CDFA Grape Crush Report):
+- Brix: {brix_actual:.1f}°Bx  ({'within predicted range' if brix_in_range else f'{"+" if brix_delta > 0 else ""}{brix_delta:+.1f} vs prediction'})
+- Tonnage: {tons_actual:,.0f} tons  ({'within predicted range' if tons_in_range else f'{"+" if tons_delta > 0 else ""}{tons_delta:+,.0f} vs prediction'})
 
-Write 2–3 sentences in second person ("your block", "consider").
-Cover: (1) where Brix is trending vs the 10-year average, (2) tonnage outlook, \
-(3) when to start harvest checks.
-Output only the advisory text."""
+10-YEAR AVERAGE (prior to {year}):
+- Brix: {avg['brix']}°Bx
+- Tonnage: {avg['tons']:,.0f} tons
+
+Write 3 sentences:
+1. What defined this season's climate character and how it compares to the historical average.
+2. How well the model tracked reality — if Brix and tonnage diverged differently, explain what the \
+climate data suggests about why.
+3. What makes this vintage stand out or blend into the record.
+Output only the analysis — no labels, no preamble."""
 
     msg = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=300,
+        max_tokens=350,
         messages=[{"role": "user", "content": prompt}],
     )
     return msg.content[0].text.strip()
@@ -169,18 +167,16 @@ def generate(variety: str, year: int, api_key: str) -> dict:
     brix_range = (round(brix_pred - brix_rmse, 1), round(brix_pred + brix_rmse, 1))
     tons_range = (round(max(0.0, tons_pred - tons_rmse), 0), round(tons_pred + tons_rmse, 0))
 
-    confidence, confidence_note = _confidence(climate["severity_score"])
-    harvest_window = _harvest_window(brix_pred)
+    actuals = _get_actuals(year, variety)
     avg = _ten_year_avg(variety, year)
 
     client = anthropic.Anthropic(api_key=api_key)
-    advisory_text = _call_claude(
+    analysis = _call_claude(
         client,
         variety=variety, year=year,
         brix_pred=brix_pred, brix_range=brix_range,
         tons_pred=tons_pred, tons_range=tons_range,
-        harvest_window=harvest_window,
-        confidence=confidence, confidence_note=confidence_note,
+        brix_actual=actuals["brix"], tons_actual=actuals["tons"],
         climate=climate, avg=avg,
     )
 
@@ -191,7 +187,8 @@ def generate(variety: str, year: int, api_key: str) -> dict:
         "brix_range": list(brix_range),
         "tonnage_predicted": round(tons_pred, 0),
         "tonnage_range": list(tons_range),
-        "harvest_window": harvest_window,
-        "confidence": confidence,
-        "advisory_text": advisory_text,
+        "brix_actual": actuals["brix"],
+        "tonnage_actual": actuals["tons"],
+        "climate": climate,
+        "analysis": analysis,
     }
