@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 type Role = 'user' | 'assistant'
 
@@ -11,9 +12,9 @@ type ApiError = { detail: string }
 
 const SUGGESTIONS = [
   'What year had the highest Brix for Cabernet Sauvignon?',
-  'How has heat stress changed over the past decade?',
+  'How has heat stress changed over the last decade?',
   'Which variety is most sensitive to drought years?',
-  'Compare 2021 and 2022 growing seasons.',
+  'Compare the 2021 and 2022 growing seasons.',
 ]
 
 export default function ChatView() {
@@ -60,24 +61,24 @@ export default function ChatView() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     send(input)
   }
 
   return (
-    <div className="flex-1 flex flex-col w-full max-w-3xl mx-auto px-4 py-6 min-h-0">
-      <div className="mb-4">
+    <div className="flex-1 flex flex-col overflow-hidden w-full max-w-3xl mx-auto px-4 py-6">
+      <div className="mb-5 shrink-0">
         <h1 className="text-2xl font-bold text-slate tracking-tight">Ask the Data</h1>
         <p className="text-sm text-muted mt-1">
-          Ask anything about 35 years of Napa Valley climate and harvest data.
+          Ask anything about 34 years of Napa Valley climate and harvest data.
         </p>
       </div>
 
       {/* message thread */}
-      <div className="flex-1 overflow-y-auto space-y-4 pb-4">
+      <div className="flex-1 overflow-y-auto space-y-5 pb-4 pr-1">
         {messages.length === 0 && (
-          <div className="space-y-3 pt-2">
+          <div className="space-y-3 pt-1">
             <p className="text-xs font-semibold uppercase tracking-widest text-muted">Try asking</p>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {SUGGESTIONS.map((s) => (
@@ -99,9 +100,7 @@ export default function ChatView() {
 
         {loading && (
           <div className="flex gap-3 items-start">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-wine shrink-0 mt-0.5">
-              <GrapeIcon />
-            </div>
+            <Avatar />
             <div className="bg-white border border-rose-mist/60 rounded-2xl rounded-tl-sm px-4 py-3">
               <TypingDots />
             </div>
@@ -114,7 +113,7 @@ export default function ChatView() {
       {/* input bar */}
       <form
         onSubmit={handleSubmit}
-        className="flex gap-2 mt-2 bg-white border border-rose-mist/60 rounded-xl p-2 shadow-sm"
+        className="flex gap-2 shrink-0 mt-3 bg-white border border-rose-mist/60 rounded-xl p-2 shadow-sm"
       >
         <input
           type="text"
@@ -127,7 +126,7 @@ export default function ChatView() {
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="px-4 py-2 rounded-lg bg-wine text-cream text-sm font-semibold hover:bg-wine-dark transition disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-2 rounded-lg bg-wine text-cream text-sm font-semibold hover:bg-wine-dark transition disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
         >
           Send
         </button>
@@ -137,12 +136,10 @@ export default function ChatView() {
 }
 
 function Bubble({ message }: { message: Message }) {
-  const isUser = message.role === 'user'
-
-  if (isUser) {
+  if (message.role === 'user') {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[80%] bg-wine text-cream rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed">
+        <div className="max-w-[70%] bg-wine text-cream rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed">
           {message.content}
         </div>
       </div>
@@ -151,12 +148,38 @@ function Bubble({ message }: { message: Message }) {
 
   return (
     <div className="flex gap-3 items-start">
-      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-wine shrink-0 mt-0.5">
-        <GrapeIcon />
+      <Avatar />
+      <div className="max-w-[75%] bg-white border border-rose-mist/60 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-slate leading-relaxed">
+        <ReactMarkdown
+          components={{
+            p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+            strong: ({ children }) => <strong className="font-semibold text-wine-dark">{children}</strong>,
+            ul: ({ children }) => <ul className="list-disc pl-4 mt-1 mb-2 space-y-0.5">{children}</ul>,
+            ol: ({ children }) => <ol className="list-decimal pl-4 mt-1 mb-2 space-y-0.5">{children}</ol>,
+            li: ({ children }) => <li>{children}</li>,
+          }}
+        >
+          {message.content}
+        </ReactMarkdown>
       </div>
-      <div className="max-w-[80%] bg-white border border-rose-mist/60 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-slate leading-relaxed whitespace-pre-wrap">
-        {message.content}
-      </div>
+    </div>
+  )
+}
+
+function Avatar() {
+  return (
+    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-wine shrink-0 mt-0.5">
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-cream" aria-hidden="true">
+        <path d="M12 2 Q14 4 13 6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        <circle cx="10" cy="8"  r="2" />
+        <circle cx="14" cy="8"  r="2" />
+        <circle cx="8"  cy="12" r="2" />
+        <circle cx="12" cy="12" r="2" />
+        <circle cx="16" cy="12" r="2" />
+        <circle cx="10" cy="16" r="2" />
+        <circle cx="14" cy="16" r="2" />
+        <circle cx="12" cy="20" r="2" />
+      </svg>
     </div>
   )
 }
@@ -172,21 +195,5 @@ function TypingDots() {
         />
       ))}
     </div>
-  )
-}
-
-function GrapeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-cream" aria-hidden="true">
-      <path d="M12 2 Q14 4 13 6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-      <circle cx="10" cy="8"  r="2" />
-      <circle cx="14" cy="8"  r="2" />
-      <circle cx="8"  cy="12" r="2" />
-      <circle cx="12" cy="12" r="2" />
-      <circle cx="16" cy="12" r="2" />
-      <circle cx="10" cy="16" r="2" />
-      <circle cx="14" cy="16" r="2" />
-      <circle cx="12" cy="20" r="2" />
-    </svg>
   )
 }
