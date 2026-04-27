@@ -1,5 +1,5 @@
 type Props = {
-  onNavigate: (tab: 'advisory' | 'chat') => void
+  onNavigate: (tab: 'advisory' | 'chat' | 'trends' | 'counterfactual') => void
 }
 
 export default function AboutView({ onNavigate }: Props) {
@@ -72,6 +72,18 @@ export default function AboutView({ onNavigate }: Props) {
           description="Compare model predictions against real CDFA harvest outcomes for any season from 1992–2024."
           onClick={() => onNavigate('advisory')}
           icon={<AdvisoryIcon />}
+        />
+        <NavCard
+          title="Climate Trends"
+          description="Explore 34 years of GDD, heat stress, precipitation, Brix, and tonnage trends with a Claude-written overview."
+          onClick={() => onNavigate('trends')}
+          icon={<TrendsIcon />}
+        />
+        <NavCard
+          title="Counterfactual Explorer"
+          description="Ask: what would Cabernet in 2010 have looked like with 2021's drought? Swap any year's climate into any base season."
+          onClick={() => onNavigate('counterfactual')}
+          icon={<SwapIcon />}
         />
         <NavCard
           title="Ask the Data"
@@ -159,6 +171,23 @@ function ChatIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4" aria-hidden="true">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  )
+}
+
+function TrendsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4" aria-hidden="true">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+    </svg>
+  )
+}
+
+function SwapIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4" aria-hidden="true">
+      <path d="M7 16V4m0 0L3 8m4-4 4 4" />
+      <path d="M17 8v12m0 0 4-4m-4 4-4-4" />
     </svg>
   )
 }

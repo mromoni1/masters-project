@@ -4,8 +4,10 @@ import AboutView from './components/AboutView'
 import AdvisoryForm, { type FormValues } from './components/AdvisoryForm'
 import AdvisoryCard, { type AdvisoryResponse } from './components/AdvisoryCard'
 import ChatView from './components/ChatView'
+import TrendsView from './components/TrendsView'
+import CounterfactualView from './components/CounterfactualView'
 
-type Tab = 'about' | 'advisory' | 'chat'
+type Tab = 'about' | 'advisory' | 'chat' | 'trends' | 'counterfactual'
 type ApiError = { detail: string }
 
 export default function App() {
@@ -67,6 +69,10 @@ export default function App() {
           {result && <AdvisoryCard data={result} />}
         </main>
       )}
+
+      {tab === 'trends' && <TrendsView />}
+
+      {tab === 'counterfactual' && <CounterfactualView />}
 
       {tab === 'chat' && <ChatView />}
     </div>
