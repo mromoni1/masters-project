@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import Header from './components/Header'
+import AboutView from './components/AboutView'
 import AdvisoryForm, { type FormValues } from './components/AdvisoryForm'
 import AdvisoryCard, { type AdvisoryResponse } from './components/AdvisoryCard'
 import ChatView from './components/ChatView'
 
-type Tab = 'advisory' | 'chat'
+type Tab = 'about' | 'advisory' | 'chat'
 type ApiError = { detail: string }
 
 export default function App() {
-  const [tab, setTab] = useState<Tab>('advisory')
+  const [tab, setTab] = useState<Tab>('about')
 
-  // Advisory state
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<AdvisoryResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -42,6 +42,8 @@ export default function App() {
     <div className="min-h-screen bg-cream flex flex-col">
       <Header activeTab={tab} onTabChange={setTab} />
 
+      {tab === 'about' && <AboutView onNavigate={setTab} />}
+
       {tab === 'advisory' && (
         <main className="flex-1 w-full max-w-3xl mx-auto px-4 py-10 space-y-6">
           <div className="text-center mb-8">
@@ -49,7 +51,7 @@ export default function App() {
               Climate-Informed Decisions
             </h1>
             <p className="mt-2 text-muted text-sm max-w-md mx-auto">
-              Harvest forecasts for Napa Valley small vintners, powered by 35
+              Harvest forecasts for Napa Valley small vintners, powered by 34
               years of climate and crush data.
             </p>
           </div>

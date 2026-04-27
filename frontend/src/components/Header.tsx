@@ -1,4 +1,4 @@
-type Tab = 'advisory' | 'chat'
+type Tab = 'about' | 'advisory' | 'chat'
 
 type Props = {
   activeTab: Tab
@@ -8,7 +8,10 @@ type Props = {
 export default function Header({ activeTab, onTabChange }: Props) {
   return (
     <header className="bg-white border-b border-rose-mist/60 shadow-sm">
-      <div className="flex items-center gap-3 px-6 py-4">
+      <div
+        className="flex items-center gap-3 px-6 py-4 cursor-pointer w-fit"
+        onClick={() => onTabChange('about')}
+      >
         <div className="flex items-center justify-center w-9 h-9 rounded-full bg-wine shrink-0">
           <GrapeIcon />
         </div>
@@ -18,6 +21,7 @@ export default function Header({ activeTab, onTabChange }: Props) {
       </div>
 
       <nav className="flex px-6 gap-1">
+        <TabButton label="About" active={activeTab === 'about'} onClick={() => onTabChange('about')} />
         <TabButton label="Harvest Advisory" active={activeTab === 'advisory'} onClick={() => onTabChange('advisory')} />
         <TabButton label="Ask the Data" active={activeTab === 'chat'} onClick={() => onTabChange('chat')} />
       </nav>
