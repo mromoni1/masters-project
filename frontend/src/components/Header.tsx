@@ -22,10 +22,10 @@ export default function Header({ activeTab, onTabChange }: Props) {
 
       <nav className="flex px-6 gap-1">
         <TabButton label="About" active={activeTab === 'about'} onClick={() => onTabChange('about')} />
+        <TabButton label="Ask the Data" active={activeTab === 'chat'} onClick={() => onTabChange('chat')} />
         <TabButton label="Historical Explorer" active={activeTab === 'advisory'} onClick={() => onTabChange('advisory')} />
         <TabButton label="Climate Trends" active={activeTab === 'trends'} onClick={() => onTabChange('trends')} />
         <TabButton label="Counterfactual" active={activeTab === 'counterfactual'} onClick={() => onTabChange('counterfactual')} />
-        <TabButton label="Ask the Data" active={activeTab === 'chat'} onClick={() => onTabChange('chat')} />
       </nav>
     </header>
   )
