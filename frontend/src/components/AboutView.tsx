@@ -26,9 +26,10 @@ export default function AboutView({ onNavigate }: Props) {
           growers access to the kind of analytics that large operations take for granted.
         </p>
         <p className="text-slate text-sm leading-relaxed mt-3">
-          Query a variety and season year to get a model-driven Brix and tonnage
-          forecast, an estimated harvest window, and a plain-English advisory written
-          by Claude. You can also ask Winnie any question about the historical Napa Valley record.
+          Select a variety and season year in the Historical Explorer to compare the model's
+          blind forecast against the actual CDFA Grape Crush Report outcome, alongside
+          a climate-driven retrospective written by Claude. Or ask Winnie any question
+          about the 34-year Napa Valley record.
         </p>
       </Section>
 
@@ -57,9 +58,9 @@ export default function AboutView({ onNavigate }: Props) {
             Gradient boosting (LightGBM), walk-forward cross-validation,
             evaluated against four historical baselines
           </DataItem>
-          <DataItem label="Advisory layer">
-            Claude claude-sonnet-4-6 — grounded strictly in model output,
-            no external knowledge retrieval
+          <DataItem label="Retrospective analysis">
+            Claude claude-sonnet-4-6 — explains what drove the season, how closely
+            the model tracked reality, and what makes the vintage distinctive
           </DataItem>
         </dl>
       </Section>

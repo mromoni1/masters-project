@@ -74,7 +74,7 @@ export default function AdvisoryCard({ data }: Props) {
 
       {/* analysis */}
       <div className="px-8 py-6">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-3">Season Analysis</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-3">Retrospective Analysis</p>
         <p className="text-slate text-sm leading-relaxed">{data.analysis}</p>
       </div>
 
