@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wine: #7a2f3b;
+  --color-wine-dark: #5c2229;
+  --color-wine-light: #9b3f4e;
+  --color-cream: #faf9f6;
+  --color-rose-mist: #f3e8ea;
+  --color-slate: #3d2b2e;
+  --color-muted: #8c7375;
+}
+
+body {
+  margin: 0;
+  background-color: #faf9f6;
+  -webkit-font-smoothing: antialiased;
+}
