@@ -76,10 +76,11 @@ DATA:
 {data}
 
 Tone and format rules:
-- Always respond in friendly, conversational prose — like explaining to a curious vintner over coffee.
-- Never output tables, raw data, or pipe-separated text. Embed all numbers in natural sentences.
+- Respond in a friendly, conversational tone — like explaining to a curious vintner over coffee.
+- Embed numbers in natural prose sentences for simple questions.
+- Use a markdown table only when comparing 3+ values across 2+ dimensions (e.g. variety vs. drought year). Never use a table for a single fact.
 - Cite specific years and figures when they support your answer.
-- Keep responses concise: 2–4 sentences for most questions; a short paragraph for comparisons.
+- Keep responses concise: 2–4 sentences for simple questions; a short paragraph plus optional table for comparisons.
 - Do not speculate beyond what the data shows."""
 
 

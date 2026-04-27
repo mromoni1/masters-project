@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 type Role = 'user' | 'assistant'
 
@@ -69,7 +70,7 @@ export default function ChatView() {
   return (
     <div className="flex-1 flex flex-col overflow-hidden w-full max-w-3xl mx-auto px-4 py-6">
       <div className="mb-5 shrink-0">
-        <h1 className="text-2xl font-bold text-slate tracking-tight">Ask the Data</h1>
+        <h1 className="text-2xl font-bold text-slate tracking-tight">Meet Winnie!</h1>
         <p className="text-sm text-muted mt-1">
           Ask anything about 34 years of Napa Valley climate and harvest data.
         </p>
@@ -151,12 +152,23 @@ function Bubble({ message }: { message: Message }) {
       <Avatar />
       <div className="max-w-[75%] bg-white border border-rose-mist/60 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-slate leading-relaxed">
         <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
           components={{
             p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
             strong: ({ children }) => <strong className="font-semibold text-wine-dark">{children}</strong>,
             ul: ({ children }) => <ul className="list-disc pl-4 mt-1 mb-2 space-y-0.5">{children}</ul>,
             ol: ({ children }) => <ol className="list-decimal pl-4 mt-1 mb-2 space-y-0.5">{children}</ol>,
             li: ({ children }) => <li>{children}</li>,
+            table: ({ children }) => (
+              <div className="overflow-x-auto my-3 rounded-lg border border-rose-mist/60">
+                <table className="w-full text-sm border-collapse">{children}</table>
+              </div>
+            ),
+            thead: ({ children }) => <thead className="bg-wine text-cream">{children}</thead>,
+            tbody: ({ children }) => <tbody className="divide-y divide-rose-mist/60">{children}</tbody>,
+            th: ({ children }) => <th className="px-4 py-2 text-left font-semibold text-xs uppercase tracking-wide">{children}</th>,
+            td: ({ children }) => <td className="px-4 py-2 text-slate">{children}</td>,
+            tr: ({ children }) => <tr className="even:bg-rose-mist/20">{children}</tr>,
           }}
         >
           {message.content}
