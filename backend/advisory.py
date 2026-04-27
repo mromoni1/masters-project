@@ -106,11 +106,17 @@ def _call_claude(client: anthropic.Anthropic, *, variety: str, year: int,
                  brix_pred: float, brix_range: tuple, tons_pred: float,
                  tons_range: tuple, harvest_window: str, confidence: str,
                  confidence_note: str, climate: dict, avg: dict) -> str:
-    uncertainty_lead = "Lead with the uncertainty caveat before the estimate." if confidence == "low" else ""
+    confidence_instruction = {
+        "high": "The model is confident — write in a direct, assured tone.",
+        "moderate": "Acknowledge the added uncertainty naturally in one phrase (e.g., 'though conditions this season add some variability').",
+        "low": "Lead with the uncertainty in plain language before giving the estimate — do not bury the caveat.",
+    }[confidence]
+
     prompt = f"""\
-You are an agricultural advisor for small Napa Valley vintners.
-Write a concise harvest advisory grounded strictly in the model output below.
+You are a warm, plain-spoken harvest advisor for small Napa Valley vintners.
+Write a friendly, conversational advisory grounded strictly in the model output below.
 Do not add general agronomic advice beyond what the data supports.
+Do not use bullet points, headers, or labels — write flowing prose only.
 
 VARIETY: {variety}
 SEASON YEAR: {year}
@@ -124,19 +130,18 @@ CLIMATE SUMMARY:
 - Drought severity score: {climate['severity_score']}/5
 
 MODEL PREDICTIONS:
-- Projected Brix: {brix_pred:.1f}°Bx (±range {brix_range[0]}–{brix_range[1]})
+- Projected Brix: {brix_pred:.1f}°Bx (range {brix_range[0]}–{brix_range[1]})
 - Projected tonnage: {tons_pred:,.0f} tons (range {tons_range[0]:,.0f}–{tons_range[1]:,.0f})
 - 10-year average Brix: {avg['brix']}°Bx
 - 10-year average tonnage: {avg['tons']:,.0f} tons
 - Estimated harvest window: {harvest_window}
-- Confidence: {confidence}
-- Confidence note: {confidence_note}
 
-Instructions: Write 2–3 sentences in second person ("your block", "consider").
-{uncertainty_lead}
+Confidence guidance: {confidence_instruction}
+
+Write 2–3 sentences in second person ("your block", "consider").
 Cover: (1) where Brix is trending vs the 10-year average, (2) tonnage outlook, \
 (3) when to start harvest checks.
-Output only the advisory text — no headers, no bullet points."""
+Output only the advisory text."""
 
     msg = client.messages.create(
         model="claude-sonnet-4-6",

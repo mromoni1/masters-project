@@ -6,7 +6,6 @@ export type AdvisoryResponse = {
   tonnage_predicted: number
   tonnage_range: [number, number]
   harvest_window: string
-  confidence: 'high' | 'moderate' | 'low'
   advisory_text: string
 }
 
@@ -14,26 +13,15 @@ type Props = {
   data: AdvisoryResponse
 }
 
-const CONFIDENCE_STYLES: Record<string, string> = {
-  high: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-  moderate: 'bg-amber-50 text-amber-700 border-amber-200',
-  low: 'bg-red-50 text-red-700 border-red-200',
-}
-
 export default function AdvisoryCard({ data }: Props) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-rose-mist/60 overflow-hidden">
       {/* header band */}
-      <div className="bg-wine px-8 py-5 flex items-center justify-between gap-4">
-        <div>
-          <p className="text-rose-mist/80 text-xs font-semibold uppercase tracking-widest mb-0.5">
-            {data.year} Harvest Advisory
-          </p>
-          <h3 className="text-cream text-xl font-bold">{data.variety}</h3>
-        </div>
-        <span className={`px-3 py-1 rounded-full text-xs font-semibold border capitalize ${CONFIDENCE_STYLES[data.confidence]}`}>
-          {data.confidence} confidence
-        </span>
+      <div className="bg-wine px-8 py-5">
+        <p className="text-rose-mist/80 text-xs font-semibold uppercase tracking-widest mb-0.5">
+          {data.year} Harvest Advisory
+        </p>
+        <h3 className="text-cream text-xl font-bold">{data.variety}</h3>
       </div>
 
       {/* metrics row */}
