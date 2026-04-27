@@ -10,8 +10,8 @@ type Props = {
 
 const VARIETIES = ['Cabernet Sauvignon', 'Pinot Noir', 'Chardonnay']
 
-const CURRENT_YEAR = new Date().getFullYear()
-const YEARS = Array.from({ length: CURRENT_YEAR - 1990 }, (_, i) => CURRENT_YEAR - i)
+const MAX_YEAR = 2024
+const YEARS = Array.from({ length: MAX_YEAR - 1991 }, (_, i) => MAX_YEAR - i)
 
 export default function AdvisoryForm({ onSubmit, loading }: Props) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,7 +56,7 @@ export default function AdvisoryForm({ onSubmit, loading }: Props) {
             <span className="text-sm font-semibold text-slate mb-1.5 block">Season Year</span>
             <select
               name="year"
-              defaultValue={CURRENT_YEAR - 1}
+              defaultValue={MAX_YEAR}
               className="w-full rounded-lg border border-rose-mist bg-cream px-4 py-2.5 text-slate text-sm focus:outline-none focus:ring-2 focus:ring-wine/40 focus:border-wine transition"
             >
               {YEARS.map((y) => (
