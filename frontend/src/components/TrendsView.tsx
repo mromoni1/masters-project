@@ -227,9 +227,9 @@ function ChartWrap({ height = 260, children }: { height?: number; children: Reac
   )
 }
 
-const tightDomain = [
-  (min: number) => Math.round(min * 0.95),
-  (max: number) => Math.round(max * 1.05),
+const tightDomain: [(v: number) => number, (v: number) => number] = [
+  (min) => Math.round(min * 0.95),
+  (max) => Math.round(max * 1.05),
 ]
 
 const tickStyle = { fontSize: 11, fill: '#8c7375' }
