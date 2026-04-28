@@ -23,7 +23,7 @@ export default function App() {
     setResult(null)
 
     try {
-      const res = await fetch('/api/advisory', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/advisory`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),

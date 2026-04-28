@@ -56,7 +56,7 @@ export default function TrendsView() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch('/api/trends')
+    fetch(`${import.meta.env.VITE_API_URL}/api/trends`)
       .then(r => r.json())
       .then(d => { setData(d.years); setLoadingData(false) })
       .catch(() => { setError('Failed to load trend data.'); setLoadingData(false) })
