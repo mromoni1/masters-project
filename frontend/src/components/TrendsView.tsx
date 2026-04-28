@@ -52,9 +52,7 @@ const MUTED_BLUE = '#5b7fa6'
 
 export default function TrendsView() {
   const [data, setData] = useState<YearRecord[] | null>(null)
-  const [narrative, setNarrative] = useState<string | null>(null)
   const [loadingData, setLoadingData] = useState(true)
-  const [loadingNarrative, setLoadingNarrative] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -62,11 +60,6 @@ export default function TrendsView() {
       .then(r => r.json())
       .then(d => { setData(d.years); setLoadingData(false) })
       .catch(() => { setError('Failed to load trend data.'); setLoadingData(false) })
-
-    fetch('/api/trends/narrative')
-      .then(r => r.json())
-      .then(d => { setNarrative(d.narrative); setLoadingNarrative(false) })
-      .catch(() => { setLoadingNarrative(false) })
   }, [])
 
   const enriched = useMemo(() => data ? addTrends(data) : null, [data])
@@ -101,13 +94,7 @@ export default function TrendsView() {
         <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-3">
           Climate Overview
         </p>
-        {loadingNarrative ? (
-          <p className="text-muted text-sm">Generating summary…</p>
-        ) : narrative ? (
-          <p className="text-slate text-sm leading-relaxed">{narrative}</p>
-        ) : (
-          <p className="text-muted text-sm">Summary unavailable.</p>
-        )}
+        <p className="text-slate text-sm leading-relaxed">Over the past 34 years, Napa Valley's climate has been shifting in ways that are impossible to ignore: growing degree days have climbed by roughly 141 units from the early period to the late period — an average gain of 4.6 degree-days per year — meaning vines are accumulating significantly more heat across each season. That warming trajectory is reinforcing itself through more frequent heat stress days and, strikingly, through the grapes themselves, as Cabernet Sauvignon's harvest Brix has crept up about 0.077 degrees per year, translating to noticeably riper, higher-sugar fruit than growers were picking in the early 1990s. At the same time, winter precipitation has dropped by more than 100 millimeters on average between the early and late portions of the record — a loss of roughly 12% — and drought severity has trended steadily worse, tightening the water budget that vines depend on during the critical growing season. Together, these patterns paint a picture of a valley that is getting hotter, drier, and more prone to moisture stress, compressing the already-narrow windows for achieving balanced ripeness before sugar levels race ahead of flavor and acidity. For growers, this means irrigation management, canopy architecture, and even variety selection are no longer optional refinements — they are front-line adaptations to a climate</p>
       </div>
 
       {/* Climate charts */}
