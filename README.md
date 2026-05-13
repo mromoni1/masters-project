@@ -2,7 +2,8 @@
 
 A publicly accessible, climate-informed decision support system for small, independent Napa Valley vintners. Translates publicly available climate and agricultural data into plain-language wine advisories for growers who lack access to large-scale analytics platforms.
 
-**Live site:** https://mromoni1.github.io/masters-project/
+**Live site hosted at:** https://mromoni1.github.io/masters-project/
+* Deleted Railway service and Anthropic API key for cost purposes, but should run locally with personal anthropic API key 
 
 ## Features
 
